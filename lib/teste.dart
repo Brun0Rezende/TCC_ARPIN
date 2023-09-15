@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import  'Quest.dart';
 void main() {
   runApp(MyApp());
 }
@@ -12,6 +12,41 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+ var Resp;
+  bool ButtonAc = true;
+
+  Color buttonColor = const Color(0xffDAD1E4); // Cor inicial do botão
+  
+// void Button(String texto, int resp) {
+
+//   Container(
+//     margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 75 * fem),
+//     child: ElevatedButton(
+//       onPressed: ButtonAc
+//           ? () {
+//               resp = 1;
+//               changeButtonColor();
+//             }
+//           : null,
+//       style: ElevatedButton.styleFrom(
+//         primary: buttonColor, // Use a cor atual do botão
+//         minimumSize: Size(919 * fem, 125 * fem),
+//         elevation: 0,
+//         shape: const RoundedRectangleBorder(
+//             borderRadius: BorderRadius.all(Radius.circular(50))),
+//       ),
+//       child: Text(
+//         texto,
+//         style: GoogleFonts.poppins(
+//           fontSize: 48 * ffem,
+//           fontWeight: FontWeight.w400,
+//           height: 1.5 * ffem / fem,
+//           color: const Color(0xff000000),
+//         ),
+//       ),
+//     ),
+//   );
+// }
 
 class MyButtonPage extends StatefulWidget {
   @override

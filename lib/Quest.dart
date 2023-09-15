@@ -23,12 +23,13 @@ class Quest extends StatefulWidget {
 
 class _QuestState extends State<Quest> {
   var Resp;
-  var Corre;
+  bool ButtonAc = true;
 
   Color buttonColor = const Color(0xffDAD1E4); // Cor inicial do botão
   void changeButtonColor() {
     setState(() {
-      if (Corre == 1) {
+      ButtonAc = false;
+      if (Resp == 1) {
         buttonColor = const Color(0xff20E644);
       } else if (Resp == 0) {
         buttonColor = const Color(0xffe51f43);
@@ -45,13 +46,15 @@ class _QuestState extends State<Quest> {
         actions: <Widget>[
           IconButton(
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => UserProfile()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => UserProfile()));
               },
               icon: Image.asset('assets/images/user.png')),
         ],
         title: IconButton(
             onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomePage()));
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => HomePage()));
             },
             icon: Image.asset('assets/images/led.png')),
         centerTitle: true,
@@ -78,14 +81,16 @@ class _QuestState extends State<Quest> {
                 children: [
                   Container(
                     // autogroupugvtrAT (4s1hJm9Wnj1G9Z35XNugvT)
-                    margin: EdgeInsets.fromLTRB(350 * fem, 50 * fem, 62 * fem, 100 * fem),
+                    margin: EdgeInsets.fromLTRB(
+                        350 * fem, 50 * fem, 62 * fem, 100 * fem),
 
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
                           // questionarioBTd (296:116)
-                          margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 198 * fem, 0 * fem),
+                          margin: EdgeInsets.fromLTRB(
+                              0 * fem, 0 * fem, 198 * fem, 0 * fem),
                           child: Text(
                             'Questionario',
                             textAlign: TextAlign.center,
@@ -131,7 +136,8 @@ class _QuestState extends State<Quest> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.fromLTRB(61 * fem, 149 * fem, 60 * fem, 0 * fem),
+                    padding: EdgeInsets.fromLTRB(
+                        61 * fem, 149 * fem, 60 * fem, 0 * fem),
                     width: double.infinity,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -139,18 +145,23 @@ class _QuestState extends State<Quest> {
                         Column(children: [
                           //PERGUNTAS
                           Container(
-                            margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 75 * fem),
-                  
+                            margin: EdgeInsets.fromLTRB(
+                                0 * fem, 0 * fem, 0 * fem, 75 * fem),
                             child: ElevatedButton(
-                              onPressed: () {
-                                Resp = 1;
-                                changeButtonColor();
-                              },
+                              onPressed: ButtonAc
+                                  ? () {
+                                      Resp = 1;
+                                      changeButtonColor();
+                                    }
+                                  : null,
                               style: ElevatedButton.styleFrom(
-                                primary: buttonColor, // Use a cor atual do botão
+                                primary:
+                                    buttonColor, // Use a cor atual do botão
                                 minimumSize: Size(919 * fem, 125 * fem),
                                 elevation: 0,
-                                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                                shape: const RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(50))),
                               ),
                               child: Text(
                                 'A) Light Emitting Diode',
@@ -164,17 +175,25 @@ class _QuestState extends State<Quest> {
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 75 * fem),
+                            margin: EdgeInsets.fromLTRB(
+                                0 * fem, 0 * fem, 0 * fem, 75 * fem),
                             child: ElevatedButton(
-                              onPressed: () {
-                                Resp = 0;
-                                changeButtonColor();
-                              },
+                              onPressed: ButtonAc
+                                  ? () {
+                                      Resp = 0;
+                                      changeButtonColor();
+                                    }
+                                  : () {
+                                      null;
+                                    },
                               style: ElevatedButton.styleFrom(
-                                primary: buttonColor, // Use a cor atual do botão
+                                primary:
+                                    buttonColor, // Use a cor atual do botão
                                 minimumSize: Size(919 * fem, 125 * fem),
                                 elevation: 0,
-                                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                                shape: const RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(50))),
                               ),
                               child: Text(
                                 'B) Light Emitting Diode',
@@ -188,18 +207,23 @@ class _QuestState extends State<Quest> {
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 75 * fem),
+                            margin: EdgeInsets.fromLTRB(
+                                0 * fem, 0 * fem, 0 * fem, 75 * fem),
                             child: ElevatedButton(
-                              onPressed: () {
-                                Resp = 0;
-
-                                changeButtonColor();
-                              },
+                              onPressed: ButtonAc
+                                  ? () {
+                                      Resp = 0;
+                                      changeButtonColor();
+                                    }
+                                  : null,
                               style: ElevatedButton.styleFrom(
-                                primary: buttonColor, // Use a cor atual do botão
+                                primary:
+                                    buttonColor, // Use a cor atual do botão
                                 minimumSize: Size(919 * fem, 125 * fem),
                                 elevation: 0,
-                                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                                shape: const RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(50))),
                               ),
                               child: Text(
                                 'C) Light Emitting Diode',
@@ -213,18 +237,23 @@ class _QuestState extends State<Quest> {
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 75 * fem),
+                            margin: EdgeInsets.fromLTRB(
+                                0 * fem, 0 * fem, 0 * fem, 75 * fem),
                             child: ElevatedButton(
-                              onPressed: () {
-                                Resp = 0;
-
-                                changeButtonColor();
-                              },
+                              onPressed: ButtonAc
+                                  ? () {
+                                      Resp = 0;
+                                      changeButtonColor();
+                                    }
+                                  : null,
                               style: ElevatedButton.styleFrom(
-                                primary: buttonColor, // Use a cor atual do botão
+                                primary:
+                                    buttonColor, // Use a cor atual do botão
                                 minimumSize: Size(919 * fem, 125 * fem),
                                 elevation: 0,
-                                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                                shape: const RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(50))),
                               ),
                               child: Text(
                                 'D) Light Emitting Diode',
@@ -240,7 +269,8 @@ class _QuestState extends State<Quest> {
                         ]),
                         Container(
                           // respostaincorretaSTR (296:145)
-                          margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 1 * fem, 75 * fem),
+                          margin: EdgeInsets.fromLTRB(
+                              0 * fem, 0 * fem, 1 * fem, 75 * fem),
                           child: Column(children: [
                             if (Resp == 1) ...[
                               Text(

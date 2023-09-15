@@ -28,13 +28,15 @@ class Tutorial extends StatelessWidget {
         actions: <Widget>[
           IconButton(
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => UserProfile()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => UserProfile()));
               },
               icon: Image.asset('assets/images/user.png')),
         ],
         title: IconButton(
             onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomePage()));
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => HomePage()));
             },
             icon: Image.asset('assets/images/led.png')),
         centerTitle: true,
@@ -61,7 +63,8 @@ class Tutorial extends StatelessWidget {
                 children: [
                   Container(
                     //TUTORIAL ICON
-                    margin: EdgeInsets.fromLTRB(0 * fem, 50 * fem, 0 * fem, 0 * fem),
+                    margin: EdgeInsets.fromLTRB(
+                        0 * fem, 50 * fem, 0 * fem, 0 * fem),
                     height: 400 * fem,
                     child: Column(
                       children: [
@@ -82,7 +85,8 @@ class Tutorial extends StatelessWidget {
                                 ],
                               ),
                               child: Container(
-                                margin: EdgeInsets.fromLTRB(100 * fem, 100 * fem, 100 * fem, 100 * fem),
+                                margin: EdgeInsets.fromLTRB(
+                                    100 * fem, 100 * fem, 100 * fem, 100 * fem),
                                 child: Image.asset(
                                   'assets/images/led.png',
                                   fit: BoxFit.cover,
@@ -96,7 +100,8 @@ class Tutorial extends StatelessWidget {
                   ),
                   Container(
                     //TUTORIAL NAME
-                    margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 25 * fem),
+                    margin: EdgeInsets.fromLTRB(
+                        0 * fem, 0 * fem, 0 * fem, 25 * fem),
                     child: Text(
                       'LED',
                       textAlign: TextAlign.center,
@@ -113,7 +118,8 @@ class Tutorial extends StatelessWidget {
                     child: Column(
                       children: [
                         Container(
-                          margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 15 * fem),
+                          margin: EdgeInsets.fromLTRB(
+                              0 * fem, 0 * fem, 0 * fem, 15 * fem),
                           child: Text(
                             'Descrição:',
                             textAlign: TextAlign.center,
@@ -128,7 +134,8 @@ class Tutorial extends StatelessWidget {
                         Center(
                           //TUTORIAL DESC
                           child: Container(
-                            margin: EdgeInsets.fromLTRB(13 * fem, 0 * fem, 0 * fem, 100 * fem),
+                            margin: EdgeInsets.fromLTRB(
+                                13 * fem, 0 * fem, 0 * fem, 100 * fem),
                             constraints: BoxConstraints(
                               maxWidth: 837 * fem,
                             ),
@@ -154,10 +161,15 @@ class Tutorial extends StatelessWidget {
                         children: [
                           Container(
                             //START BUTTON
-                            margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 100 * fem),
+                            margin: EdgeInsets.fromLTRB(
+                                0 * fem, 0 * fem, 0 * fem, 100 * fem),
                             child: TextButton(
                               onPressed: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => MaterialDidatico()));
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            MaterialDidatico()));
                               },
                               child: Container(
                                 width: 893 * fem,
@@ -182,7 +194,8 @@ class Tutorial extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.fromLTRB(0 * fem, 20 * fem, 0 * fem, 30 * fem),
+                            margin: EdgeInsets.fromLTRB(
+                                0 * fem, 20 * fem, 0 * fem, 30 * fem),
                             child: Text(
                               'Selecione a Etapa Desejada:',
                               textAlign: TextAlign.center,
@@ -197,10 +210,15 @@ class Tutorial extends StatelessWidget {
                           ),
                           Container(
                             //MATERIAL BUTTON
-                            margin: EdgeInsets.fromLTRB(0 * fem, 10 * fem, 0 * fem, 0 * fem),
+                            margin: EdgeInsets.fromLTRB(
+                                0 * fem, 10 * fem, 0 * fem, 0 * fem),
                             child: TextButton(
                               onPressed: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => MaterialDidatico()));
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            MaterialDidatico()));
                               },
                               child: Container(
                                 width: 893 * fem,
@@ -226,10 +244,14 @@ class Tutorial extends StatelessWidget {
                           ),
                           Container(
                             //QUEST BUTTON
-                            margin: EdgeInsets.fromLTRB(0 * fem, 10 * fem, 0 * fem, 0 * fem),
+                            margin: EdgeInsets.fromLTRB(
+                                0 * fem, 10 * fem, 0 * fem, 0 * fem),
                             child: TextButton(
                               onPressed: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => Quest()));
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Quest()));
                               },
                               child: Container(
                                 width: 893 * fem,
@@ -255,10 +277,14 @@ class Tutorial extends StatelessWidget {
                           ),
                           Container(
                             //RA BUTTON
-                            margin: EdgeInsets.fromLTRB(0 * fem, 10 * fem, 0 * fem, 0 * fem),
+                            margin: EdgeInsets.fromLTRB(
+                                0 * fem, 10 * fem, 0 * fem, 0 * fem),
                             child: TextButton(
                               onPressed: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => BXModelo()));
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => BXModelo()));
                               },
                               child: Container(
                                 width: 893 * fem,
