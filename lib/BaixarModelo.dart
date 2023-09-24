@@ -3,17 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'HomePage.dart';
 import 'UserProfile.dart';
 
-void main() {
-  runApp(
-    MaterialApp(
-      home: Directionality(
-        textDirection: TextDirection.ltr,
-        child: BXModelo(),
-      ),
-    ),
-  );
-}
-
 class BXModelo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

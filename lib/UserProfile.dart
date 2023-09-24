@@ -1,17 +1,8 @@
+import 'package:ar_pin/Cadastro.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'HomePage.dart';
-
-void main() {
-  runApp(
-    MaterialApp(
-      home: Directionality(
-        textDirection: TextDirection.ltr,
-        child: UserProfile(),
-      ),
-    ),
-  );
-}
+import 'ModelosDIsp.dart';
 
 class UserProfile extends StatelessWidget {
   @override
@@ -328,7 +319,7 @@ class UserProfile extends StatelessWidget {
                         ),
                         Container(
                           // line3nxf (264:59)
-                          margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 28 * fem),
+                          margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 30 * fem),
                           width: 1040 * fem,
                           height: 1 * fem,
                           decoration: BoxDecoration(
@@ -343,7 +334,7 @@ class UserProfile extends StatelessWidget {
                               'Configurações',
                               textAlign: TextAlign.center,
                               style: GoogleFonts.poppins(
-                                fontSize: 48 * ffem,
+                                fontSize: 52 * ffem,
                                 fontWeight: FontWeight.w600,
                                 height: 1.5 * ffem / fem,
                                 fontStyle: FontStyle.italic,
@@ -354,90 +345,77 @@ class UserProfile extends StatelessWidget {
                         ),
                         Container(
                           // autogroupfwm9pPZ (4s1njwRgb8zPHmyepJfwM9)
-                          margin: EdgeInsets.fromLTRB(72 * fem, 0 * fem, 74 * fem, 35 * fem),
-                          width: double.infinity,
-                          height: 114 * fem,
+                          margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 35 * fem),
                           decoration: BoxDecoration(
-                            color: Color(0xffe51f43),
                             borderRadius: BorderRadius.circular(50 * fem),
                           ),
-                          child: Center(
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Color(0xffe51f43),
+                              minimumSize: Size(919 * fem, 125 * fem),
+                              elevation: 0,
+                              shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                            ),
+                            onPressed: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => ModelDisp()));
+                            },
                             child: Text(
                               'Conta',
-                              textAlign: TextAlign.center,
                               style: GoogleFonts.poppins(
-                                fontSize: 40 * ffem,
-                                fontWeight: FontWeight.w600,
+                                fontSize: 48 * ffem,
+                                fontWeight: FontWeight.w400,
                                 height: 1.5 * ffem / fem,
-                                color: Color(0xffffffff),
+                                color: Colors.white,
                               ),
                             ),
                           ),
                         ),
                         Container(
-                          // autogroupufy35aP (4s1nrmZdrmSMwdVQWvUfY3)
-                          margin: EdgeInsets.fromLTRB(72 * fem, 0 * fem, 74 * fem, 50 * fem),
-                          width: double.infinity,
-                          height: 114 * fem,
+                          // autogroupfwm9pPZ (4s1njwRgb8zPHmyepJfwM9)
+                          margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 125 * fem),
                           decoration: BoxDecoration(
-                            color: Color(0xffe51f43),
                             borderRadius: BorderRadius.circular(50 * fem),
                           ),
-                          child: Center(
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Color(0xffe51f43),
+                              minimumSize: Size(919 * fem, 125 * fem),
+                              elevation: 0,
+                              shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                            ),
+                            onPressed: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => ModelDisp()));
+                            },
                             child: Text(
                               'Armazenamento',
-                              textAlign: TextAlign.center,
                               style: GoogleFonts.poppins(
-                                fontSize: 40 * ffem,
-                                fontWeight: FontWeight.w600,
+                                fontSize: 48 * ffem,
+                                fontWeight: FontWeight.w400,
                                 height: 1.5 * ffem / fem,
-                                color: Color(0xffffffff),
+                                color: Colors.white,
                               ),
                             ),
                           ),
                         ),
                         Container(
-                          // autogroupsdjfkAj (4s1nwgb7bqjdwzG9z2SDJf)
-                          margin: EdgeInsets.fromLTRB(72 * fem, 0 * fem, 74 * fem, 35 * fem),
-                          width: double.infinity,
-                          height: 114 * fem,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Color(0xffe52043)),
-                            color: Color(0xffffffff),
-                            borderRadius: BorderRadius.circular(50 * fem),
-                          ),
-                          child: Center(
+                          margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
+                          child: OutlinedButton(
+                            style: OutlinedButton.styleFrom(
+                              primary: Color(0xffe51f43),
+                              side: BorderSide(color: Color(0xffe51f43), width: 1),
+                              minimumSize: Size(919 * fem, 125 * fem),
+                              shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                            ),
+                            onPressed: () {
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Cadastro()));
+                            },
                             child: Text(
                               'Sair da Conta',
-                              textAlign: TextAlign.center,
                               style: GoogleFonts.poppins(
-                                fontSize: 40 * ffem,
-                                fontWeight: FontWeight.w600,
+                                fontSize: 48 * ffem,
+                                fontWeight: FontWeight.w400,
                                 height: 1.5 * ffem / fem,
-                                color: Color(0xffe52043),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          // autogrouprxgfPjV (4s1o3GG9caxNhebWqUrxGF)
-                          margin: EdgeInsets.fromLTRB(72 * fem, 0 * fem, 74 * fem, 0 * fem),
-                          width: double.infinity,
-                          height: 114 * fem,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Color(0xffe52043)),
-                            color: Color(0xffffffff),
-                            borderRadius: BorderRadius.circular(50 * fem),
-                          ),
-                          child: Center(
-                            child: Text(
-                              'Excluir Conta',
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.poppins(
-                                fontSize: 40 * ffem,
-                                fontWeight: FontWeight.w600,
-                                height: 1.5 * ffem / fem,
-                                color: Color(0xffe52043),
+                                color: Color(0xffe51f43),
                               ),
                             ),
                           ),

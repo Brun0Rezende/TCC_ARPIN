@@ -3,17 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'HomePage.dart';
 
-void main() {
-  runApp(
-    MaterialApp(
-      home: Directionality(
-        textDirection: TextDirection.ltr,
-        child: Login(),
-      ),
-    ),
-  );
-}
-
 class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -79,8 +68,9 @@ class Login extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 15 * fem),
-                      width: 893 * fem,
+                      margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 35 * fem),
+                      width: 919 * fem,
+                      height: 125 * fem,
                       decoration: BoxDecoration(
                         color: Color(0x7fd9d1e4),
                         borderRadius: BorderRadius.circular(50 * fem),
@@ -88,17 +78,14 @@ class Login extends StatelessWidget {
                       child: TextField(
                         maxLines: null,
                         decoration: InputDecoration(
-                          border: InputBorder.none,
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
-                          errorBorder: InputBorder.none,
-                          disabledBorder: InputBorder.none,
                           contentPadding: EdgeInsets.fromLTRB(25 * fem, 0 * fem, 0 * fem, 0 * fem),
-                          hintText: 'Email ou nome de usuário',
+                          hintText: 'Email ou Nome de Usuario',
                           hintStyle: TextStyle(color: Color(0xff000000)),
                         ),
                         style: GoogleFonts.poppins(
-                          fontSize: 40 * ffem,
+                          fontSize: 48 * ffem,
                           fontWeight: FontWeight.w400,
                           height: 1.5 * ffem / fem,
                           color: Color(0xff000000),
@@ -106,9 +93,9 @@ class Login extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      // autogroupkbgbu2F (4s1pvYTPve819Joa3MkbGb)
-                      margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 65 * fem),
-                      width: 893 * fem,
+                      margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 35 * fem),
+                      width: 919 * fem,
+                      height: 125 * fem,
                       decoration: BoxDecoration(
                         color: Color(0x7fd9d1e4),
                         borderRadius: BorderRadius.circular(50 * fem),
@@ -116,17 +103,14 @@ class Login extends StatelessWidget {
                       child: TextField(
                         maxLines: null,
                         decoration: InputDecoration(
-                          border: InputBorder.none,
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
-                          errorBorder: InputBorder.none,
-                          disabledBorder: InputBorder.none,
                           contentPadding: EdgeInsets.fromLTRB(25 * fem, 0 * fem, 0 * fem, 0 * fem),
                           hintText: 'Senha',
                           hintStyle: TextStyle(color: Color(0xff000000)),
                         ),
                         style: GoogleFonts.poppins(
-                          fontSize: 40 * ffem,
+                          fontSize: 48 * ffem,
                           fontWeight: FontWeight.w400,
                           height: 1.5 * ffem / fem,
                           color: Color(0xff000000),
@@ -134,62 +118,47 @@ class Login extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 25 * fem),
-                      child: TextButton(
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomePage()));
-                        },
-                        style: TextButton.styleFrom(
-                          padding: EdgeInsets.zero,
+                      margin: EdgeInsets.fromLTRB(0 * fem, 45 * fem, 0 * fem, 25 * fem),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: Color(0xffe51f43),
+                          minimumSize: Size(919 * fem, 125 * fem),
+                          elevation: 0,
+                          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
                         ),
-                        child: Container(
-                          width: 893 * fem,
-                          height: 114 * fem,
-                          decoration: BoxDecoration(
-                            color: Color(0xffe51f43),
-                            borderRadius: BorderRadius.circular(50 * fem),
-                          ),
-                          child: Center(
-                            child: Text(
-                              'Entrar',
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.poppins(
-                                fontSize: 40 * ffem,
-                                fontWeight: FontWeight.w600,
-                                height: 1.5 * ffem / fem,
-                                color: Color(0xffffffff),
-                              ),
-                            ),
+                        onPressed: () {
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage()));
+                        },
+                        child: Text(
+                          'Entrar',
+                          style: GoogleFonts.poppins(
+                            fontSize: 48 * ffem,
+                            fontWeight: FontWeight.w400,
+                            height: 1.5 * ffem / fem,
+                            color: Colors.white,
                           ),
                         ),
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.fromLTRB(1 * fem, 0 * fem, 0 * fem, 0 * fem),
-                      child: TextButton(
-                        onPressed: () {},
-                        style: TextButton.styleFrom(
-                          padding: EdgeInsets.zero,
+                      margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 50 * fem),
+                      child: OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          primary: Color(0xffe51f43),
+                          side: BorderSide(color: Color(0xffe51f43), width: 1),
+                          minimumSize: Size(919 * fem, 125 * fem),
+                          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
                         ),
-                        child: Container(
-                          width: 893 * fem,
-                          height: 114 * fem,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Color(0xffe52043)),
-                            color: Color(0xffffffff),
-                            borderRadius: BorderRadius.circular(50 * fem),
-                          ),
-                          child: Center(
-                            child: Text(
-                              'Esqueceu sua senha?',
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.poppins(
-                                fontSize: 40 * ffem,
-                                fontWeight: FontWeight.w600,
-                                height: 1.5 * ffem / fem,
-                                color: Color(0xffe51f43),
-                              ),
-                            ),
+                        onPressed: () {
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage()));
+                        },
+                        child: Text(
+                          'Esqueceu sua senha?',
+                          style: GoogleFonts.poppins(
+                            fontSize: 48 * ffem,
+                            fontWeight: FontWeight.w400,
+                            height: 1.5 * ffem / fem,
+                            color: Color(0xffe51f43),
                           ),
                         ),
                       ),
@@ -198,7 +167,7 @@ class Login extends StatelessWidget {
                       margin: EdgeInsets.fromLTRB(0 * fem, 200 * fem, 0 * fem, 0 * fem),
                       child: TextButton(
                         onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => Cadastro()));
+                          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Cadastro()));
                         },
                         style: TextButton.styleFrom(
                           padding: EdgeInsets.zero,
@@ -206,7 +175,7 @@ class Login extends StatelessWidget {
                         child: Text(
                           'Novo por aqui? Crie uma conta!',
                           style: GoogleFonts.poppins(
-                            fontSize: 40 * ffem,
+                            fontSize: 45 * ffem,
                             fontWeight: FontWeight.w600,
                             height: 1.5 * ffem / fem,
                             color: Color(0xff2473ea),

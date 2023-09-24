@@ -5,17 +5,6 @@ import 'HomePage.dart';
 import 'Quest.dart';
 import 'UserProfile.dart';
 
-void main() {
-  runApp(
-    MaterialApp(
-      home: Directionality(
-        textDirection: TextDirection.ltr,
-        child: MaterialDidatico(),
-      ),
-    ),
-  );
-}
-
 class MaterialDidatico extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -147,36 +136,28 @@ class MaterialDidatico extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        //CONTEUDO
-                        padding: EdgeInsets.fromLTRB(0 * fem, 36 * fem, 0 * fem, 89.37 * fem),
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Container(
-                              //NEXT BUTTON
-                              margin: EdgeInsets.fromLTRB(0 * fem, 10 * fem, 0 * fem, 0 * fem),
-                              child: TextButton(
+                              //QUEST BUTTON
+                              margin: EdgeInsets.fromLTRB(0 * fem, 35 * fem, 0 * fem, 50 * fem),
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  primary: Color(0xffe51f43),
+                                  minimumSize: Size(919 * fem, 125 * fem),
+                                  elevation: 0,
+                                  shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                                ),
                                 onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Quest()));
+                                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Quest()));
                                 },
-                                child: Container(
-                                  width: 893 * fem,
-                                  height: 114 * fem,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xffe51f43),
-                                    borderRadius: BorderRadius.circular(50 * fem),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      'Proximo',
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.poppins(
-                                        fontSize: 40 * ffem,
-                                        fontWeight: FontWeight.w600,
-                                        height: 1.5 * ffem / fem,
-                                        color: Color(0xffffffff),
-                                      ),
-                                    ),
+                                child: Text(
+                                  'Proximo',
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 48 * ffem,
+                                    fontWeight: FontWeight.w400,
+                                    height: 1.5 * ffem / fem,
+                                    color: Colors.white,
                                   ),
                                 ),
                               ),

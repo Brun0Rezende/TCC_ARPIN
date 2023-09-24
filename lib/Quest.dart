@@ -2,19 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'HomePage.dart';
 import 'UserProfile.dart';
-import 'QuestC.dart';
+import 'QuestConclude.dart';
 import 'question_model.dart';
-
-void main() {
-  runApp(
-    const MaterialApp(
-      home: Directionality(
-        textDirection: TextDirection.ltr,
-        child: Quest(),
-      ),
-    ),
-  );
-}
 
 class Quest extends StatefulWidget {
   const Quest({super.key});
@@ -213,11 +202,13 @@ class _QuestState extends State<Quest> {
                 print('_nextButton IF: correct=  $correct');
               }
               if (isLastQuestion) {
-                if (score >= questionList.length * 0.6) {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => QuestConcluido()));
-                } else {
-                  showDialog(context: context, builder: (_) => _showScoreDialog());
-                }
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => QuestConcluido(
+                              score: score,
+                              question: currentQuestionIndex,
+                            )));
               } else {
                 //next question
                 setState(() {
@@ -232,33 +223,11 @@ class _QuestState extends State<Quest> {
                 fontSize: 40 * ffem,
                 fontWeight: FontWeight.w600,
                 height: 1.5 * ffem / fem,
-                color: Color(0xffffffff),
+                color: const Color(0xffffffff),
               ),
             ),
           ),
         ),
-      ),
-    );
-  }
-
-  _showScoreDialog() {
-    bool isPassed = false;
-
-    return AlertDialog(
-      title: Text(
-        "Que pena",
-        style: TextStyle(color: isPassed ? Colors.green : Colors.redAccent),
-      ),
-      content: ElevatedButton(
-        child: const Text("Restart"),
-        onPressed: () {
-          Navigator.pop(context);
-          setState(() {
-            currentQuestionIndex = 0;
-            score = 0;
-            selectedAnswer = null;
-          });
-        },
       ),
     );
   }

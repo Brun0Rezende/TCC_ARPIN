@@ -4,17 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'HomePage.dart';
 import 'UserProfile.dart';
 
-void main() {
-  runApp(
-    MaterialApp(
-      home: Directionality(
-        textDirection: TextDirection.ltr,
-        child: ModelDisp(),
-      ),
-    ),
-  );
-}
-
 class ModelDisp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -25,15 +14,13 @@ class ModelDisp extends StatelessWidget {
         actions: <Widget>[
           IconButton(
               onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => UserProfile()));
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => UserProfile()));
               },
               icon: Image.asset('assets/images/user.png')),
         ],
         title: IconButton(
             onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => HomePage()));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomePage()));
             },
             icon: Image.asset('assets/images/led.png')),
         centerTitle: true,
@@ -104,16 +91,14 @@ class ModelDisp extends StatelessWidget {
                   ),
                   Container(
                     // autogroupxlns6yu (4s1aRTcrNqefkMMyptxLNs)
-                    padding: EdgeInsets.fromLTRB(
-                        38 * fem, 0 * fem, 20 * fem, 0 * fem),
+                    padding: EdgeInsets.fromLTRB(38 * fem, 0 * fem, 20 * fem, 0 * fem),
                     width: double.infinity,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
                           // group2RWP (440:12)
-                          margin: EdgeInsets.fromLTRB(
-                              0 * fem, 0 * fem, 0 * fem, 50 * fem),
+                          margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 50 * fem),
                           height: 350 * fem,
                           child: Stack(
                             children: [
@@ -127,8 +112,7 @@ class ModelDisp extends StatelessWidget {
                                     height: 273 * fem,
                                     child: Container(
                                       decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(51 * fem),
+                                        borderRadius: BorderRadius.circular(51 * fem),
                                         color: Color(0x7fd9d1e4),
                                       ),
                                     ),
@@ -145,9 +129,8 @@ class ModelDisp extends StatelessWidget {
                                     height: 350 * fem,
                                     child: Container(
                                       decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(50 * fem),
-                                        gradient: LinearGradient(
+                                        borderRadius: BorderRadius.circular(50 * fem),
+                                        gradient: const LinearGradient(
                                           begin: Alignment(0, -1),
                                           end: Alignment(0, 1),
                                           colors: <Color>[Color(0xffffffff)],
@@ -195,7 +178,7 @@ class ModelDisp extends StatelessWidget {
                                     width: 125 * fem,
                                     height: 125 * fem,
                                     child: Image.asset(
-                                      'assets/images/led-3-xkw.png',
+                                      'assets/images/led.png',
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -210,7 +193,7 @@ class ModelDisp extends StatelessWidget {
                                     width: 60 * fem,
                                     height: 60 * fem,
                                     child: Image.asset(
-                                      'assets/images/bin-1.png',
+                                      'assets/images/bin.png',
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -225,7 +208,7 @@ class ModelDisp extends StatelessWidget {
                                     width: 60 * fem,
                                     height: 60 * fem,
                                     child: Image.asset(
-                                      'assets/images/play-button-1-1.png',
+                                      'assets/images/play.png',
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -250,8 +233,7 @@ class ModelDisp extends StatelessWidget {
                                     height: 273 * fem,
                                     child: Container(
                                       decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(51 * fem),
+                                        borderRadius: BorderRadius.circular(51 * fem),
                                         color: Color(0x7fd9d1e4),
                                       ),
                                     ),
@@ -268,8 +250,7 @@ class ModelDisp extends StatelessWidget {
                                     height: 350 * fem,
                                     child: Container(
                                       decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(50 * fem),
+                                        borderRadius: BorderRadius.circular(50 * fem),
                                         gradient: const LinearGradient(
                                           begin: Alignment(0, -1),
                                           end: Alignment(0, 1),
@@ -318,7 +299,7 @@ class ModelDisp extends StatelessWidget {
                                     width: 60 * fem,
                                     height: 60 * fem,
                                     child: Image.asset(
-                                      'assets/images/bin-2.png',
+                                      'assets/images/bin.png',
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -333,7 +314,7 @@ class ModelDisp extends StatelessWidget {
                                     width: 60 * fem,
                                     height: 60 * fem,
                                     child: Image.asset(
-                                      'assets/images/play-button-1-2.png',
+                                      'assets/images/play.png',
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -348,7 +329,7 @@ class ModelDisp extends StatelessWidget {
                                     width: 125 * fem,
                                     height: 125 * fem,
                                     child: Image.asset(
-                                      'assets/images/sensor-piezo-2.png',
+                                      'assets/images/buzzer.png',
                                       fit: BoxFit.cover,
                                     ),
                                   ),

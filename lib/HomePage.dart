@@ -4,17 +4,6 @@ import 'Tutorial.dart';
 import 'ModelosDIsp.dart';
 import 'UserProfile.dart';
 
-void main() {
-  runApp(
-    const MaterialApp(
-      home: Directionality(
-        textDirection: TextDirection.ltr,
-        child: HomePage(),
-      ),
-    ),
-  );
-}
-
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -35,8 +24,9 @@ class _HomePageState extends State<HomePage> {
               },
               icon: Image.asset('assets/images/user.png')),
         ],
-        title: IconButton(onPressed: () {}, icon: Image.asset('assets/images/led.png')),
+        title: IconButton(onPressed: null, icon: Image.asset('assets/images/led.png')),
         centerTitle: true,
+        leading: IconButton(onPressed: null, icon: Image.asset('assets/images/White.png')),
       ),
       backgroundColor: Colors.white,
       body: LayoutBuilder(
@@ -46,20 +36,15 @@ class _HomePageState extends State<HomePage> {
           double ffem = fem * 0.97;
 
           return Container(
-            // HomePagej5H (4:8)
-            padding: EdgeInsets.fromLTRB(0 * fem, 18 * fem, 0 * fem, 0 * fem),
             width: double.infinity,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
-                  width: double.infinity,
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       //LIST VIEW 'BASICOS'
                       Container(
-                        margin: EdgeInsets.fromLTRB(50 * fem, 50 * fem, 0 * fem, 0 * fem),
+                        margin: EdgeInsets.fromLTRB(50 * fem, 100 * fem, 0 * fem, 0 * fem),
                         child: Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
@@ -407,19 +392,19 @@ class _HomePageState extends State<HomePage> {
                         child: SizedBox(
                           width: 200 * fem,
                           height: 200 * fem,
-                          child: TextButton(
-                            onPressed: () {
-                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => ModelDisp()));
-                            },
-                            style: TextButton.styleFrom(
-                              padding: EdgeInsets.zero,
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Color(0xffe51f43),
+                              minimumSize: Size(919 * fem, 125 * fem),
+                              elevation: 5,
+                              shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
                             ),
+                            onPressed: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => ModelDisp()));
+                            },
                             child: Container(
-                              padding: EdgeInsets.all(50 * fem),
-                              width: double.infinity,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Color(0xffe51f43),
-                                borderRadius: BorderRadius.circular(100 * fem),
                               ),
                               child: Image.asset(
                                 'assets/images/camera.png',

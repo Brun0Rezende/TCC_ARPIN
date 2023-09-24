@@ -3,17 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'HomePage.dart';
 import 'UserProfile.dart';
 
-void main() {
-  runApp(
-    MaterialApp(
-      home: Directionality(
-        textDirection: TextDirection.ltr,
-        child: Home(),
-      ),
-    ),
-  );
-}
-
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -24,15 +13,13 @@ class Home extends StatelessWidget {
         actions: <Widget>[
           IconButton(
               onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => UserProfile()));
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => UserProfile()));
               },
               icon: Image.asset('assets/images/user.png')),
         ],
         title: IconButton(
             onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => HomePage()));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomePage()));
             },
             icon: Image.asset('assets/images/led.png')),
         centerTitle: true,
@@ -61,8 +48,7 @@ class Home extends StatelessWidget {
                 children: [
                   Container(
                     // autogroupvnzsisH (4s1cvPTN9J8U8i9g9evnzs)
-                    padding: EdgeInsets.fromLTRB(
-                        0 * fem, 18 * fem, 0 * fem, 7 * fem),
+                    padding: EdgeInsets.fromLTRB(0 * fem, 18 * fem, 0 * fem, 7 * fem),
                     width: double.infinity,
                     decoration: BoxDecoration(),
                     child: Column(
@@ -85,16 +71,14 @@ class Home extends StatelessWidget {
                   ),
                   Container(
                     // autogroup9somAFR (4s1dm2iysHR8dpCDHR9soM)
-                    padding: EdgeInsets.fromLTRB(
-                        8 * fem, 58 * fem, 0 * fem, 0 * fem),
+                    padding: EdgeInsets.fromLTRB(8 * fem, 58 * fem, 0 * fem, 0 * fem),
                     width: double.infinity,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
                           // autogroup5mgbsQj (4s1dJdKJupPjYwYHdw5Mgb)
-                          margin: EdgeInsets.fromLTRB(
-                              50 * fem, 0 * fem, 0 * fem, 26 * fem),
+                          margin: EdgeInsets.fromLTRB(50 * fem, 0 * fem, 0 * fem, 26 * fem),
                           width: double.infinity,
                           alignment: Alignment.centerLeft,
                           height: 350 * fem,
@@ -103,8 +87,7 @@ class Home extends StatelessWidget {
                             children: [
                               Container(
                                 // iconeNsH (301:84)
-                                margin: EdgeInsets.fromLTRB(
-                                    0 * fem, 0 * fem, 175 * fem, 0 * fem),
+                                margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 175 * fem, 0 * fem),
                                 child: Text(
                                   'Icone:',
                                   textAlign: TextAlign.center,
@@ -118,8 +101,7 @@ class Home extends StatelessWidget {
                               ),
                               Container(
                                 // autogroupqtgxHDZ (4s1dQnohumvFTVVRxCQtgX)
-                                padding: EdgeInsets.fromLTRB(
-                                    112 * fem, 112 * fem, 113 * fem, 113 * fem),
+                                padding: EdgeInsets.fromLTRB(112 * fem, 112 * fem, 113 * fem, 113 * fem),
                                 height: double.infinity,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(50 * fem),
@@ -154,8 +136,7 @@ class Home extends StatelessWidget {
                         ),
                         Container(
                           // titulodAw (301:58)
-                          margin: EdgeInsets.fromLTRB(
-                              50 * fem, 0 * fem, 0 * fem, 26 * fem),
+                          margin: EdgeInsets.fromLTRB(50 * fem, 0 * fem, 0 * fem, 26 * fem),
                           width: double.infinity,
                           alignment: Alignment.centerLeft,
                           child: Text(
@@ -172,8 +153,7 @@ class Home extends StatelessWidget {
                         Center(
                           // ledX1R (301:83)
                           child: Container(
-                            margin: EdgeInsets.fromLTRB(
-                                0 * fem, 0 * fem, 0 * fem, 59 * fem),
+                            margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 59 * fem),
                             width: double.infinity,
                             child: Text(
                               'LED',
@@ -189,8 +169,7 @@ class Home extends StatelessWidget {
                         ),
                         Container(
                           // descriopFR (301:61)
-                          margin: EdgeInsets.fromLTRB(
-                              50 * fem, 0 * fem, 0 * fem, 26 * fem),
+                          margin: EdgeInsets.fromLTRB(50 * fem, 0 * fem, 0 * fem, 26 * fem),
                           width: double.infinity,
                           alignment: Alignment.centerLeft,
                           child: Text(
@@ -207,8 +186,7 @@ class Home extends StatelessWidget {
                         Center(
                           // aprendaacontrolarledscomfacili (301:60)
                           child: Container(
-                            margin: EdgeInsets.fromLTRB(
-                                0 * fem, 0 * fem, 0 * fem, 100 * fem),
+                            margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 100 * fem),
                             width: double.infinity,
                             constraints: BoxConstraints(
                               maxWidth: 837 * fem,
@@ -227,18 +205,15 @@ class Home extends StatelessWidget {
                         ),
                         Container(
                           // group7wDZ (301:91)
-                          margin: EdgeInsets.fromLTRB(
-                              53 * fem, 0 * fem, 60 * fem, 60.73 * fem),
+                          margin: EdgeInsets.fromLTRB(53 * fem, 0 * fem, 60 * fem, 60.73 * fem),
                           width: double.infinity,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Container(
                                 // autogroupmcdms7D (4s1eDbo3PfftuWjnmzMCDM)
-                                margin: EdgeInsets.fromLTRB(
-                                    0 * fem, 0 * fem, 0 * fem, 43 * fem),
-                                padding: EdgeInsets.fromLTRB(
-                                    39 * fem, 28 * fem, 31 * fem, 32.63 * fem),
+                                margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 43 * fem),
+                                padding: EdgeInsets.fromLTRB(39 * fem, 28 * fem, 31 * fem, 32.63 * fem),
                                 width: double.infinity,
                                 decoration: BoxDecoration(
                                   color: Color(0xffe51f43),
@@ -249,8 +224,7 @@ class Home extends StatelessWidget {
                                   children: [
                                     Container(
                                       // materialdidatico9aX (301:99)
-                                      margin: EdgeInsets.fromLTRB(
-                                          0 * fem, 4 * fem, 350 * fem, 0 * fem),
+                                      margin: EdgeInsets.fromLTRB(0 * fem, 4 * fem, 350 * fem, 0 * fem),
                                       child: Text(
                                         'Material Didatico',
                                         textAlign: TextAlign.center,
@@ -264,8 +238,7 @@ class Home extends StatelessWidget {
                                     ),
                                     Container(
                                       // edit112uD (313:101)
-                                      margin: EdgeInsets.fromLTRB(
-                                          0 * fem, 0 * fem, 39 * fem, 4 * fem),
+                                      margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 39 * fem, 4 * fem),
                                       width: 60 * fem,
                                       height: 60 * fem,
                                       child: Image.asset(
@@ -275,8 +248,7 @@ class Home extends StatelessWidget {
                                     ),
                                     Container(
                                       // bin11kaK (313:102)
-                                      margin: EdgeInsets.fromLTRB(
-                                          0 * fem, 0 * fem, 0 * fem, 4 * fem),
+                                      margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 4 * fem),
                                       width: 60 * fem,
                                       height: 60 * fem,
                                       child: Image.asset(
@@ -289,8 +261,7 @@ class Home extends StatelessWidget {
                               ),
                               Container(
                                 // autogroupwv9mUWK (4s1eLr5y5bCHXRyg6Kwv9M)
-                                padding: EdgeInsets.fromLTRB(
-                                    39 * fem, 32.37 * fem, 31 * fem, 35 * fem),
+                                padding: EdgeInsets.fromLTRB(39 * fem, 32.37 * fem, 31 * fem, 35 * fem),
                                 width: double.infinity,
                                 decoration: BoxDecoration(
                                   color: Color(0xffe52043),
@@ -301,8 +272,7 @@ class Home extends StatelessWidget {
                                   children: [
                                     Container(
                                       // questionarioa3Z (301:95)
-                                      margin: EdgeInsets.fromLTRB(
-                                          0 * fem, 0 * fem, 427 * fem, 0 * fem),
+                                      margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 427 * fem, 0 * fem),
                                       child: Text(
                                         'Questionario',
                                         textAlign: TextAlign.center,
@@ -316,8 +286,7 @@ class Home extends StatelessWidget {
                                     ),
                                     Container(
                                       // edit12gcP (313:105)
-                                      margin: EdgeInsets.fromLTRB(
-                                          0 * fem, 0 * fem, 39 * fem, 0 * fem),
+                                      margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 39 * fem, 0 * fem),
                                       width: 60 * fem,
                                       height: 60 * fem,
                                       child: Image.asset(
@@ -342,8 +311,7 @@ class Home extends StatelessWidget {
                         ),
                         Container(
                           // autogroupvekpvFq (4s1dVsVaDmSteg9qGPVEkP)
-                          margin: EdgeInsets.fromLTRB(
-                              60 * fem, 0 * fem, 53 * fem, 53.37 * fem),
+                          margin: EdgeInsets.fromLTRB(60 * fem, 0 * fem, 53 * fem, 53.37 * fem),
                           width: double.infinity,
                           height: 124.63 * fem,
                           decoration: BoxDecoration(
@@ -364,8 +332,7 @@ class Home extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.fromLTRB(
-                              60 * fem, 0 * fem, 53 * fem, 53.37 * fem),
+                          margin: EdgeInsets.fromLTRB(60 * fem, 0 * fem, 53 * fem, 53.37 * fem),
                           width: double.infinity,
                           height: 124.63 * fem,
                           decoration: BoxDecoration(

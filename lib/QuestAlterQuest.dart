@@ -3,17 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'HomePage.dart';
 import 'UserProfile.dart';
 
-void main() {
-  runApp(
-    MaterialApp(
-      home: Directionality(
-        textDirection: TextDirection.ltr,
-        child: Home(),
-      ),
-    ),
-  );
-}
-
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -24,15 +13,13 @@ class Home extends StatelessWidget {
         actions: <Widget>[
           IconButton(
               onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => UserProfile()));
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => UserProfile()));
               },
               icon: Image.asset('assets/images/user.png')),
         ],
         title: IconButton(
             onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => HomePage()));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomePage()));
             },
             icon: Image.asset('assets/images/led.png')),
         centerTitle: true,
@@ -62,8 +49,7 @@ class Home extends StatelessWidget {
                 children: [
                   Container(
                     // perguntaQoH (301:138)
-                    margin: EdgeInsets.fromLTRB(
-                        0 * fem, 50 * fem, 0 * fem, 40 * fem),
+                    margin: EdgeInsets.fromLTRB(0 * fem, 50 * fem, 0 * fem, 40 * fem),
                     width: double.infinity,
                     child: Text(
                       'Pergunta 1:',
@@ -78,8 +64,7 @@ class Home extends StatelessWidget {
                   ),
                   Container(
                     // qualosignificadodasiglaledWbR (301:126)
-                    margin: EdgeInsets.fromLTRB(
-                        111 * fem, 0 * fem, 0 * fem, 66 * fem),
+                    margin: EdgeInsets.fromLTRB(111 * fem, 0 * fem, 0 * fem, 66 * fem),
                     child: Text(
                       'Qual é o significado da sigla "LED"?',
                       style: GoogleFonts.poppins(
@@ -92,8 +77,7 @@ class Home extends StatelessWidget {
                   ),
                   Container(
                     // respostasRCb (301:139)
-                    margin: EdgeInsets.fromLTRB(
-                        0 * fem, 0 * fem, 0 * fem, 50 * fem),
+                    margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 50 * fem),
                     width: double.infinity,
                     child: Text(
                       'Respostas:',
@@ -108,8 +92,7 @@ class Home extends StatelessWidget {
                   ),
                   Container(
                     // alightemittingdiode8co (301:133)
-                    margin: EdgeInsets.fromLTRB(
-                        111 * fem, 0 * fem, 0 * fem, 50 * fem),
+                    margin: EdgeInsets.fromLTRB(111 * fem, 0 * fem, 0 * fem, 50 * fem),
                     child: Text(
                       'A) Light Emitting Diode',
                       style: GoogleFonts.poppins(
@@ -122,8 +105,7 @@ class Home extends StatelessWidget {
                   ),
                   Container(
                     // blightenergydispenserdpT (301:134)
-                    margin: EdgeInsets.fromLTRB(
-                        111 * fem, 0 * fem, 0 * fem, 50 * fem),
+                    margin: EdgeInsets.fromLTRB(111 * fem, 0 * fem, 0 * fem, 50 * fem),
                     child: Text(
                       'B) Light Energy Dispenser',
                       style: GoogleFonts.poppins(
@@ -136,8 +118,7 @@ class Home extends StatelessWidget {
                   ),
                   Container(
                     // claseremittingdeviceLD5 (301:135)
-                    margin: EdgeInsets.fromLTRB(
-                        111 * fem, 0 * fem, 0 * fem, 50 * fem),
+                    margin: EdgeInsets.fromLTRB(111 * fem, 0 * fem, 0 * fem, 50 * fem),
                     child: Text(
                       'C) Laser Emitting Device',
                       style: GoogleFonts.poppins(
@@ -150,8 +131,7 @@ class Home extends StatelessWidget {
                   ),
                   Container(
                     // dlaseremittingdeviceq9q (301:136)
-                    margin: EdgeInsets.fromLTRB(
-                        111 * fem, 0 * fem, 0 * fem, 0 * fem),
+                    margin: EdgeInsets.fromLTRB(111 * fem, 0 * fem, 0 * fem, 0 * fem),
                     child: Text(
                       'D) Laser Emitting Device',
                       style: GoogleFonts.poppins(
@@ -164,16 +144,14 @@ class Home extends StatelessWidget {
                   ),
                   Container(
                     // autogroupoidvjm1 (4s1kW5zPBjs9J9HWb2oidV)
-                    padding: EdgeInsets.fromLTRB(
-                        61 * fem, 93 * fem, 60 * fem, 0 * fem),
+                    padding: EdgeInsets.fromLTRB(61 * fem, 93 * fem, 60 * fem, 0 * fem),
                     width: double.infinity,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
                           // autogrouprrrb4HV (4s1kGm3FnKRvN63JsyRrrB)
-                          margin: EdgeInsets.fromLTRB(
-                              158 * fem, 0 * fem, 159 * fem, 800 * fem),
+                          margin: EdgeInsets.fromLTRB(158 * fem, 0 * fem, 159 * fem, 800 * fem),
                           width: double.infinity,
                           height: 87 * fem,
                           decoration: const BoxDecoration(

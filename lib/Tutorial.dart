@@ -101,7 +101,7 @@ class Tutorial extends StatelessWidget {
                       'LED',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.poppins(
-                        fontSize: 50 * ffem,
+                        fontSize: 60 * ffem,
                         fontWeight: FontWeight.w600,
                         height: 1.5 * ffem / fem,
                         fontStyle: FontStyle.italic,
@@ -118,7 +118,7 @@ class Tutorial extends StatelessWidget {
                             'Descrição:',
                             textAlign: TextAlign.center,
                             style: GoogleFonts.poppins(
-                              fontSize: 40 * ffem,
+                              fontSize: 45 * ffem,
                               fontWeight: FontWeight.w600,
                               height: 1.5 * ffem / fem,
                               color: Color(0xff000000),
@@ -128,15 +128,15 @@ class Tutorial extends StatelessWidget {
                         Center(
                           //TUTORIAL DESC
                           child: Container(
-                            margin: EdgeInsets.fromLTRB(13 * fem, 0 * fem, 0 * fem, 100 * fem),
+                            margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 100 * fem),
                             constraints: BoxConstraints(
                               maxWidth: 837 * fem,
                             ),
                             child: Text(
                               'Aprenda a controlar LEDs com facilidade neste tutorial Arduino. Desde o básico até conceitos avançados, você vai dominar o uso de LEDs como componentes de saída. Ilumine seu caminho para o sucesso com Arduino!',
-                              textAlign: TextAlign.center,
+                              textAlign: TextAlign.justify,
                               style: GoogleFonts.poppins(
-                                fontSize: 40 * ffem,
+                                fontSize: 44 * ffem,
                                 fontWeight: FontWeight.w300,
                                 height: 1.5 * ffem / fem,
                                 color: Color(0xff000000),
@@ -155,39 +155,48 @@ class Tutorial extends StatelessWidget {
                           Container(
                             //START BUTTON
                             margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 100 * fem),
-                            child: TextButton(
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: Color(0xffe51f43),
+                                minimumSize: Size(919 * fem, 125 * fem),
+                                elevation: 0,
+                                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                              ),
                               onPressed: () {
                                 Navigator.push(context, MaterialPageRoute(builder: (context) => MaterialDidatico()));
                               },
-                              child: Container(
-                                width: 893 * fem,
-                                height: 114 * fem,
-                                decoration: BoxDecoration(
-                                  color: Color(0xffe51f43),
-                                  borderRadius: BorderRadius.circular(50 * fem),
+                              child: Text(
+                                'Iniciar',
+                                style: GoogleFonts.poppins(
+                                  fontSize: 48 * ffem,
+                                  fontWeight: FontWeight.w400,
+                                  height: 1.5 * ffem / fem,
+                                  color: Colors.white,
                                 ),
-                                child: Center(
-                                  child: Text(
-                                    'Iniciar',
-                                    textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
-                                      fontSize: 40 * ffem,
-                                      fontWeight: FontWeight.w600,
-                                      height: 1.5 * ffem / fem,
-                                      color: Color(0xffffffff),
-                                    ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 20 * fem),
+                            child: Align(
+                              child: SizedBox(
+                                width: 1040 * fem,
+                                height: 1 * fem,
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                    color: Color(0xff000000),
                                   ),
                                 ),
                               ),
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.fromLTRB(0 * fem, 20 * fem, 0 * fem, 30 * fem),
+                            margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 30 * fem),
                             child: Text(
                               'Selecione a Etapa Desejada:',
                               textAlign: TextAlign.center,
                               style: GoogleFonts.poppins(
-                                fontSize: 48 * ffem,
+                                fontSize: 52 * ffem,
                                 fontWeight: FontWeight.w700,
                                 height: 1.5 * ffem / fem,
                                 fontStyle: FontStyle.italic,
@@ -197,108 +206,77 @@ class Tutorial extends StatelessWidget {
                           ),
                           Container(
                             //MATERIAL BUTTON
-                            margin: EdgeInsets.fromLTRB(0 * fem, 10 * fem, 0 * fem, 0 * fem),
-                            child: TextButton(
+                            margin: EdgeInsets.fromLTRB(0 * fem, 35 * fem, 0 * fem, 0 * fem),
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: Color(0xffe51f43),
+                                minimumSize: Size(919 * fem, 125 * fem),
+                                elevation: 0,
+                                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                              ),
                               onPressed: () {
                                 Navigator.push(context, MaterialPageRoute(builder: (context) => MaterialDidatico()));
                               },
-                              child: Container(
-                                width: 893 * fem,
-                                height: 114 * fem,
-                                decoration: BoxDecoration(
-                                  color: Color(0xffe51f43),
-                                  borderRadius: BorderRadius.circular(50 * fem),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    'Material Didatico',
-                                    textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
-                                      fontSize: 40 * ffem,
-                                      fontWeight: FontWeight.w600,
-                                      height: 1.5 * ffem / fem,
-                                      color: Color(0xffffffff),
-                                    ),
-                                  ),
+                              child: Text(
+                                'Material Didático',
+                                style: GoogleFonts.poppins(
+                                  fontSize: 48 * ffem,
+                                  fontWeight: FontWeight.w400,
+                                  height: 1.5 * ffem / fem,
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
                           ),
                           Container(
                             //QUEST BUTTON
-                            margin: EdgeInsets.fromLTRB(0 * fem, 10 * fem, 0 * fem, 0 * fem),
-                            child: TextButton(
+                            margin: EdgeInsets.fromLTRB(0 * fem, 35 * fem, 0 * fem, 0 * fem),
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: Color(0xffe51f43),
+                                minimumSize: Size(919 * fem, 125 * fem),
+                                elevation: 0,
+                                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                              ),
                               onPressed: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => Quest()));
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => const Quest()));
                               },
-                              child: Container(
-                                width: 893 * fem,
-                                height: 114 * fem,
-                                decoration: BoxDecoration(
-                                  color: Color(0xffe51f43),
-                                  borderRadius: BorderRadius.circular(50 * fem),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    'Questionario',
-                                    textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
-                                      fontSize: 40 * ffem,
-                                      fontWeight: FontWeight.w600,
-                                      height: 1.5 * ffem / fem,
-                                      color: Color(0xffffffff),
-                                    ),
-                                  ),
+                              child: Text(
+                                'Questionário',
+                                style: GoogleFonts.poppins(
+                                  fontSize: 48 * ffem,
+                                  fontWeight: FontWeight.w400,
+                                  height: 1.5 * ffem / fem,
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
                           ),
                           Container(
                             //RA BUTTON
-                            margin: EdgeInsets.fromLTRB(0 * fem, 10 * fem, 0 * fem, 0 * fem),
-                            child: TextButton(
+                            margin: EdgeInsets.fromLTRB(0 * fem, 35 * fem, 0 * fem, 0 * fem),
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: Color(0xffe51f43),
+                                minimumSize: Size(919 * fem, 125 * fem),
+                                elevation: 0,
+                                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                              ),
                               onPressed: () {
                                 Navigator.push(context, MaterialPageRoute(builder: (context) => BXModelo()));
                               },
-                              child: Container(
-                                width: 893 * fem,
-                                height: 114 * fem,
-                                decoration: BoxDecoration(
-                                  color: Color(0xffe51f43),
-                                  borderRadius: BorderRadius.circular(50 * fem),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    'Visualizar Projeto',
-                                    textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
-                                      fontSize: 40 * ffem,
-                                      fontWeight: FontWeight.w600,
-                                      height: 1.5 * ffem / fem,
-                                      color: Color(0xffffffff),
-                                    ),
-                                  ),
+                              child: Text(
+                                'Visualizar Projeto',
+                                style: GoogleFonts.poppins(
+                                  fontSize: 48 * ffem,
+                                  fontWeight: FontWeight.w400,
+                                  height: 1.5 * ffem / fem,
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
                           ),
                         ],
-                      ),
-                      Positioned(
-                        // line4ETH (264:60)
-                        left: 0 * fem,
-                        top: 250 * fem,
-                        child: Align(
-                          child: SizedBox(
-                            width: 1040 * fem,
-                            height: 1 * fem,
-                            child: Container(
-                              decoration: const BoxDecoration(
-                                color: Color(0xff000000),
-                              ),
-                            ),
-                          ),
-                        ),
                       ),
                     ],
                   ),

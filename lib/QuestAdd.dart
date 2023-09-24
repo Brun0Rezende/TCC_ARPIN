@@ -3,17 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'HomePage.dart';
 import 'UserProfile.dart';
 
-void main() {
-  runApp(
-    MaterialApp(
-      home: Directionality(
-        textDirection: TextDirection.ltr,
-        child: Home(),
-      ),
-    ),
-  );
-}
-
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -24,15 +13,13 @@ class Home extends StatelessWidget {
         actions: <Widget>[
           IconButton(
               onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => UserProfile()));
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => UserProfile()));
               },
               icon: Image.asset('assets/images/user.png')),
         ],
         title: IconButton(
             onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => HomePage()));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomePage()));
             },
             icon: Image.asset('assets/images/led.png')),
         centerTitle: true,
@@ -74,18 +61,15 @@ class Home extends StatelessWidget {
                   ),
                   Container(
                     // autogrouppdgbnVd (4s1mJPzYxsvhBgrusZPdGb)
-                    padding: EdgeInsets.fromLTRB(
-                        60 * fem, 107 * fem, 60 * fem, 0 * fem),
+                    padding: EdgeInsets.fromLTRB(60 * fem, 107 * fem, 60 * fem, 0 * fem),
                     width: double.infinity,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
                           // group9uKM (305:4)
-                          margin: EdgeInsets.fromLTRB(
-                              1 * fem, 0 * fem, 0 * fem, 64 * fem),
-                          padding: EdgeInsets.fromLTRB(
-                              0 * fem, 14 * fem, 29 * fem, 13 * fem),
+                          margin: EdgeInsets.fromLTRB(1 * fem, 0 * fem, 0 * fem, 64 * fem),
+                          padding: EdgeInsets.fromLTRB(0 * fem, 14 * fem, 29 * fem, 13 * fem),
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.cover,
@@ -99,8 +83,7 @@ class Home extends StatelessWidget {
                             children: [
                               Container(
                                 // qualosignificadodasiglaledC3Z (302:17)
-                                margin: EdgeInsets.fromLTRB(
-                                    0 * fem, 0 * fem, 118 * fem, 0 * fem),
+                                margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 118 * fem, 0 * fem),
                                 child: Text(
                                   'Qual é o significado da sigla "LED"?',
                                   style: GoogleFonts.poppins(
@@ -113,8 +96,7 @@ class Home extends StatelessWidget {
                               ),
                               Container(
                                 // edit1hW7 (304:3)
-                                margin: EdgeInsets.fromLTRB(
-                                    0 * fem, 0 * fem, 39 * fem, 0 * fem),
+                                margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 39 * fem, 0 * fem),
                                 width: 60 * fem,
                                 height: 60 * fem,
                                 child: Image.asset(
@@ -136,10 +118,8 @@ class Home extends StatelessWidget {
                         ),
                         Container(
                           // group10APh (305:5)
-                          margin: EdgeInsets.fromLTRB(
-                              1 * fem, 0 * fem, 0 * fem, 64 * fem),
-                          padding: EdgeInsets.fromLTRB(
-                              0 * fem, 14 * fem, 29 * fem, 13 * fem),
+                          margin: EdgeInsets.fromLTRB(1 * fem, 0 * fem, 0 * fem, 64 * fem),
+                          padding: EdgeInsets.fromLTRB(0 * fem, 14 * fem, 29 * fem, 13 * fem),
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.cover,
@@ -153,8 +133,7 @@ class Home extends StatelessWidget {
                             children: [
                               Container(
                                 // qualafunodeumresistor2go (305:6)
-                                margin: EdgeInsets.fromLTRB(
-                                    0 * fem, 0 * fem, 159 * fem, 0 * fem),
+                                margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 159 * fem, 0 * fem),
                                 child: Text(
                                   'Qual é a função de um resistor...',
                                   style: GoogleFonts.poppins(
@@ -167,8 +146,7 @@ class Home extends StatelessWidget {
                               ),
                               Container(
                                 // edit1Kvo (305:9)
-                                margin: EdgeInsets.fromLTRB(
-                                    0 * fem, 0 * fem, 39 * fem, 0 * fem),
+                                margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 39 * fem, 0 * fem),
                                 width: 60 * fem,
                                 height: 60 * fem,
                                 child: Image.asset(
@@ -190,10 +168,8 @@ class Home extends StatelessWidget {
                         ),
                         Container(
                           // group1112w (305:10)
-                          margin: EdgeInsets.fromLTRB(
-                              1 * fem, 0 * fem, 0 * fem, 64 * fem),
-                          padding: EdgeInsets.fromLTRB(
-                              0 * fem, 14 * fem, 29 * fem, 13 * fem),
+                          margin: EdgeInsets.fromLTRB(1 * fem, 0 * fem, 0 * fem, 64 * fem),
+                          padding: EdgeInsets.fromLTRB(0 * fem, 14 * fem, 29 * fem, 13 * fem),
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.cover,
@@ -207,8 +183,7 @@ class Home extends StatelessWidget {
                             children: [
                               Container(
                                 // qualdessescdigotemafunoVTu (305:12)
-                                margin: EdgeInsets.fromLTRB(
-                                    0 * fem, 0 * fem, 105 * fem, 0 * fem),
+                                margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 105 * fem, 0 * fem),
                                 child: Text(
                                   'Qual desses código tem a função...',
                                   style: GoogleFonts.poppins(
@@ -221,8 +196,7 @@ class Home extends StatelessWidget {
                               ),
                               Container(
                                 // edit1VcK (305:14)
-                                margin: EdgeInsets.fromLTRB(
-                                    0 * fem, 0 * fem, 39 * fem, 0 * fem),
+                                margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 39 * fem, 0 * fem),
                                 width: 60 * fem,
                                 height: 60 * fem,
                                 child: Image.asset(
@@ -244,10 +218,8 @@ class Home extends StatelessWidget {
                         ),
                         Container(
                           // group12AyM (305:15)
-                          margin: EdgeInsets.fromLTRB(
-                              0 * fem, 0 * fem, 1 * fem, 64 * fem),
-                          padding: EdgeInsets.fromLTRB(
-                              0 * fem, 14 * fem, 29 * fem, 13 * fem),
+                          margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 1 * fem, 64 * fem),
+                          padding: EdgeInsets.fromLTRB(0 * fem, 14 * fem, 29 * fem, 13 * fem),
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.cover,
@@ -261,8 +233,7 @@ class Home extends StatelessWidget {
                             children: [
                               Container(
                                 // qualafunodeumresistorao4J3 (305:17)
-                                margin: EdgeInsets.fromLTRB(
-                                    0 * fem, 0 * fem, 102 * fem, 0 * fem),
+                                margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 102 * fem, 0 * fem),
                                 child: Text(
                                   'Qual é a função de um resistor ao...',
                                   style: GoogleFonts.poppins(
@@ -275,8 +246,7 @@ class Home extends StatelessWidget {
                               ),
                               Container(
                                 // edit1NJj (305:19)
-                                margin: EdgeInsets.fromLTRB(
-                                    0 * fem, 0 * fem, 39 * fem, 0 * fem),
+                                margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 39 * fem, 0 * fem),
                                 width: 60 * fem,
                                 height: 60 * fem,
                                 child: Image.asset(
@@ -298,10 +268,8 @@ class Home extends StatelessWidget {
                         ),
                         Container(
                           // group13eGF (305:20)
-                          margin: EdgeInsets.fromLTRB(
-                              1 * fem, 0 * fem, 0 * fem, 900 * fem),
-                          padding: EdgeInsets.fromLTRB(
-                              0 * fem, 14 * fem, 29 * fem, 13 * fem),
+                          margin: EdgeInsets.fromLTRB(1 * fem, 0 * fem, 0 * fem, 900 * fem),
+                          padding: EdgeInsets.fromLTRB(0 * fem, 14 * fem, 29 * fem, 13 * fem),
                           decoration: const BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.cover,
@@ -315,8 +283,7 @@ class Home extends StatelessWidget {
                             children: [
                               Container(
                                 // qualdessescdigotemafunoLes (305:22)
-                                margin: EdgeInsets.fromLTRB(
-                                    0 * fem, 0 * fem, 105 * fem, 0 * fem),
+                                margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 105 * fem, 0 * fem),
                                 child: Text(
                                   'Qual desses código tem a função...',
                                   style: GoogleFonts.poppins(
@@ -329,8 +296,7 @@ class Home extends StatelessWidget {
                               ),
                               Container(
                                 // edit12nb (305:24)
-                                margin: EdgeInsets.fromLTRB(
-                                    0 * fem, 0 * fem, 39 * fem, 0 * fem),
+                                margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 39 * fem, 0 * fem),
                                 width: 60 * fem,
                                 height: 60 * fem,
                                 child: Image.asset(
@@ -352,8 +318,7 @@ class Home extends StatelessWidget {
                         ),
                         Container(
                           // autogroupnwas5ew (4s1YqfvTf9gPuPfSVHNWas)
-                          margin: EdgeInsets.fromLTRB(
-                              2 * fem, 0 * fem, 0 * fem, 0 * fem),
+                          margin: EdgeInsets.fromLTRB(2 * fem, 0 * fem, 0 * fem, 0 * fem),
                           width: 919 * fem,
                           height: 124.63 * fem,
                           decoration: BoxDecoration(
