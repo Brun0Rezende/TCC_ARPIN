@@ -7,7 +7,8 @@ class BXModelo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+            appBar: AppBar(
+        elevation: 1,
         backgroundColor: Colors.white,
         actions: <Widget>[
           IconButton(
@@ -17,8 +18,9 @@ class BXModelo extends StatelessWidget {
               icon: Image.asset('assets/images/user.png')),
         ],
         title: IconButton(
+            iconSize: 40,
             onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomePage()));
+              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const HomePage()));
             },
             icon: Image.asset('assets/images/led.png')),
         centerTitle: true,

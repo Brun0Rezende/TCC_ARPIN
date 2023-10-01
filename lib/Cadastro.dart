@@ -31,7 +31,6 @@ class Cadastro extends StatelessWidget {
                 ),
                 Container(
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
                         margin: EdgeInsets.fromLTRB(0 * fem, 20 * fem, 0 * fem, 0 * fem),
@@ -78,7 +77,6 @@ class Cadastro extends StatelessWidget {
                   ),
                 ),
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
                       margin: EdgeInsets.fromLTRB(0 * fem, 75 * fem, 0 * fem, 35 * fem),
@@ -227,7 +225,7 @@ class Cadastro extends StatelessWidget {
                     margin: EdgeInsets.fromLTRB(0 * fem, 100 * fem, 0 * fem, 0 * fem),
                     child: TextButton(
                       onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => Login()));
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Login()));
                       },
                       style: TextButton.styleFrom(
                         padding: EdgeInsets.zero,
