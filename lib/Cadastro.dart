@@ -1,4 +1,6 @@
+import 'package:ar_pin/validators/formValidators.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'HomePage.dart';
 import 'Login.dart';
@@ -117,6 +119,9 @@ class Cadastro extends StatelessWidget {
                           height: 1.5 * ffem / fem,
                           color: Color(0xff000000),
                         ),
+                        inputFormatters: [
+                          LengthLimitingTextInputFormatter(30),
+                        ],
                       ),
                     ),
                     Container(
@@ -137,6 +142,10 @@ class Cadastro extends StatelessWidget {
                           hintText: 'Email',
                           hintStyle: TextStyle(color: Color(0xff000000)),
                         ),
+                        inputFormatters:[
+                          LengthLimitingTextInputFormatter(50),
+                          EmailTextInputFormatter()
+                        ],
                         style: GoogleFonts.poppins(
                           fontSize: 48 * ffem,
                           fontWeight: FontWeight.w400,
@@ -163,6 +172,10 @@ class Cadastro extends StatelessWidget {
                           hintText: 'Senha',
                           hintStyle: TextStyle(color: Color(0xff000000)),
                         ),
+                        inputFormatters: [
+                          LengthLimitingTextInputFormatter(30),
+                          PasswordTextInputFormatter()
+                        ],
                         style: GoogleFonts.poppins(
                           fontSize: 48 * ffem,
                           fontWeight: FontWeight.w400,
