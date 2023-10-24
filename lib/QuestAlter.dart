@@ -1,21 +1,22 @@
+import 'package:ar_pin/QuestAdd.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'HomePage.dart';
 import 'UserProfile.dart';
 
-class MDAlter extends StatefulWidget {
-  const MDAlter({super.key});
+class QuestAlter extends StatefulWidget {
+  const QuestAlter({super.key});
 
   @override
-  State<MDAlter> createState() => _MDAlterState();
+  State<QuestAlter> createState() => _QuestAlterState();
 }
 
-class _MDAlterState extends State<MDAlter> {
+class _QuestAlterState extends State<QuestAlter> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-           appBar: AppBar(
+      appBar: AppBar(
         elevation: 1,
         backgroundColor: Colors.white,
         actions: <Widget>[
@@ -49,7 +50,7 @@ class _MDAlterState extends State<MDAlter> {
               Container(
                 margin: EdgeInsets.fromLTRB(0 * fem, 50 * fem, 0 * fem, 25 * fem),
                 child: Text(
-                  'Texto 1',
+                  'Questão 1',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.poppins(
                     fontSize: 70 * ffem,
@@ -60,14 +61,8 @@ class _MDAlterState extends State<MDAlter> {
                   ),
                 ),
               ),
-              Container(
-                margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 25 * fem),
-                child: _titulo(fem, ffem),
-              ),
-              Container(
-                margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 25 * fem),
-                child: _conteudo(fem, ffem),
-              ),
+              _question(fem, ffem),
+              _answer(fem, ffem),
               _button(fem, ffem),
             ],
           );
@@ -76,18 +71,18 @@ class _MDAlterState extends State<MDAlter> {
     );
   }
 
-  _titulo(double fem, double ffem) {
+  _question(double fem, double ffem) {
     return Column(
       children: [
         Container(
-          margin: EdgeInsets.fromLTRB(50 * fem, 0 * fem, 0 * fem, 25 * fem),
+          margin: EdgeInsets.fromLTRB(50 * fem, 0 * fem, 0 * fem, 0 * fem),
           child: Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              'Titulo:',
-              textAlign: TextAlign.center,
+              'Pergunta:',
+              textAlign: TextAlign.justify,
               style: GoogleFonts.poppins(
-                fontSize: 54 * ffem,
+                fontSize: 64 * ffem,
                 fontWeight: FontWeight.w600,
                 height: 1.5 * ffem / fem,
                 fontStyle: FontStyle.italic,
@@ -97,16 +92,17 @@ class _MDAlterState extends State<MDAlter> {
           ),
         ),
         Container(
+          margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
           constraints: BoxConstraints(
             maxWidth: 850 * fem,
           ),
           child: Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              '1 - O que é um Arduíno?',
-              textAlign: TextAlign.center,
+              'Qual é a função principal de um LED?',
+              textAlign: TextAlign.justify,
               style: GoogleFonts.poppins(
-                fontSize: 52 * ffem,
+                fontSize: 58 * ffem,
                 fontWeight: FontWeight.w300,
                 height: 1.5 * ffem / fem,
                 fontStyle: FontStyle.italic,
@@ -119,18 +115,18 @@ class _MDAlterState extends State<MDAlter> {
     );
   }
 
-  _conteudo(double fem, double ffem) {
+  _answer(double fem, double ffem) {
     return Column(
       children: [
         Container(
-          margin: EdgeInsets.fromLTRB(50 * fem, 0 * fem, 0 * fem, 25 * fem),
+          margin: EdgeInsets.fromLTRB(50 * fem, 50 * fem, 0 * fem, 50 * fem),
           child: Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              'Conteudo:',
-              textAlign: TextAlign.center,
+              'Respostas:',
+              textAlign: TextAlign.justify,
               style: GoogleFonts.poppins(
-                fontSize: 54 * ffem,
+                fontSize: 64 * ffem,
                 fontWeight: FontWeight.w600,
                 height: 1.5 * ffem / fem,
                 fontStyle: FontStyle.italic,
@@ -140,19 +136,27 @@ class _MDAlterState extends State<MDAlter> {
           ),
         ),
         Container(
-          child: SizedBox(
-            width: 900 * fem,
-            height: 1350 * fem,
-            child: SingleChildScrollView(
-              child: Text(
-                'Arduino é uma plataforma de prototipagem eletrônica de código aberto que combina hardware e software. É composto por uma placa de desenvolvimento que possui um microcontrolador e uma interface de programação, permitindo que os usuários criem e controlem dispositivos interativos.\nA placa Arduino possui pinos de entrada e saída que podem ser conectados a uma variedade de componentes eletrônicos, como sensores, LEDs, motores e outros dispositivos. Esses componentes podem ser programados usando a linguagem de programação Arduino, que é baseada em C/C++ simplificado.\nO objetivo do Arduino é facilitar o processo de criação de projetos eletrônicos para pessoas sem um amplo conhecimento técnico. Com uma comunidade ativa e recursos online, é possível encontrar uma ampla gama de projetos, tutoriais e bibliotecas prontas para uso, facilitando o desenvolvimento de ideias criativas e inovadoras. O Arduino é amplamente utilizado em áreas como robótica, automação residencial, arte interativa, educação e muitos outros campos.',
-                textAlign: TextAlign.justify,
-                style: GoogleFonts.poppins(
-                  fontSize: 52 * ffem,
-                  fontWeight: FontWeight.w300,
-                  height: 1.5 * ffem / fem,
-                  fontStyle: FontStyle.italic,
-                  color: const Color(0xff000000),
+          margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 35 * fem),
+          width: 919 * fem,
+          height: 100 * fem,
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              primary: const Color(0x50DAD1E4),
+              elevation: 0,
+              shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+            ),
+            onPressed: () {},
+            child: Expanded(
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Gerar calor',
+                  style: GoogleFonts.poppins(
+                    fontSize: 58 * ffem,
+                    fontWeight: FontWeight.w300,
+                    height: 1.5 * ffem / fem,
+                    color: Colors.black,
+                  ),
                 ),
               ),
             ),
@@ -163,30 +167,37 @@ class _MDAlterState extends State<MDAlter> {
   }
 
   _button(double fem, double ffem) {
-    return Column(
-      children: [
-        Container(
-          margin: EdgeInsets.fromLTRB(0 * fem, 50 * fem, 0 * fem, 35 * fem),
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              primary: Color(0xffe51f43),
-              minimumSize: Size(919 * fem, 125 * fem),
-              elevation: 0,
-              shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
-            ),
-            onPressed: () {},
-            child: Text(
-              'Proximo',
-              style: GoogleFonts.poppins(
-                fontSize: 48 * ffem,
-                fontWeight: FontWeight.w400,
-                height: 1.5 * ffem / fem,
-                color: Colors.white,
+    return Expanded(
+      child: Stack(
+        children: [
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              margin: EdgeInsets.fromLTRB(0 * fem, 50 * fem, 0 * fem, 35 * fem),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Color(0xffe51f43),
+                  minimumSize: Size(919 * fem, 125 * fem),
+                  elevation: 0,
+                  shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                ),
+                onPressed: () {
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => QuestAdd()));
+                },
+                child: Text(
+                  'Salvar',
+                  style: GoogleFonts.poppins(
+                    fontSize: 48 * ffem,
+                    fontWeight: FontWeight.w300,
+                    height: 1.5 * ffem / fem,
+                    color: Colors.white,
+                  ),
+                ),
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

@@ -23,7 +23,8 @@ class Tutorial extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       //HEADER
-      appBar: AppBar(
+            appBar: AppBar(
+        elevation: 1,
         backgroundColor: Colors.white,
         actions: <Widget>[
           IconButton(
@@ -33,8 +34,9 @@ class Tutorial extends StatelessWidget {
               icon: Image.asset('assets/images/user.png')),
         ],
         title: IconButton(
+            iconSize: 40,
             onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomePage()));
+              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const HomePage()));
             },
             icon: Image.asset('assets/images/led.png')),
         centerTitle: true,
@@ -53,14 +55,13 @@ class Tutorial extends StatelessWidget {
           return Container(
             width: double.infinity,
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Color(0xffffffff),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    //TUTORIAL ICON
                     margin: EdgeInsets.fromLTRB(0 * fem, 50 * fem, 0 * fem, 0 * fem),
                     height: 400 * fem,
                     child: Column(

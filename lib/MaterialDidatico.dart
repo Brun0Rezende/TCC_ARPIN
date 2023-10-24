@@ -10,7 +10,8 @@ class MaterialDidatico extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
+            appBar: AppBar(
+        elevation: 1,
         backgroundColor: Colors.white,
         actions: <Widget>[
           IconButton(
@@ -20,8 +21,9 @@ class MaterialDidatico extends StatelessWidget {
               icon: Image.asset('assets/images/user.png')),
         ],
         title: IconButton(
+            iconSize: 40,
             onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomePage()));
+              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const HomePage()));
             },
             icon: Image.asset('assets/images/led.png')),
         centerTitle: true,
@@ -122,7 +124,7 @@ class MaterialDidatico extends StatelessWidget {
                         ),
                         content: Container(
                           margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 50 * fem),
-                          width: 859 * fem,
+                          width: 900 * fem,
                           child: Text(
                             'Uma das características marcantes do Arduino é a sua acessibilidade. Desde estudantes e entusiastas até profissionais experientes, todos podem se beneficiar da plataforma. As escolas têm adotado o Arduino como uma ferramenta educacional, introduzindo os conceitos de eletrônica e programação de maneira intuitiva e prática. Isso desempenhou um papel crucial no desenvolvimento das habilidades técnicas das gerações mais jovens e no fomento à criatividade.\nA comunidade Arduino continua a ser um dos pilares da plataforma. Fóruns online, grupos de discussão e redes sociais são locais onde os desenvolvedores podem compartilhar suas ideias, solucionar problemas e colaborar em projetos conjuntos. A vasta coleção de bibliotecas e exemplos disponíveis online simplifica a criação de protótipos, permitindo que os criadores explorem novos territórios da eletrônica sem ter que começar do zero.',
                             textAlign: TextAlign.justify,

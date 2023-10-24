@@ -10,11 +10,13 @@ class UserProfile extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        elevation: 1,
         backgroundColor: Colors.white,
         actions: <Widget>[],
         title: IconButton(
+            iconSize: 40,
             onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomePage()));
+              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const HomePage()));
             },
             icon: Image.asset('assets/images/led.png')),
         centerTitle: true,
@@ -322,7 +324,7 @@ class UserProfile extends StatelessWidget {
                           margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 30 * fem),
                           width: 1040 * fem,
                           height: 1 * fem,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Color(0xff000000),
                           ),
                         ),
