@@ -1,4 +1,3 @@
-import 'package:ar_pin/Cadastro.dart';
 import 'package:ar_pin/Login.dart';
 import 'package:ar_pin/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -12,7 +11,8 @@ void main() async{
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(
-    MaterialApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Directionality(
         textDirection: TextDirection.ltr,
         child: App(),
@@ -22,9 +22,12 @@ void main() async{
 }
 
 class App extends StatelessWidget {
+  const App({super.key});
+
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Login(),
       // initialRoute: '/',
       // routes: {
