@@ -1,13 +1,23 @@
 import 'package:ar_pin/validators/formValidators.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'HomePage.dart';
 import 'Login.dart';
 
-class Cadastro extends StatelessWidget {
+class Cadastro extends StatefulWidget {
   const Cadastro({super.key});
 
+  @override
+  State<Cadastro> createState() => _CadastroState();
+}
+
+class _CadastroState extends State<Cadastro> {
+  final TextEditingController _usernameTextController = TextEditingController();
+  final TextEditingController _emailTextController = TextEditingController();
+  final TextEditingController _passwordTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +33,8 @@ class Cadastro extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
-                  margin: EdgeInsets.fromLTRB(0 * fem, 125 * fem, 0 * fem, 0 * fem),
+                  margin:
+                      EdgeInsets.fromLTRB(0 * fem, 125 * fem, 0 * fem, 0 * fem),
                   width: 250 * fem,
                   height: 250 * fem,
                   child: Image.asset(
@@ -35,7 +46,8 @@ class Cadastro extends StatelessWidget {
                   child: Column(
                     children: [
                       Container(
-                        margin: EdgeInsets.fromLTRB(0 * fem, 20 * fem, 0 * fem, 0 * fem),
+                        margin: EdgeInsets.fromLTRB(
+                            0 * fem, 20 * fem, 0 * fem, 0 * fem),
                         child: RichText(
                           textAlign: TextAlign.center,
                           text: TextSpan(
@@ -64,7 +76,8 @@ class Cadastro extends StatelessWidget {
                       ),
                       Container(
                         width: 600 * fem,
-                        margin: EdgeInsets.fromLTRB(0 * fem, 25 * fem, 0 * fem, 0 * fem),
+                        margin: EdgeInsets.fromLTRB(
+                            0 * fem, 25 * fem, 0 * fem, 0 * fem),
                         child: Text(
                           '"Porque ensinar não é apenas transmitir conhecimento!"',
                           textAlign: TextAlign.center,
@@ -81,7 +94,8 @@ class Cadastro extends StatelessWidget {
                 Column(
                   children: [
                     Container(
-                      margin: EdgeInsets.fromLTRB(0 * fem, 75 * fem, 0 * fem, 35 * fem),
+                      margin: EdgeInsets.fromLTRB(
+                          0 * fem, 75 * fem, 0 * fem, 35 * fem),
                       child: Text(
                         'Crie sua Conta',
                         textAlign: TextAlign.center,
@@ -95,7 +109,8 @@ class Cadastro extends StatelessWidget {
                     ),
                     Container(
                       // autogroupuewqg9V (4s1pqsvW2wfmvBsJLtUEwq)
-                      margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 35 * fem),
+                      margin: EdgeInsets.fromLTRB(
+                          0 * fem, 0 * fem, 0 * fem, 35 * fem),
                       width: 919 * fem,
                       height: 125 * fem,
                       decoration: BoxDecoration(
@@ -103,11 +118,13 @@ class Cadastro extends StatelessWidget {
                         borderRadius: BorderRadius.circular(50 * fem),
                       ),
                       child: TextField(
+                        controller: _usernameTextController,
                         maxLines: null,
                         decoration: InputDecoration(
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
-                          contentPadding: EdgeInsets.fromLTRB(25 * fem, 0 * fem, 0 * fem, 0 * fem),
+                          contentPadding: EdgeInsets.fromLTRB(
+                              25 * fem, 0 * fem, 0 * fem, 0 * fem),
                           hintText: 'Nome de Usuario',
                           hintStyle: TextStyle(color: Color(0xff000000)),
                         ),
@@ -124,7 +141,8 @@ class Cadastro extends StatelessWidget {
                     ),
                     Container(
                       // autogroupuewqg9V (4s1pqsvW2wfmvBsJLtUEwq)
-                      margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 35 * fem),
+                      margin: EdgeInsets.fromLTRB(
+                          0 * fem, 0 * fem, 0 * fem, 35 * fem),
                       width: 919 * fem,
                       height: 125 * fem,
                       decoration: BoxDecoration(
@@ -132,17 +150,18 @@ class Cadastro extends StatelessWidget {
                         borderRadius: BorderRadius.circular(50 * fem),
                       ),
                       child: TextField(
+                        controller: _emailTextController,
                         maxLines: null,
                         decoration: InputDecoration(
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
-                          contentPadding: EdgeInsets.fromLTRB(25 * fem, 0 * fem, 0 * fem, 0 * fem),
+                          contentPadding: EdgeInsets.fromLTRB(
+                              25 * fem, 0 * fem, 0 * fem, 0 * fem),
                           hintText: 'Email',
                           hintStyle: TextStyle(color: Color(0xff000000)),
                         ),
-                        inputFormatters:[
+                        inputFormatters: [
                           LengthLimitingTextInputFormatter(50),
-                          EmailTextInputFormatter()
                         ],
                         style: GoogleFonts.poppins(
                           fontSize: 48 * ffem,
@@ -154,7 +173,8 @@ class Cadastro extends StatelessWidget {
                     ),
                     Container(
                       // autogroupuewqg9V (4s1pqsvW2wfmvBsJLtUEwq)
-                      margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 35 * fem),
+                      margin: EdgeInsets.fromLTRB(
+                          0 * fem, 0 * fem, 0 * fem, 35 * fem),
                       width: 919 * fem,
                       height: 125 * fem,
                       decoration: BoxDecoration(
@@ -162,17 +182,18 @@ class Cadastro extends StatelessWidget {
                         borderRadius: BorderRadius.circular(50 * fem),
                       ),
                       child: TextField(
+                        controller: _passwordTextController,
                         maxLines: null,
                         decoration: InputDecoration(
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
-                          contentPadding: EdgeInsets.fromLTRB(25 * fem, 0 * fem, 0 * fem, 0 * fem),
+                          contentPadding: EdgeInsets.fromLTRB(
+                              25 * fem, 0 * fem, 0 * fem, 0 * fem),
                           hintText: 'Senha',
                           hintStyle: TextStyle(color: Color(0xff000000)),
                         ),
                         inputFormatters: [
                           LengthLimitingTextInputFormatter(30),
-                          PasswordTextInputFormatter()
                         ],
                         style: GoogleFonts.poppins(
                           fontSize: 48 * ffem,
@@ -182,43 +203,53 @@ class Cadastro extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Container(
-                      // autogroupuewqg9V (4s1pqsvW2wfmvBsJLtUEwq)
-                      margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 35 * fem),
-                      width: 919 * fem,
-                      height: 125 * fem,
-                      decoration: BoxDecoration(
-                        color: Color(0x7fd9d1e4),
-                        borderRadius: BorderRadius.circular(50 * fem),
-                      ),
-                      child: TextField(
-                        maxLines: null,
-                        decoration: InputDecoration(
-                          focusedBorder: InputBorder.none,
-                          enabledBorder: InputBorder.none,
-                          contentPadding: EdgeInsets.fromLTRB(25 * fem, 0 * fem, 0 * fem, 0 * fem),
-                          hintText: 'Confirmar Senha',
-                          hintStyle: TextStyle(color: Color(0xff000000)),
-                        ),
-                        style: GoogleFonts.poppins(
-                          fontSize: 48 * ffem,
-                          fontWeight: FontWeight.w400,
-                          height: 1.5 * ffem / fem,
-                          color: Color(0xff000000),
-                        ),
-                      ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    FlutterPwValidator(
+                      controller: _passwordTextController,
+                      minLength: 6,
+                      uppercaseCharCount: 2,
+                      numericCharCount: 3,
+                      specialCharCount: 1,
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      height: 150,
+                      onSuccess: () {
+                        print("matched");
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text("Password is matched")));
+                      },
+                      onFail: () {
+                        print("not matching");
+                      },
+                    ),
+                    const SizedBox(
+                      height: 5,
                     ),
                     Container(
-                      margin: EdgeInsets.fromLTRB(0 * fem, 45 * fem, 0 * fem, 50 * fem),
+                      margin: EdgeInsets.fromLTRB(
+                          0 * fem, 45 * fem, 0 * fem, 50 * fem),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           primary: Color(0xffe51f43),
                           minimumSize: Size(919 * fem, 125 * fem),
                           elevation: 0,
-                          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                          shape: const RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(50))),
                         ),
                         onPressed: () {
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage()));
+                          FirebaseAuth.instance
+                              .createUserWithEmailAndPassword(
+                                  email: _emailTextController.text,
+                                  password: _passwordTextController.text)
+                              .then((value) {
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const HomePage()));
+                          });
                         },
                         child: Text(
                           'Cadastrar-se',
@@ -235,10 +266,12 @@ class Cadastro extends StatelessWidget {
                 ),
                 Center(
                   child: Container(
-                    margin: EdgeInsets.fromLTRB(0 * fem, 100 * fem, 0 * fem, 0 * fem),
+                    margin: EdgeInsets.fromLTRB(
+                        0 * fem, 100 * fem, 0 * fem, 0 * fem),
                     child: TextButton(
                       onPressed: () {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Login()));
+                        Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(builder: (context) => Login()));
                       },
                       style: TextButton.styleFrom(
                         padding: EdgeInsets.zero,

@@ -1,13 +1,22 @@
 import 'package:ar_pin/Cadastro.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'HomePage.dart';
+class Login extends StatefulWidget {
+  const Login({super.key});
 
-class Login extends StatelessWidget {
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  final TextEditingController _emailTextController = TextEditingController();
+  final TextEditingController _passwordTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+backgroundColor: Colors.white,
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
           double baseWidth = 1040;
@@ -15,7 +24,8 @@ class Login extends StatelessWidget {
           double ffem = fem * 0.97;
 
           return Container(
-            width: double.infinity,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
             child: Container(
               child: SingleChildScrollView(
                 child: Column(
@@ -76,12 +86,13 @@ class Login extends StatelessWidget {
                         borderRadius: BorderRadius.circular(50 * fem),
                       ),
                       child: TextField(
+                        controller: _emailTextController,
                         maxLines: null,
                         decoration: InputDecoration(
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
                           contentPadding: EdgeInsets.fromLTRB(25 * fem, 0 * fem, 0 * fem, 0 * fem),
-                          hintText: 'Email ou Nome de Usuario',
+                          hintText: 'Email',
                           hintStyle: TextStyle(color: Color(0xff000000)),
                         ),
                         style: GoogleFonts.poppins(
@@ -101,6 +112,7 @@ class Login extends StatelessWidget {
                         borderRadius: BorderRadius.circular(50 * fem),
                       ),
                       child: TextField(
+                        controller: _passwordTextController,
                         maxLines: null,
                         decoration: InputDecoration(
                           focusedBorder: InputBorder.none,
@@ -127,7 +139,11 @@ class Login extends StatelessWidget {
                           shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
                         ),
                         onPressed: () {
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage()));
+                          FirebaseAuth.instance.signInWithEmailAndPassword(email: _emailTextController.text, password: _passwordTextController.text).then((value){
+                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage())).onError((error, stackTrace) {
+                              print(error);
+                            });
+                          });
                         },
                         child: Text(
                           'Entrar',
@@ -194,3 +210,4 @@ class Login extends StatelessWidget {
     );
   }
 }
+

@@ -154,7 +154,7 @@ packages:
     source: hosted
     version: "5.8.5"
   firebase_core:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: firebase_core
       sha256: "37299e4907391d7fac8c7ea059bb3292768cc07b72b6c6c777675cc58da2ef4d"
@@ -206,6 +206,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.2"
+  flutter_pw_validator:
+    dependency: "direct main"
+    description:
+      name: flutter_pw_validator
+      sha256: "01960d4d701f6b972f3a2f324e202d840ecfe1b84e00522f92dece874b1c9b30"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.6.0"
   flutter_sticky_header:
     dependency: "direct main"
     description:

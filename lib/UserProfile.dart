@@ -1,4 +1,7 @@
 import 'package:ar_pin/Cadastro.dart';
+import 'package:ar_pin/Login.dart';
+import 'package:ar_pin/auth/utils/user_functions.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'HomePage.dart';
@@ -61,7 +64,7 @@ class UserProfile extends StatelessWidget {
                           width: double.infinity,
                           child: Center(
                             child: Text(
-                              'Usuario1011',
+                              getUsername().toString(),
                               textAlign: TextAlign.center,
                               style: GoogleFonts.poppins(
                                 fontSize: 54 * ffem,
@@ -409,7 +412,10 @@ class UserProfile extends StatelessWidget {
                               shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
                             ),
                             onPressed: () {
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Cadastro()));
+                              FirebaseAuth.instance.signOut().then((value){
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Login()));
+                                
+                              });
                             },
                             child: Text(
                               'Sair da Conta',
