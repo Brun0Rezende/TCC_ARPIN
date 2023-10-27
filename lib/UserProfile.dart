@@ -1,4 +1,3 @@
-import 'package:ar_pin/Cadastro.dart';
 import 'package:ar_pin/Login.dart';
 import 'package:ar_pin/auth/utils/user_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
