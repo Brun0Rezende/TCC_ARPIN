@@ -1,4 +1,5 @@
 import 'package:ar_pin/validators/formValidators.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -18,6 +19,18 @@ class _CadastroState extends State<Cadastro> {
   final TextEditingController _usernameTextController = TextEditingController();
   final TextEditingController _emailTextController = TextEditingController();
   final TextEditingController _passwordTextController = TextEditingController();
+  final textFieldFocusNode = FocusNode();
+  bool _obscureText = false;
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+  void _toggleObscured() {
+    setState(() {
+      _obscureText = !_obscureText;
+      if (textFieldFocusNode.hasPrimaryFocus) return; // If focus is on text field, dont unfocus
+      textFieldFocusNode.canRequestFocus = false;     // Prevents focus if tap on eye
+    });
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -119,7 +132,8 @@ class _CadastroState extends State<Cadastro> {
                       ),
                       child: TextField(
                         controller: _usernameTextController,
-                        maxLines: null,
+                        maxLines: 1,
+                        focusNode: textFieldFocusNode,
                         decoration: InputDecoration(
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
@@ -151,7 +165,8 @@ class _CadastroState extends State<Cadastro> {
                       ),
                       child: TextField(
                         controller: _emailTextController,
-                        maxLines: null,
+                        maxLines: 1,
+                        focusNode: textFieldFocusNode,
                         decoration: InputDecoration(
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
@@ -183,7 +198,9 @@ class _CadastroState extends State<Cadastro> {
                       ),
                       child: TextField(
                         controller: _passwordTextController,
-                        maxLines: null,
+                        maxLines: 1,
+                        obscureText: _obscureText,
+                        focusNode: textFieldFocusNode,
                         decoration: InputDecoration(
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
@@ -191,6 +208,18 @@ class _CadastroState extends State<Cadastro> {
                               25 * fem, 0 * fem, 0 * fem, 0 * fem),
                           hintText: 'Senha',
                           hintStyle: TextStyle(color: Color(0xff000000)),
+                          suffixIcon: Padding(padding: const EdgeInsets.fromLTRB(0,0,4,0),
+                          child: GestureDetector(
+                            onTap: _toggleObscured,
+                            child: Icon(
+                              _obscureText                               
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                              size: 24,
+                            ),
+                          ),
+                          
+                          )
                         ),
                         inputFormatters: [
                           LengthLimitingTextInputFormatter(30),
@@ -201,6 +230,7 @@ class _CadastroState extends State<Cadastro> {
                           height: 1.5 * ffem / fem,
                           color: Color(0xff000000),
                         ),
+                        
                       ),
                     ),
                     const SizedBox(
@@ -215,13 +245,13 @@ class _CadastroState extends State<Cadastro> {
                       width: MediaQuery.of(context).size.width * 0.8,
                       height: 150,
                       onSuccess: () {
-                        print("matched");
+                        // print("matched");
                         ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                                 content: Text("Password is matched")));
                       },
                       onFail: () {
-                        print("not matching");
+                        // print("not matching");
                       },
                     ),
                     const SizedBox(
