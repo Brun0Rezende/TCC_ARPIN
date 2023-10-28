@@ -1,12 +1,11 @@
-import 'package:ar_pin/validators/formValidators.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'HomePage.dart';
-import 'Login.dart';
+import 'home_page.dart';
+import 'login.dart';
 
 class Cadastro extends StatefulWidget {
   const Cadastro({super.key});
@@ -68,7 +67,7 @@ class _CadastroState extends State<Cadastro> {
                               fontSize: 40,
                               fontWeight: FontWeight.w300,
                               fontStyle: FontStyle.italic,
-                              color: Color(0xff000000),
+                              color: const Color(0xff000000),
                             ),
                             children: [
                               const TextSpan(
@@ -80,7 +79,7 @@ class _CadastroState extends State<Cadastro> {
                                   fontSize: 40,
                                   fontWeight: FontWeight.w600,
                                   fontStyle: FontStyle.italic,
-                                  color: Color(0xff000000),
+                                  color: const Color(0xff000000),
                                 ),
                               ),
                             ],
@@ -127,7 +126,7 @@ class _CadastroState extends State<Cadastro> {
                       width: 919 * fem,
                       height: 125 * fem,
                       decoration: BoxDecoration(
-                        color: Color(0x7fd9d1e4),
+                        color: const Color(0x7fd9d1e4),
                         borderRadius: BorderRadius.circular(50 * fem),
                       ),
                       child: TextField(
@@ -140,13 +139,13 @@ class _CadastroState extends State<Cadastro> {
                           contentPadding: EdgeInsets.fromLTRB(
                               25 * fem, 0 * fem, 0 * fem, 0 * fem),
                           hintText: 'Nome de Usuario',
-                          hintStyle: TextStyle(color: Color(0xff000000)),
+                          hintStyle: const TextStyle(color: Color(0xff000000)),
                         ),
                         style: GoogleFonts.poppins(
                           fontSize: 48 * ffem,
                           fontWeight: FontWeight.w400,
                           height: 1.5 * ffem / fem,
-                          color: Color(0xff000000),
+                          color: const Color(0xff000000),
                         ),
                         inputFormatters: [
                           LengthLimitingTextInputFormatter(30),
@@ -160,7 +159,7 @@ class _CadastroState extends State<Cadastro> {
                       width: 919 * fem,
                       height: 125 * fem,
                       decoration: BoxDecoration(
-                        color: Color(0x7fd9d1e4),
+                        color: const Color(0x7fd9d1e4),
                         borderRadius: BorderRadius.circular(50 * fem),
                       ),
                       child: TextField(
@@ -173,7 +172,7 @@ class _CadastroState extends State<Cadastro> {
                           contentPadding: EdgeInsets.fromLTRB(
                               25 * fem, 0 * fem, 0 * fem, 0 * fem),
                           hintText: 'Email',
-                          hintStyle: TextStyle(color: Color(0xff000000)),
+                          hintStyle: const TextStyle(color: Color(0xff000000)),
                         ),
                         inputFormatters: [
                           LengthLimitingTextInputFormatter(50),
@@ -182,7 +181,7 @@ class _CadastroState extends State<Cadastro> {
                           fontSize: 48 * ffem,
                           fontWeight: FontWeight.w400,
                           height: 1.5 * ffem / fem,
-                          color: Color(0xff000000),
+                          color: const Color(0xff000000),
                         ),
                       ),
                     ),
@@ -193,7 +192,7 @@ class _CadastroState extends State<Cadastro> {
                       width: 919 * fem,
                       height: 125 * fem,
                       decoration: BoxDecoration(
-                        color: Color(0x7fd9d1e4),
+                        color: const Color(0x7fd9d1e4),
                         borderRadius: BorderRadius.circular(50 * fem),
                       ),
                       child: TextField(
@@ -207,7 +206,7 @@ class _CadastroState extends State<Cadastro> {
                           contentPadding: EdgeInsets.fromLTRB(
                               25 * fem, 0 * fem, 0 * fem, 0 * fem),
                           hintText: 'Senha',
-                          hintStyle: TextStyle(color: Color(0xff000000)),
+                          hintStyle: const TextStyle(color: Color(0xff000000)),
                           suffixIcon: Padding(padding: const EdgeInsets.fromLTRB(0,0,4,0),
                           child: GestureDetector(
                             onTap: _toggleObscured,
@@ -228,7 +227,7 @@ class _CadastroState extends State<Cadastro> {
                           fontSize: 48 * ffem,
                           fontWeight: FontWeight.w400,
                           height: 1.5 * ffem / fem,
-                          color: Color(0xff000000),
+                          color: const Color(0xff000000),
                         ),
                         
                       ),
@@ -238,12 +237,12 @@ class _CadastroState extends State<Cadastro> {
                     ),
                     FlutterPwValidator(
                       controller: _passwordTextController,
-                      minLength: 6,
-                      uppercaseCharCount: 2,
-                      numericCharCount: 3,
+                      minLength: 8,
+                      uppercaseCharCount: 1,
+                      numericCharCount: 1,
                       specialCharCount: 1,
-                      width: MediaQuery.of(context).size.width * 0.8,
-                      height: 150,
+                      width: 919 * fem,
+                      height: 125 * fem,
                       onSuccess: () {
                         // print("matched");
                         ScaffoldMessenger.of(context).showSnackBar(
@@ -262,7 +261,8 @@ class _CadastroState extends State<Cadastro> {
                           0 * fem, 45 * fem, 0 * fem, 50 * fem),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          primary: Color(0xffe51f43),
+                          //se nao der certo, migre para primary de novo
+                          backgroundColor: const Color(0xffe51f43),
                           minimumSize: Size(919 * fem, 125 * fem),
                           elevation: 0,
                           shape: const RoundedRectangleBorder(
@@ -275,6 +275,12 @@ class _CadastroState extends State<Cadastro> {
                                   email: _emailTextController.text,
                                   password: _passwordTextController.text)
                               .then((value) {
+                            firestore
+                                .collection('users')
+                                .doc(value.user!.uid)
+                                .set({
+                              'username': _usernameTextController.text,
+                                });
                             Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
@@ -301,7 +307,7 @@ class _CadastroState extends State<Cadastro> {
                     child: TextButton(
                       onPressed: () {
                         Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(builder: (context) => Login()));
+                            MaterialPageRoute(builder: (context) => const Login()));
                       },
                       style: TextButton.styleFrom(
                         padding: EdgeInsets.zero,
@@ -312,7 +318,7 @@ class _CadastroState extends State<Cadastro> {
                           fontSize: 45 * ffem,
                           fontWeight: FontWeight.w600,
                           height: 1.5 * ffem / fem,
-                          color: Color(0xff2473ea),
+                          color: const Color(0xff2473ea),
                           decorationColor: const Color(0xff2473ea),
                         ),
                       ),

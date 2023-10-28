@@ -1,4 +1,4 @@
-import 'package:ar_pin/Login.dart';
+import 'package:ar_pin/login.dart';
 import 'package:ar_pin/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

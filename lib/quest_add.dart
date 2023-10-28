@@ -1,17 +1,17 @@
-import 'package:ar_pin/QuestAdd.dart';
+import 'package:ar_pin/quest_alter.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'HomePage.dart';
-import 'UserProfile.dart';
+import 'home_page.dart';
+import 'user_profile.dart';
 
-class QuestAlter extends StatefulWidget {
-  const QuestAlter({super.key});
+class QuestAdd extends StatefulWidget {
+  const QuestAdd({super.key});
 
   @override
-  State<QuestAlter> createState() => _QuestAlterState();
+  State<QuestAdd> createState() => _QuestAddState();
 }
 
-class _QuestAlterState extends State<QuestAlter> {
+class _QuestAddState extends State<QuestAdd> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +50,7 @@ class _QuestAlterState extends State<QuestAlter> {
               Container(
                 margin: EdgeInsets.fromLTRB(0 * fem, 50 * fem, 0 * fem, 25 * fem),
                 child: Text(
-                  'Questão 1',
+                  'Questões',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.poppins(
                     fontSize: 70 * ffem,
@@ -62,7 +62,6 @@ class _QuestAlterState extends State<QuestAlter> {
                 ),
               ),
               _question(fem, ffem),
-              _answer(fem, ffem),
               _button(fem, ffem),
             ],
           );
@@ -73,68 +72,8 @@ class _QuestAlterState extends State<QuestAlter> {
 
   _question(double fem, double ffem) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Container(
-          margin: EdgeInsets.fromLTRB(50 * fem, 0 * fem, 0 * fem, 0 * fem),
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              'Pergunta:',
-              textAlign: TextAlign.justify,
-              style: GoogleFonts.poppins(
-                fontSize: 64 * ffem,
-                fontWeight: FontWeight.w600,
-                height: 1.5 * ffem / fem,
-                fontStyle: FontStyle.italic,
-                color: const Color(0xff000000),
-              ),
-            ),
-          ),
-        ),
-        Container(
-          margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
-          constraints: BoxConstraints(
-            maxWidth: 850 * fem,
-          ),
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              'Qual é a função principal de um LED?',
-              textAlign: TextAlign.justify,
-              style: GoogleFonts.poppins(
-                fontSize: 58 * ffem,
-                fontWeight: FontWeight.w300,
-                height: 1.5 * ffem / fem,
-                fontStyle: FontStyle.italic,
-                color: const Color(0xff000000),
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  _answer(double fem, double ffem) {
-    return Column(
-      children: [
-        Container(
-          margin: EdgeInsets.fromLTRB(50 * fem, 50 * fem, 0 * fem, 50 * fem),
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              'Respostas:',
-              textAlign: TextAlign.justify,
-              style: GoogleFonts.poppins(
-                fontSize: 64 * ffem,
-                fontWeight: FontWeight.w600,
-                height: 1.5 * ffem / fem,
-                fontStyle: FontStyle.italic,
-                color: const Color(0xff000000),
-              ),
-            ),
-          ),
-        ),
         Container(
           margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 35 * fem),
           width: 919 * fem,
@@ -142,23 +81,32 @@ class _QuestAlterState extends State<QuestAlter> {
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
               primary: const Color(0x50DAD1E4),
+              minimumSize: Size(919 * fem, 125 * fem),
               elevation: 0,
               shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
             ),
             onPressed: () {},
-            child: Expanded(
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'Gerar calor',
-                  style: GoogleFonts.poppins(
-                    fontSize: 58 * ffem,
-                    fontWeight: FontWeight.w300,
-                    height: 1.5 * ffem / fem,
-                    color: Colors.black,
+            child: Row(
+              children: [
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Material Didatico',
+                      style: GoogleFonts.poppins(
+                        fontSize: 48 * ffem,
+                        fontWeight: FontWeight.w300,
+                        height: 1.5 * ffem / fem,
+                        color: Colors.black,
+                      ),
+                    ),
                   ),
                 ),
-              ),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: IconButton(iconSize: 0, onPressed: () {}, icon: Image.asset('assets/images/bin.png')),
+                ),
+              ],
             ),
           ),
         ),
@@ -182,10 +130,10 @@ class _QuestAlterState extends State<QuestAlter> {
                   shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
                 ),
                 onPressed: () {
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => QuestAdd()));
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => QuestAlter()));
                 },
                 child: Text(
-                  'Salvar',
+                  'Adicionar Pergunta',
                   style: GoogleFonts.poppins(
                     fontSize: 48 * ffem,
                     fontWeight: FontWeight.w300,

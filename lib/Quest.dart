@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'HomePage.dart';
-import 'UserProfile.dart';
-import 'QuestConclude.dart';
+import 'home_page.dart';
+import 'user_profile.dart';
+import 'quest_conclude.dart';
 import 'question_model.dart';
 
 class Quest extends StatefulWidget {

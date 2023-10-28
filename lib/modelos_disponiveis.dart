@@ -1,8 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'HomePage.dart';
-import 'UserProfile.dart';
+import 'home_page.dart';
+import 'user_profile.dart';
 
 class ModelDisp extends StatelessWidget {
   @override

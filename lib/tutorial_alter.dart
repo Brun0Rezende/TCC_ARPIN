@@ -1,9 +1,9 @@
-import 'package:ar_pin/QuestAdd.dart';
+import 'package:ar_pin/quest_add.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'HomePage.dart';
-import 'UserProfile.dart';
-import 'MDAlter.dart';
+import 'home_page.dart';
+import 'user_profile.dart';
+import 'md_alter.dart';
 
 class TutoAlter extends StatefulWidget {
   const TutoAlter({super.key});

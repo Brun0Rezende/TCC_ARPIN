@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'Tutorial.dart';
-import 'ModelosDIsp.dart';
-import 'UserProfile.dart';
-import 'TutorialAlter.dart';
+import 'tutorial.dart';
+import 'modelos_disponiveis.dart';
+import 'user_profile.dart';
+import 'tutorial_alter.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -423,7 +423,8 @@ class _HomePageState extends State<HomePage> {
             height: 200 * fem,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: const Color(0xffe51f43),
+                //testar se dá certo ou primary color
+                backgroundColor: const Color(0xffe51f43),
                 elevation: 5,
                 shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
               ),
@@ -449,13 +450,14 @@ class _HomePageState extends State<HomePage> {
             height: 200 * fem,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: const Color(0xffe51f43),
+                //primary ou background color?
+                backgroundColor: const Color(0xffe51f43),
                 minimumSize: Size(919 * fem, 125 * fem),
                 elevation: 5,
                 shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
               ),
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => TutoAlter()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const TutoAlter()));
               },
               child: Text(
                 '+',

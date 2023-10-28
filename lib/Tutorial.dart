@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'HomePage.dart';
-import 'UserProfile.dart';
-import 'MaterialDidatico.dart';
-import 'Quest.dart';
-import 'BaixarModelo.dart';
+import 'home_page.dart';
+import 'user_profile.dart';
+import 'material_didatico.dart';
+import 'quest.dart';
+import 'baixar_modelo.dart';
 
 void main() {
   runApp(

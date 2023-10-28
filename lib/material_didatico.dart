@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sticky_headers/sticky_headers.dart';
-import 'HomePage.dart';
-import 'Quest.dart';
-import 'UserProfile.dart';
+import 'home_page.dart';
+import 'quest.dart';
+import 'user_profile.dart';
 
 class MaterialDidatico extends StatelessWidget {
   @override

@@ -1,10 +1,10 @@
-import 'package:ar_pin/Login.dart';
+import 'package:ar_pin/login.dart';
 import 'package:ar_pin/auth/utils/user_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'HomePage.dart';
-import 'ModelosDIsp.dart';
+import 'home_page.dart';
+import 'modelos_disponiveis.dart';
 
 class UserProfile extends StatelessWidget {
   @override
