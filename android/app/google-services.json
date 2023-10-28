@@ -1,37 +1,26 @@
 {
   "project_info": {
-    "project_number": "819702262701",
-    "firebase_url": "https://arpin-48903-default-rtdb.firebaseio.com",
-    "project_id": "arpin-48903",
-    "storage_bucket": "arpin-48903.appspot.com"
+    "project_number": "308107423643",
+    "project_id": "sd-arpin",
+    "storage_bucket": "sd-arpin.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:819702262701:android:3018f81cf12700a63b0f24",
+        "mobilesdk_app_id": "1:308107423643:android:88837b5426b7f5f6007b3e",
         "android_client_info": {
           "package_name": "com.example.ar_pin"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "819702262701-pr0sa3t2mpnmbap7ipfbslbs71ma9v3i.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBH2ziyaEIYnO-ECOfCelLIYUDCcp-n1NM"
+          "current_key": "AIzaSyBxf0iXIHpOqoEppZ_0Jz7_Mx8FcAxQxYY"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "819702262701-pr0sa3t2mpnmbap7ipfbslbs71ma9v3i.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

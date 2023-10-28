@@ -21,6 +21,7 @@ class _CadastroState extends State<Cadastro> {
   final textFieldFocusNode = FocusNode();
   bool _obscureText = false;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
+  
 
   void _toggleObscured() {
     setState(() {
@@ -241,8 +242,8 @@ class _CadastroState extends State<Cadastro> {
                       uppercaseCharCount: 1,
                       numericCharCount: 1,
                       specialCharCount: 1,
-                      width: 919 * fem,
-                      height: 125 * fem,
+                      width: 900 * fem,
+                      height: 150,
                       onSuccess: () {
                         // print("matched");
                         ScaffoldMessenger.of(context).showSnackBar(

@@ -7,6 +7,11 @@ import 'home_page.dart';
 import 'modelos_disponiveis.dart';
 
 class UserProfile extends StatelessWidget {
+  UserProfile({Key? key}) : super(key: key);
+
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  User? get currentUser => _firebaseAuth.currentUser;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

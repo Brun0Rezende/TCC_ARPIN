@@ -3,16 +3,20 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 
 
-getUsername(){
+Future getUsername() async{
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   if (FirebaseAuth.instance.currentUser != null){
-    return firestore.collection('users')
+    return await firestore.collection('users')
     .doc(FirebaseAuth.instance.currentUser!.uid)
     .get()
-    .then((value) => value.data()!['username']);
+    .then((DocumentSnapshot documentSnapshot){
+      if(documentSnapshot.exists){
+        Map<String, dynamic> data = documentSnapshot.data() as Map<String, dynamic>;
+        return data['username'];
+      }});
     } 
+  } 
   // else {
   // return "ué, não cadrastrado?";
   // }
-}

@@ -17,15 +17,24 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -43,43 +52,11 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyA8_dSXVIDILdPXEzxJ7zc2PXGAxEuV0jM',
-    appId: '1:819702262701:web:413251f3e2398a983b0f24',
-    messagingSenderId: '819702262701',
-    projectId: 'arpin-48903',
-    authDomain: 'arpin-48903.firebaseapp.com',
-    databaseURL: 'https://arpin-48903-default-rtdb.firebaseio.com',
-    storageBucket: 'arpin-48903.appspot.com',
-    measurementId: 'G-DR4MWVG5V2',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBH2ziyaEIYnO-ECOfCelLIYUDCcp-n1NM',
-    appId: '1:819702262701:android:3018f81cf12700a63b0f24',
-    messagingSenderId: '819702262701',
-    projectId: 'arpin-48903',
-    databaseURL: 'https://arpin-48903-default-rtdb.firebaseio.com',
-    storageBucket: 'arpin-48903.appspot.com',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBApPBqnn5I6GwgPSPoPNnCxW_rwXjICqE',
-    appId: '1:819702262701:ios:fcb593e192bd05f83b0f24',
-    messagingSenderId: '819702262701',
-    projectId: 'arpin-48903',
-    databaseURL: 'https://arpin-48903-default-rtdb.firebaseio.com',
-    storageBucket: 'arpin-48903.appspot.com',
-    iosBundleId: 'com.example.arPin',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBApPBqnn5I6GwgPSPoPNnCxW_rwXjICqE',
-    appId: '1:819702262701:ios:781b052f842d1ac43b0f24',
-    messagingSenderId: '819702262701',
-    projectId: 'arpin-48903',
-    databaseURL: 'https://arpin-48903-default-rtdb.firebaseio.com',
-    storageBucket: 'arpin-48903.appspot.com',
-    iosBundleId: 'com.example.arPin.RunnerTests',
+    apiKey: 'AIzaSyBxf0iXIHpOqoEppZ_0Jz7_Mx8FcAxQxYY',
+    appId: '1:308107423643:android:88837b5426b7f5f6007b3e',
+    messagingSenderId: '308107423643',
+    projectId: 'sd-arpin',
+    storageBucket: 'sd-arpin.appspot.com',
   );
 }
