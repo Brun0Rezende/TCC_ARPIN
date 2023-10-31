@@ -49,7 +49,7 @@ List<Question> getQuestions() {
   list.add(Question(
     "O que acontece quando uma corrente elétrica é aplicada a um LED?",
     [
-      Answer(" Ele esquenta", false),
+      Answer("Ele esquenta", false),
       Answer("Ele fica inerte", false),
       Answer("Ele emite luz", true),
       Answer("Ele se desintegra", false),

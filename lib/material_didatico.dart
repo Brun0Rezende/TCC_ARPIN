@@ -145,7 +145,7 @@ class MaterialDidatico extends StatelessWidget {
                               margin: EdgeInsets.fromLTRB(0 * fem, 35 * fem, 0 * fem, 50 * fem),
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  primary: Color(0xffe51f43),
+                                  backgroundColor: const Color(0xffe51f43),
                                   minimumSize: Size(919 * fem, 125 * fem),
                                   elevation: 0,
                                   shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),

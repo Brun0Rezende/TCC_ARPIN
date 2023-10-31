@@ -1,16 +1,32 @@
 import 'package:ar_pin/login.dart';
 import 'package:ar_pin/auth/utils/user_functions.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'home_page.dart';
 import 'modelos_disponiveis.dart';
 
 class UserProfile extends StatelessWidget {
+  getUsername() async{
+  FirebaseFirestore db = FirebaseFirestore.instance;
+  if(FirebaseAuth.instance.currentUser != null){
+    final snapshot = await db.collection('users').doc(FirebaseAuth.instance.currentUser!.uid).get();
+    Map data =  snapshot.data() as Map;
+    String username = data['username'].toString();
+    return username;
+  }
+  return "Usuário não cadastrado";
+  }
+
+  
+
   UserProfile({Key? key}) : super(key: key);
 
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   User? get currentUser => _firebaseAuth.currentUser;
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -63,22 +79,33 @@ class UserProfile extends StatelessWidget {
                             fit: BoxFit.cover,
                           ),
                         ),
-                        Container(
-                          // autogrouphdg3Ruq (4s1ncGynUvPaho1dtFHDg3)
-                          width: double.infinity,
-                          child: Center(
-                            child: Text(
-                              getUsername().toString(),
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.poppins(
-                                fontSize: 54 * ffem,
-                                fontWeight: FontWeight.w600,
-                                height: 1.5 * ffem / fem,
-                                fontStyle: FontStyle.italic,
-                                color: Color(0xff000000),
+                        StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+                          stream: firestore.collection('users').snapshots(),
+                          builder: (BuildContext context, AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
+                            if(!snapshot.hasData){
+                              return const Center(
+                                child: CircularProgressIndicator(backgroundColor: Colors.lightBlueAccent),
+                              );
+                            }
+                            final userData = snapshot.data!.docs.where((element) => element.id == FirebaseAuth.instance.currentUser!.uid).toList();
+                            return Container(
+                              // autogrouphdg3Ruq (4s1ncGynUvPaho1dtFHDg3)
+                              width: double.infinity,
+                              child: Center(
+                                child: Text(
+                                  userData[0]['username'],
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 54 * ffem,
+                                    fontWeight: FontWeight.w600,
+                                    height: 1.5 * ffem / fem,
+                                    fontStyle: FontStyle.italic,
+                                    color: const Color(0xff000000),
+                                  ),
+                                ),
                               ),
-                            ),
-                          ),
+                            );
+                          }
                         ),
                         Container(
                           margin: EdgeInsets.fromLTRB(50 * fem, 100 * fem, 0 * fem, 0 * fem),
