@@ -1,10 +1,11 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'home_page.dart';
 import 'user_profile.dart';
 
 class ModelDisp extends StatelessWidget {
+  const ModelDisp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +39,7 @@ class ModelDisp extends StatelessWidget {
           double fem = constraints.maxWidth / baseWidth;
           double ffem = fem * 0.97;
 
-          return Container(
+          return SizedBox(
             width: double.infinity,
             child: Container(
               // modelosra9V1 (440:11)
@@ -49,7 +50,7 @@ class ModelDisp extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Container(
+                  SizedBox(
                     // autogroup9jdyfy9 (4s1a6Yzgxfzi4dnRGP9jdy)
                     width: double.infinity,
 
@@ -82,7 +83,7 @@ class ModelDisp extends StatelessWidget {
                                   fontWeight: FontWeight.w700,
                                   height: 1.5 * ffem / fem,
                                   fontStyle: FontStyle.italic,
-                                  color: Color(0xff000000),
+                                  color: const Color(0xff000000),
                                 ),
                               ),
                             ),
@@ -115,7 +116,7 @@ class ModelDisp extends StatelessWidget {
                                     child: Container(
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(51 * fem),
-                                        color: Color(0x7fd9d1e4),
+                                        color: const Color(0x7fd9d1e4),
                                       ),
                                     ),
                                   ),
@@ -140,7 +141,7 @@ class ModelDisp extends StatelessWidget {
                                         ),
                                         boxShadow: [
                                           BoxShadow(
-                                            color: Color(0x82615b69),
+                                            color: const Color(0x82615b69),
                                             offset: Offset(0 * fem, 7 * fem),
                                             blurRadius: 8 * fem,
                                           ),
@@ -165,7 +166,7 @@ class ModelDisp extends StatelessWidget {
                                         fontWeight: FontWeight.w600,
                                         height: 1.5 * ffem / fem,
                                         fontStyle: FontStyle.italic,
-                                        color: Color(0xff000000),
+                                        color: const Color(0xff000000),
                                       ),
                                     ),
                                   ),
@@ -219,7 +220,7 @@ class ModelDisp extends StatelessWidget {
                             ],
                           ),
                         ),
-                        Container(
+                        SizedBox(
                           // group3t4X (440:47)
                           width: double.infinity,
                           height: 350 * fem,
@@ -236,7 +237,7 @@ class ModelDisp extends StatelessWidget {
                                     child: Container(
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(51 * fem),
-                                        color: Color(0x7fd9d1e4),
+                                        color: const Color(0x7fd9d1e4),
                                       ),
                                     ),
                                   ),
@@ -261,7 +262,7 @@ class ModelDisp extends StatelessWidget {
                                         ),
                                         boxShadow: [
                                           BoxShadow(
-                                            color: Color(0x82615b69),
+                                            color: const Color(0x82615b69),
                                             offset: Offset(0 * fem, 7 * fem),
                                             blurRadius: 8 * fem,
                                           ),
@@ -286,7 +287,7 @@ class ModelDisp extends StatelessWidget {
                                         fontWeight: FontWeight.w600,
                                         height: 1.5 * ffem / fem,
                                         fontStyle: FontStyle.italic,
-                                        color: Color(0xff000000),
+                                        color: const Color(0xff000000),
                                       ),
                                     ),
                                   ),

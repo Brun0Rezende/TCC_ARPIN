@@ -55,7 +55,7 @@ class _CadastroState extends State<Cadastro> {
                     fit: BoxFit.cover,
                   ),
                 ),
-                Container(
+                SizedBox(
                   child: Column(
                     children: [
                       Container(

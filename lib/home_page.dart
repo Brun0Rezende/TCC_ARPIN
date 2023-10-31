@@ -429,7 +429,7 @@ class _HomePageState extends State<HomePage> {
                 shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
               ),
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => ModelDisp()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const ModelDisp()));
               },
               child: Container(
                 decoration: const BoxDecoration(

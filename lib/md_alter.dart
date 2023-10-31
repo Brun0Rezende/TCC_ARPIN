@@ -139,7 +139,7 @@ class _MDAlterState extends State<MDAlter> {
             ),
           ),
         ),
-        Container(
+        SizedBox(
           child: SizedBox(
             width: 900 * fem,
             height: 1350 * fem,
@@ -169,7 +169,7 @@ class _MDAlterState extends State<MDAlter> {
           margin: EdgeInsets.fromLTRB(0 * fem, 50 * fem, 0 * fem, 35 * fem),
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-              primary: Color(0xffe51f43),
+              backgroundColor: const Color(0xffe51f43),
               minimumSize: Size(919 * fem, 125 * fem),
               elevation: 0,
               shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),

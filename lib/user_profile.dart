@@ -1,8 +1,6 @@
 import 'package:ar_pin/login.dart';
-import 'package:ar_pin/auth/utils/user_functions.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'home_page.dart';
@@ -35,7 +33,7 @@ class UserProfile extends StatelessWidget {
       appBar: AppBar(
         elevation: 1,
         backgroundColor: Colors.white,
-        actions: <Widget>[],
+        actions: const <Widget>[],
         title: IconButton(
             iconSize: 40,
             onPressed: () {
@@ -55,15 +53,15 @@ class UserProfile extends StatelessWidget {
           double fem = constraints.maxWidth / baseWidth;
           double ffem = fem * 0.97;
 
-          return Container(
+          return SizedBox(
             width: double.infinity,
-            child: Container(
+            child: SizedBox(
               // perfildeusuarioAh5 (207:58)
               width: double.infinity,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Container(
+                  SizedBox(
                     // autogroupn3ovcBh (4s1oD6K76jYviN91mgn3oV)
                     width: double.infinity,
                     child: Column(
@@ -88,7 +86,7 @@ class UserProfile extends StatelessWidget {
                               );
                             }
                             final userData = snapshot.data!.docs.where((element) => element.id == FirebaseAuth.instance.currentUser!.uid).toList();
-                            return Container(
+                            return SizedBox(
                               // autogrouphdg3Ruq (4s1ncGynUvPaho1dtFHDg3)
                               width: double.infinity,
                               child: Center(
@@ -119,7 +117,7 @@ class UserProfile extends StatelessWidget {
                                 fontWeight: FontWeight.w600,
                                 height: 1.5 * ffem / fem,
                                 fontStyle: FontStyle.italic,
-                                color: Color(0xff000000),
+                                color: const Color(0xff000000),
                               ),
                             ),
                           ),
@@ -141,7 +139,7 @@ class UserProfile extends StatelessWidget {
                                           builder: (BuildContext context) {
                                             return Dialog(
                                                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)), //this right here
-                                                child: Container(
+                                                child: SizedBox(
                                                   height: 800 * fem,
                                                   width: 800 * fem,
                                                   child: ListView(children: [
@@ -155,7 +153,7 @@ class UserProfile extends StatelessWidget {
                                                           fontWeight: FontWeight.w600,
                                                           height: 1.5 * ffem / fem,
                                                           fontStyle: FontStyle.italic,
-                                                          color: Color(0xff000000),
+                                                          color: const Color(0xff000000),
                                                         ),
                                                       ),
                                                     ),
@@ -172,10 +170,10 @@ class UserProfile extends StatelessWidget {
                                                               child: Container(
                                                                 decoration: BoxDecoration(
                                                                   borderRadius: BorderRadius.circular(50 * fem),
-                                                                  color: Color(0xffffffff),
+                                                                  color: const Color(0xffffffff),
                                                                   boxShadow: [
                                                                     BoxShadow(
-                                                                      color: Color(0x82615b69),
+                                                                      color: const Color(0x82615b69),
                                                                       offset: Offset(0 * fem, 7 * fem),
                                                                       blurRadius: 8 * fem,
                                                                     ),
@@ -208,7 +206,7 @@ class UserProfile extends StatelessWidget {
                                                             fontSize: 45 * ffem,
                                                             fontWeight: FontWeight.w300,
                                                             height: 1.5 * ffem / fem,
-                                                            color: Color(0xff000000),
+                                                            color: const Color(0xff000000),
                                                           ),
                                                         ),
                                                       ),
@@ -220,10 +218,10 @@ class UserProfile extends StatelessWidget {
                                     child: Container(
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(50 * fem),
-                                        color: Color(0xffffffff),
+                                        color: const Color(0xffffffff),
                                         boxShadow: [
                                           BoxShadow(
-                                            color: Color(0x82615b69),
+                                            color: const Color(0x82615b69),
                                             offset: Offset(0 * fem, 7 * fem),
                                             blurRadius: 8 * fem,
                                           ),
@@ -251,7 +249,7 @@ class UserProfile extends StatelessWidget {
                                           builder: (BuildContext context) {
                                             return Dialog(
                                                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)), //this right here
-                                                child: Container(
+                                                child: SizedBox(
                                                   height: 800 * fem,
                                                   width: 800 * fem,
                                                   child: ListView(children: [
@@ -265,7 +263,7 @@ class UserProfile extends StatelessWidget {
                                                           fontWeight: FontWeight.w600,
                                                           height: 1.5 * ffem / fem,
                                                           fontStyle: FontStyle.italic,
-                                                          color: Color(0xff000000),
+                                                          color: const Color(0xff000000),
                                                         ),
                                                       ),
                                                     ),
@@ -282,10 +280,10 @@ class UserProfile extends StatelessWidget {
                                                               child: Container(
                                                                 decoration: BoxDecoration(
                                                                   borderRadius: BorderRadius.circular(50 * fem),
-                                                                  color: Color(0xffffffff),
+                                                                  color: const Color(0xffffffff),
                                                                   boxShadow: [
                                                                     BoxShadow(
-                                                                      color: Color(0x82615b69),
+                                                                      color: const Color(0x82615b69),
                                                                       offset: Offset(0 * fem, 7 * fem),
                                                                       blurRadius: 8 * fem,
                                                                     ),
@@ -318,7 +316,7 @@ class UserProfile extends StatelessWidget {
                                                             fontSize: 45 * ffem,
                                                             fontWeight: FontWeight.w300,
                                                             height: 1.5 * ffem / fem,
-                                                            color: Color(0xff000000),
+                                                            color: const Color(0xff000000),
                                                           ),
                                                         ),
                                                       ),
@@ -330,10 +328,10 @@ class UserProfile extends StatelessWidget {
                                     child: Container(
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(50 * fem),
-                                        color: Color(0xffffffff),
+                                        color: const Color(0xffffffff),
                                         boxShadow: [
                                           BoxShadow(
-                                            color: Color(0x82615b69),
+                                            color: const Color(0x82615b69),
                                             offset: Offset(0 * fem, 7 * fem),
                                             blurRadius: 8 * fem,
                                           ),
@@ -374,7 +372,7 @@ class UserProfile extends StatelessWidget {
                                 fontWeight: FontWeight.w600,
                                 height: 1.5 * ffem / fem,
                                 fontStyle: FontStyle.italic,
-                                color: Color(0xff000000),
+                                color: const Color(0xff000000),
                               ),
                             ),
                           ),
@@ -387,7 +385,7 @@ class UserProfile extends StatelessWidget {
                           ),
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              primary: Color(0xffe51f43),
+                              backgroundColor: const Color(0xffe51f43),
                               minimumSize: Size(919 * fem, 125 * fem),
                               elevation: 0,
                               shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
@@ -414,7 +412,7 @@ class UserProfile extends StatelessWidget {
                           ),
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              primary: Color(0xffe51f43),
+                              backgroundColor: const Color(0xffe51f43),
                               minimumSize: Size(919 * fem, 125 * fem),
                               elevation: 0,
                               shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
@@ -437,8 +435,8 @@ class UserProfile extends StatelessWidget {
                           margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
                           child: OutlinedButton(
                             style: OutlinedButton.styleFrom(
-                              primary: Color(0xffe51f43),
-                              side: BorderSide(color: Color(0xffe51f43), width: 1),
+                              backgroundColor: const Color(0xffe51f43),
+                              side: const BorderSide(color: Color(0xffe51f43), width: 1),
                               minimumSize: Size(919 * fem, 125 * fem),
                               shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
                             ),
@@ -454,7 +452,7 @@ class UserProfile extends StatelessWidget {
                                 fontSize: 48 * ffem,
                                 fontWeight: FontWeight.w400,
                                 height: 1.5 * ffem / fem,
-                                color: Color(0xffe51f43),
+                                color: const Color(0xffe51f43),
                               ),
                             ),
                           ),

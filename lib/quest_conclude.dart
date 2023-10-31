@@ -50,46 +50,44 @@ class QuestConcluido extends StatelessWidget {
           } else {
             pass = true;
           }
-          return Container(
+          return SizedBox(
             width: double.infinity,
-            child: Container(
-              child: Column(
-                children: [
-                  _conclude(fem, ffem, pass),
-                  _result(fem, ffem, pass),
-                  Expanded(
-                      child: Container(
-                    margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 50 * fem),
-                    child: Align(
-                      alignment: Alignment.bottomCenter,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          primary: const Color(0xffe51f43),
-                          minimumSize: Size(919 * fem, 125 * fem),
-                          elevation: 0,
-                          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
-                        ),
-                        onPressed: pass
-                            ? () {
-                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Tutorial()));
-                              }
-                            : () {
-                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Quest()));
-                              },
-                        child: Text(
-                          pass ? 'Concluido' : 'Tentar Novamente',
-                          style: GoogleFonts.poppins(
-                            fontSize: 48 * ffem,
-                            fontWeight: FontWeight.w400,
-                            height: 1.5 * ffem / fem,
-                            color: Colors.white,
-                          ),
+            child: Column(
+              children: [
+                _conclude(fem, ffem, pass),
+                _result(fem, ffem, pass),
+                Expanded(
+                    child: Container(
+                  margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 50 * fem),
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xffe51f43),
+                        minimumSize: Size(919 * fem, 125 * fem),
+                        elevation: 0,
+                        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                      ),
+                      onPressed: pass
+                          ? () {
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Tutorial()));
+                            }
+                          : () {
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Quest()));
+                            },
+                      child: Text(
+                        pass ? 'Concluido' : 'Tentar Novamente',
+                        style: GoogleFonts.poppins(
+                          fontSize: 48 * ffem,
+                          fontWeight: FontWeight.w400,
+                          height: 1.5 * ffem / fem,
+                          color: Colors.white,
                         ),
                       ),
                     ),
-                  )),
-                ],
-              ),
+                  ),
+                )),
+              ],
             ),
           );
         },
@@ -111,7 +109,7 @@ class QuestConcluido extends StatelessWidget {
               fontWeight: FontWeight.w700,
               height: 1.5 * ffem / fem,
               fontStyle: FontStyle.italic,
-              color: Color(0xff000000),
+              color: const Color(0xff000000),
             ),
           ),
         ),
@@ -124,10 +122,10 @@ class QuestConcluido extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50 * fem),
-                  color: Color(0xffffffff),
+                  color: const Color(0xffffffff),
                   boxShadow: [
                     BoxShadow(
-                      color: Color(0x82615b69),
+                      color: const Color(0x82615b69),
                       offset: Offset(0 * fem, 7 * fem),
                       blurRadius: 8 * fem,
                     ),
@@ -163,7 +161,7 @@ class QuestConcluido extends StatelessWidget {
               fontSize: 52 * ffem,
               fontWeight: FontWeight.w400,
               height: 1.5 * ffem / fem,
-              color: Color(0xff000000),
+              color: const Color(0xff000000),
             ),
           ),
         ),
@@ -178,7 +176,7 @@ class QuestConcluido extends StatelessWidget {
             fontWeight: FontWeight.w700,
             height: 1.5 * ffem / fem,
             fontStyle: FontStyle.italic,
-            color: Color(0xff000000),
+            color: const Color(0xff000000),
           ),
         ),
       ),
@@ -191,22 +189,20 @@ class QuestConcluido extends StatelessWidget {
             fontSize: 150 * ffem,
             fontWeight: FontWeight.w300,
             height: 1.5 * ffem / fem,
-            color: Color(0xff000000),
+            color: const Color(0xff000000),
           ),
         ),
       ),
       Center(
         // muitobomrkX (312:62)
-        child: Container(
-          child: Text(
-            pass ? 'Muito bom!' : 'Foi por pouco!',
-            textAlign: TextAlign.center,
-            style: GoogleFonts.poppins(
-              fontSize: 52 * ffem,
-              fontWeight: FontWeight.w400,
-              height: 1.5 * ffem / fem,
-              color: Color(0xff000000),
-            ),
+        child: Text(
+          pass ? 'Muito bom!' : 'Foi por pouco!',
+          textAlign: TextAlign.center,
+          style: GoogleFonts.poppins(
+            fontSize: 52 * ffem,
+            fontWeight: FontWeight.w400,
+            height: 1.5 * ffem / fem,
+            color: const Color(0xff000000),
           ),
         ),
       ),

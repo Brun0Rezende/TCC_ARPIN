@@ -80,7 +80,7 @@ class _QuestAddState extends State<QuestAdd> {
           height: 100 * fem,
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-              primary: const Color(0x50DAD1E4),
+              backgroundColor: const Color(0x50DAD1E4),
               minimumSize: Size(919 * fem, 125 * fem),
               elevation: 0,
               shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
@@ -124,13 +124,13 @@ class _QuestAddState extends State<QuestAdd> {
               margin: EdgeInsets.fromLTRB(0 * fem, 50 * fem, 0 * fem, 35 * fem),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: Color(0xffe51f43),
+                  backgroundColor: const Color(0xffe51f43),
                   minimumSize: Size(919 * fem, 125 * fem),
                   elevation: 0,
                   shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
                 ),
                 onPressed: () {
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => QuestAlter()));
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const QuestAlter()));
                 },
                 child: Text(
                   'Adicionar Pergunta',

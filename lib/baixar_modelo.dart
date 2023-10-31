@@ -53,7 +53,7 @@ class BXModelo extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Container(
+                  SizedBox(
                     child: Center(
                       child: Text(
                         'Circuito',
@@ -68,7 +68,7 @@ class BXModelo extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     child: Center(
                       child: Text(
                         'Exemplo de CIrcuito',

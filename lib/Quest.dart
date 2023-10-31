@@ -52,7 +52,7 @@ class _QuestState extends State<Quest> {
           double fem = constraints.maxWidth / baseWidth;
           double ffem = fem * 0.97;
 
-          return Container(
+          return SizedBox(
             width: double.infinity,
             child: Container(
               // questionarioWqM (296:102)
