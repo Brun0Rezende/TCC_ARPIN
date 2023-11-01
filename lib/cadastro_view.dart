@@ -26,6 +26,7 @@ class _CadastroState extends State<Cadastro> {
   void _toggleObscured() {
     setState(() {
       _obscureText = !_obscureText;
+      //por enquanto não utilizado
       if (textFieldFocusNode.hasPrimaryFocus) return; // If focus is on text field, dont unfocus
       textFieldFocusNode.canRequestFocus = false;     // Prevents focus if tap on eye
     });
@@ -133,7 +134,6 @@ class _CadastroState extends State<Cadastro> {
                       child: TextField(
                         controller: _usernameTextController,
                         maxLines: 1,
-                        focusNode: textFieldFocusNode,
                         decoration: InputDecoration(
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
@@ -166,7 +166,6 @@ class _CadastroState extends State<Cadastro> {
                       child: TextField(
                         controller: _emailTextController,
                         maxLines: 1,
-                        focusNode: textFieldFocusNode,
                         decoration: InputDecoration(
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
@@ -200,7 +199,6 @@ class _CadastroState extends State<Cadastro> {
                         controller: _passwordTextController,
                         maxLines: 1,
                         obscureText: _obscureText,
-                        focusNode: textFieldFocusNode,
                         decoration: InputDecoration(
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
@@ -285,7 +283,7 @@ class _CadastroState extends State<Cadastro> {
                             Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => const HomePage()));
+                                    builder: (context) => const Login()));
                           });
                         },
                         child: Text(

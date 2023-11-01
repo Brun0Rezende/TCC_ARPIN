@@ -58,409 +58,411 @@ class UserProfile extends StatelessWidget {
             child: SizedBox(
               // perfildeusuarioAh5 (207:58)
               width: double.infinity,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    // autogroupn3ovcBh (4s1oD6K76jYviN91mgn3oV)
-                    width: double.infinity,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          // user1hyq (207:59)
-                          margin: EdgeInsets.fromLTRB(0 * fem, 50 * fem, 0 * fem, 40 * fem),
-                          width: 350 * fem,
-                          height: 350 * fem,
-                          child: Image.asset(
-                            'assets/images/user.png',
-                            fit: BoxFit.cover,
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      // autogroupn3ovcBh (4s1oD6K76jYviN91mgn3oV)
+                      width: double.infinity,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            // user1hyq (207:59)
+                            margin: EdgeInsets.fromLTRB(0 * fem, 50 * fem, 0 * fem, 40 * fem),
+                            width: 350 * fem,
+                            height: 350 * fem,
+                            child: Image.asset(
+                              'assets/images/user.png',
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                        ),
-                        StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-                          stream: firestore.collection('users').snapshots(),
-                          builder: (BuildContext context, AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
-                            if(!snapshot.hasData){
-                              return const Center(
-                                child: CircularProgressIndicator(backgroundColor: Colors.lightBlueAccent),
+                          StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+                            stream: firestore.collection('users').snapshots(),
+                            builder: (BuildContext context, AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
+                              if(!snapshot.hasData){
+                                return const Center(
+                                  child: CircularProgressIndicator(backgroundColor: Colors.lightBlueAccent),
+                                );
+                              }
+                              final userData = snapshot.data!.docs.where((element) => element.id == FirebaseAuth.instance.currentUser!.uid).toList();
+                              return SizedBox(
+                                // autogrouphdg3Ruq (4s1ncGynUvPaho1dtFHDg3)
+                                width: double.infinity,
+                                child: Center(
+                                  child: Text(
+                                    userData[0]['username'],
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.poppins(
+                                      fontSize: 54 * ffem,
+                                      fontWeight: FontWeight.w600,
+                                      height: 1.5 * ffem / fem,
+                                      fontStyle: FontStyle.italic,
+                                      color: const Color(0xff000000),
+                                    ),
+                                  ),
+                                ),
                               );
                             }
-                            final userData = snapshot.data!.docs.where((element) => element.id == FirebaseAuth.instance.currentUser!.uid).toList();
-                            return SizedBox(
-                              // autogrouphdg3Ruq (4s1ncGynUvPaho1dtFHDg3)
-                              width: double.infinity,
-                              child: Center(
-                                child: Text(
-                                  userData[0]['username'],
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.poppins(
-                                    fontSize: 54 * ffem,
-                                    fontWeight: FontWeight.w600,
-                                    height: 1.5 * ffem / fem,
-                                    fontStyle: FontStyle.italic,
-                                    color: const Color(0xff000000),
-                                  ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.fromLTRB(50 * fem, 100 * fem, 0 * fem, 0 * fem),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                'Feitos:',
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.poppins(
+                                  fontSize: 54 * ffem,
+                                  fontWeight: FontWeight.w600,
+                                  height: 1.5 * ffem / fem,
+                                  fontStyle: FontStyle.italic,
+                                  color: const Color(0xff000000),
                                 ),
-                              ),
-                            );
-                          }
-                        ),
-                        Container(
-                          margin: EdgeInsets.fromLTRB(50 * fem, 100 * fem, 0 * fem, 0 * fem),
-                          child: Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Feitos:',
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.poppins(
-                                fontSize: 54 * ffem,
-                                fontWeight: FontWeight.w600,
-                                height: 1.5 * ffem / fem,
-                                fontStyle: FontStyle.italic,
-                                color: const Color(0xff000000),
                               ),
                             ),
                           ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.fromLTRB(25 * fem, 0 * fem, 0 * fem, 50 * fem),
-                          height: 400 * fem,
-                          child: ListView(
-                            scrollDirection: Axis.horizontal,
-                            children: [
-                              SizedBox(
-                                width: 400 * fem,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: InkWell(
-                                    onTap: () {
-                                      showDialog(
-                                          context: context,
-                                          builder: (BuildContext context) {
-                                            return Dialog(
-                                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)), //this right here
-                                                child: SizedBox(
-                                                  height: 800 * fem,
-                                                  width: 800 * fem,
-                                                  child: ListView(children: [
-                                                    Container(
-                                                      margin: EdgeInsets.fromLTRB(0 * fem, 50 * fem, 0 * fem, 0 * fem),
-                                                      child: Text(
-                                                        'Somente o Necessario',
-                                                        textAlign: TextAlign.center,
-                                                        style: GoogleFonts.poppins(
-                                                          fontSize: 64 * ffem,
-                                                          fontWeight: FontWeight.w600,
-                                                          height: 1.5 * ffem / fem,
-                                                          fontStyle: FontStyle.italic,
-                                                          color: const Color(0xff000000),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      margin: EdgeInsets.fromLTRB(200 * fem, 50 * fem, 0 * fem, 25 * fem),
-                                                      height: 400 * fem,
-                                                      child: ListView(
-                                                        scrollDirection: Axis.horizontal,
-                                                        children: [
-                                                          SizedBox(
-                                                            width: 400 * fem,
-                                                            child: Padding(
-                                                              padding: const EdgeInsets.all(8.0),
-                                                              child: Container(
-                                                                decoration: BoxDecoration(
-                                                                  borderRadius: BorderRadius.circular(50 * fem),
-                                                                  color: const Color(0xffffffff),
-                                                                  boxShadow: [
-                                                                    BoxShadow(
-                                                                      color: const Color(0x82615b69),
-                                                                      offset: Offset(0 * fem, 7 * fem),
-                                                                      blurRadius: 8 * fem,
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                                child: Container(
-                                                                  margin: EdgeInsets.fromLTRB(100 * fem, 100 * fem, 100 * fem, 100 * fem),
-                                                                  child: Image.asset(
-                                                                    'assets/images/layers.png',
-                                                                    fit: BoxFit.cover,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    Center(
-                                                      // aprendaacontrolarledscomfacili (255:12)
-                                                      child: Container(
-                                                        margin: EdgeInsets.fromLTRB(13 * fem, 0 * fem, 0 * fem, 100 * fem),
-                                                        constraints: BoxConstraints(
-                                                          maxWidth: 400 * fem,
-                                                        ),
+                          Container(
+                            margin: EdgeInsets.fromLTRB(25 * fem, 0 * fem, 0 * fem, 50 * fem),
+                            height: 400 * fem,
+                            child: ListView(
+                              scrollDirection: Axis.horizontal,
+                              children: [
+                                SizedBox(
+                                  width: 400 * fem,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: InkWell(
+                                      onTap: () {
+                                        showDialog(
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return Dialog(
+                                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)), //this right here
+                                                  child: SizedBox(
+                                                    height: 800 * fem,
+                                                    width: 800 * fem,
+                                                    child: ListView(children: [
+                                                      Container(
+                                                        margin: EdgeInsets.fromLTRB(0 * fem, 50 * fem, 0 * fem, 0 * fem),
                                                         child: Text(
-                                                          'Conclua todos os tutoriais de Conceitos Basicos',
+                                                          'Somente o Necessario',
                                                           textAlign: TextAlign.center,
                                                           style: GoogleFonts.poppins(
-                                                            fontSize: 45 * ffem,
-                                                            fontWeight: FontWeight.w300,
+                                                            fontSize: 64 * ffem,
+                                                            fontWeight: FontWeight.w600,
                                                             height: 1.5 * ffem / fem,
+                                                            fontStyle: FontStyle.italic,
                                                             color: const Color(0xff000000),
                                                           ),
                                                         ),
                                                       ),
-                                                    ),
-                                                  ]),
-                                                ));
-                                          });
-                                    },
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50 * fem),
-                                        color: const Color(0xffffffff),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: const Color(0x82615b69),
-                                            offset: Offset(0 * fem, 7 * fem),
-                                            blurRadius: 8 * fem,
-                                          ),
-                                        ],
-                                      ),
+                                                      Container(
+                                                        margin: EdgeInsets.fromLTRB(200 * fem, 50 * fem, 0 * fem, 25 * fem),
+                                                        height: 400 * fem,
+                                                        child: ListView(
+                                                          scrollDirection: Axis.horizontal,
+                                                          children: [
+                                                            SizedBox(
+                                                              width: 400 * fem,
+                                                              child: Padding(
+                                                                padding: const EdgeInsets.all(8.0),
+                                                                child: Container(
+                                                                  decoration: BoxDecoration(
+                                                                    borderRadius: BorderRadius.circular(50 * fem),
+                                                                    color: const Color(0xffffffff),
+                                                                    boxShadow: [
+                                                                      BoxShadow(
+                                                                        color: const Color(0x82615b69),
+                                                                        offset: Offset(0 * fem, 7 * fem),
+                                                                        blurRadius: 8 * fem,
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                  child: Container(
+                                                                    margin: EdgeInsets.fromLTRB(100 * fem, 100 * fem, 100 * fem, 100 * fem),
+                                                                    child: Image.asset(
+                                                                      'assets/images/layers.png',
+                                                                      fit: BoxFit.cover,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      Center(
+                                                        // aprendaacontrolarledscomfacili (255:12)
+                                                        child: Container(
+                                                          margin: EdgeInsets.fromLTRB(13 * fem, 0 * fem, 0 * fem, 100 * fem),
+                                                          constraints: BoxConstraints(
+                                                            maxWidth: 400 * fem,
+                                                          ),
+                                                          child: Text(
+                                                            'Conclua todos os tutoriais de Conceitos Basicos',
+                                                            textAlign: TextAlign.center,
+                                                            style: GoogleFonts.poppins(
+                                                              fontSize: 45 * ffem,
+                                                              fontWeight: FontWeight.w300,
+                                                              height: 1.5 * ffem / fem,
+                                                              color: const Color(0xff000000),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ]),
+                                                  ));
+                                            });
+                                      },
                                       child: Container(
-                                        margin: EdgeInsets.fromLTRB(100 * fem, 100 * fem, 100 * fem, 100 * fem),
-                                        child: Image.asset(
-                                          'assets/images/layers.png',
-                                          fit: BoxFit.cover,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(50 * fem),
+                                          color: const Color(0xffffffff),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: const Color(0x82615b69),
+                                              offset: Offset(0 * fem, 7 * fem),
+                                              blurRadius: 8 * fem,
+                                            ),
+                                          ],
+                                        ),
+                                        child: Container(
+                                          margin: EdgeInsets.fromLTRB(100 * fem, 100 * fem, 100 * fem, 100 * fem),
+                                          child: Image.asset(
+                                            'assets/images/layers.png',
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              SizedBox(
-                                width: 400 * fem,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: InkWell(
-                                    onTap: () {
-                                      showDialog(
-                                          context: context,
-                                          builder: (BuildContext context) {
-                                            return Dialog(
-                                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)), //this right here
-                                                child: SizedBox(
-                                                  height: 800 * fem,
-                                                  width: 800 * fem,
-                                                  child: ListView(children: [
-                                                    Container(
-                                                      margin: EdgeInsets.fromLTRB(0 * fem, 50 * fem, 0 * fem, 0 * fem),
-                                                      child: Text(
-                                                        'Que Haja Luz',
-                                                        textAlign: TextAlign.center,
-                                                        style: GoogleFonts.poppins(
-                                                          fontSize: 64 * ffem,
-                                                          fontWeight: FontWeight.w600,
-                                                          height: 1.5 * ffem / fem,
-                                                          fontStyle: FontStyle.italic,
-                                                          color: const Color(0xff000000),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      margin: EdgeInsets.fromLTRB(200 * fem, 50 * fem, 0 * fem, 25 * fem),
-                                                      height: 400 * fem,
-                                                      child: ListView(
-                                                        scrollDirection: Axis.horizontal,
-                                                        children: [
-                                                          SizedBox(
-                                                            width: 400 * fem,
-                                                            child: Padding(
-                                                              padding: const EdgeInsets.all(8.0),
-                                                              child: Container(
-                                                                decoration: BoxDecoration(
-                                                                  borderRadius: BorderRadius.circular(50 * fem),
-                                                                  color: const Color(0xffffffff),
-                                                                  boxShadow: [
-                                                                    BoxShadow(
-                                                                      color: const Color(0x82615b69),
-                                                                      offset: Offset(0 * fem, 7 * fem),
-                                                                      blurRadius: 8 * fem,
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                                child: Container(
-                                                                  margin: EdgeInsets.fromLTRB(100 * fem, 100 * fem, 100 * fem, 100 * fem),
-                                                                  child: Image.asset(
-                                                                    'assets/images/led.png',
-                                                                    fit: BoxFit.cover,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    Center(
-                                                      // aprendaacontrolarledscomfacili (255:12)
-                                                      child: Container(
-                                                        margin: EdgeInsets.fromLTRB(13 * fem, 0 * fem, 0 * fem, 100 * fem),
-                                                        constraints: BoxConstraints(
-                                                          maxWidth: 400 * fem,
-                                                        ),
+                                SizedBox(
+                                  width: 400 * fem,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: InkWell(
+                                      onTap: () {
+                                        showDialog(
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return Dialog(
+                                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)), //this right here
+                                                  child: SizedBox(
+                                                    height: 800 * fem,
+                                                    width: 800 * fem,
+                                                    child: ListView(children: [
+                                                      Container(
+                                                        margin: EdgeInsets.fromLTRB(0 * fem, 50 * fem, 0 * fem, 0 * fem),
                                                         child: Text(
-                                                          'Conclua o tutorial do LED',
+                                                          'Que Haja Luz',
                                                           textAlign: TextAlign.center,
                                                           style: GoogleFonts.poppins(
-                                                            fontSize: 45 * ffem,
-                                                            fontWeight: FontWeight.w300,
+                                                            fontSize: 64 * ffem,
+                                                            fontWeight: FontWeight.w600,
                                                             height: 1.5 * ffem / fem,
+                                                            fontStyle: FontStyle.italic,
                                                             color: const Color(0xff000000),
                                                           ),
                                                         ),
                                                       ),
-                                                    ),
-                                                  ]),
-                                                ));
-                                          });
-                                    },
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50 * fem),
-                                        color: const Color(0xffffffff),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: const Color(0x82615b69),
-                                            offset: Offset(0 * fem, 7 * fem),
-                                            blurRadius: 8 * fem,
-                                          ),
-                                        ],
-                                      ),
+                                                      Container(
+                                                        margin: EdgeInsets.fromLTRB(200 * fem, 50 * fem, 0 * fem, 25 * fem),
+                                                        height: 400 * fem,
+                                                        child: ListView(
+                                                          scrollDirection: Axis.horizontal,
+                                                          children: [
+                                                            SizedBox(
+                                                              width: 400 * fem,
+                                                              child: Padding(
+                                                                padding: const EdgeInsets.all(8.0),
+                                                                child: Container(
+                                                                  decoration: BoxDecoration(
+                                                                    borderRadius: BorderRadius.circular(50 * fem),
+                                                                    color: const Color(0xffffffff),
+                                                                    boxShadow: [
+                                                                      BoxShadow(
+                                                                        color: const Color(0x82615b69),
+                                                                        offset: Offset(0 * fem, 7 * fem),
+                                                                        blurRadius: 8 * fem,
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                  child: Container(
+                                                                    margin: EdgeInsets.fromLTRB(100 * fem, 100 * fem, 100 * fem, 100 * fem),
+                                                                    child: Image.asset(
+                                                                      'assets/images/led.png',
+                                                                      fit: BoxFit.cover,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      Center(
+                                                        // aprendaacontrolarledscomfacili (255:12)
+                                                        child: Container(
+                                                          margin: EdgeInsets.fromLTRB(13 * fem, 0 * fem, 0 * fem, 100 * fem),
+                                                          constraints: BoxConstraints(
+                                                            maxWidth: 400 * fem,
+                                                          ),
+                                                          child: Text(
+                                                            'Conclua o tutorial do LED',
+                                                            textAlign: TextAlign.center,
+                                                            style: GoogleFonts.poppins(
+                                                              fontSize: 45 * ffem,
+                                                              fontWeight: FontWeight.w300,
+                                                              height: 1.5 * ffem / fem,
+                                                              color: const Color(0xff000000),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ]),
+                                                  ));
+                                            });
+                                      },
                                       child: Container(
-                                        margin: EdgeInsets.fromLTRB(100 * fem, 100 * fem, 100 * fem, 100 * fem),
-                                        child: Image.asset(
-                                          'assets/images/led.png',
-                                          fit: BoxFit.cover,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(50 * fem),
+                                          color: const Color(0xffffffff),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: const Color(0x82615b69),
+                                              offset: Offset(0 * fem, 7 * fem),
+                                              blurRadius: 8 * fem,
+                                            ),
+                                          ],
+                                        ),
+                                        child: Container(
+                                          margin: EdgeInsets.fromLTRB(100 * fem, 100 * fem, 100 * fem, 100 * fem),
+                                          child: Image.asset(
+                                            'assets/images/led.png',
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          // line3nxf (264:59)
-                          margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 30 * fem),
-                          width: 1040 * fem,
-                          height: 1 * fem,
-                          decoration: const BoxDecoration(
-                            color: Color(0xff000000),
-                          ),
-                        ),
-                        Container(
-                          // configuraes7zw (264:57)
-                          margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 35 * fem),
-                          child: Center(
-                            child: Text(
-                              'Configurações',
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.poppins(
-                                fontSize: 52 * ffem,
-                                fontWeight: FontWeight.w600,
-                                height: 1.5 * ffem / fem,
-                                fontStyle: FontStyle.italic,
-                                color: const Color(0xff000000),
-                              ),
+                              ],
                             ),
                           ),
-                        ),
-                        Container(
-                          // autogroupfwm9pPZ (4s1njwRgb8zPHmyepJfwM9)
-                          margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 35 * fem),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50 * fem),
-                          ),
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xffe51f43),
-                              minimumSize: Size(919 * fem, 125 * fem),
-                              elevation: 0,
-                              shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                          Container(
+                            // line3nxf (264:59)
+                            margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 30 * fem),
+                            width: 1040 * fem,
+                            height: 1 * fem,
+                            decoration: const BoxDecoration(
+                              color: Color(0xff000000),
                             ),
-                            onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => ModelDisp()));
-                            },
-                            child: Text(
-                              'Conta',
-                              style: GoogleFonts.poppins(
-                                fontSize: 48 * ffem,
-                                fontWeight: FontWeight.w400,
-                                height: 1.5 * ffem / fem,
-                                color: Colors.white,
+                          ),
+                          Container(
+                            // configuraes7zw (264:57)
+                            margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 35 * fem),
+                            child: Center(
+                              child: Text(
+                                'Configurações',
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.poppins(
+                                  fontSize: 52 * ffem,
+                                  fontWeight: FontWeight.w600,
+                                  height: 1.5 * ffem / fem,
+                                  fontStyle: FontStyle.italic,
+                                  color: const Color(0xff000000),
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        Container(
-                          // autogroupfwm9pPZ (4s1njwRgb8zPHmyepJfwM9)
-                          margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 125 * fem),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50 * fem),
-                          ),
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xffe51f43),
-                              minimumSize: Size(919 * fem, 125 * fem),
-                              elevation: 0,
-                              shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                          Container(
+                            // autogroupfwm9pPZ (4s1njwRgb8zPHmyepJfwM9)
+                            margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 35 * fem),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50 * fem),
                             ),
-                            onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => ModelDisp()));
-                            },
-                            child: Text(
-                              'Armazenamento',
-                              style: GoogleFonts.poppins(
-                                fontSize: 48 * ffem,
-                                fontWeight: FontWeight.w400,
-                                height: 1.5 * ffem / fem,
-                                color: Colors.white,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: const Color(0xffe51f43),
+                                minimumSize: Size(919 * fem, 125 * fem),
+                                elevation: 0,
+                                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                              ),
+                              onPressed: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => ModelDisp()));
+                              },
+                              child: Text(
+                                'Conta',
+                                style: GoogleFonts.poppins(
+                                  fontSize: 48 * ffem,
+                                  fontWeight: FontWeight.w400,
+                                  height: 1.5 * ffem / fem,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
-                          child: OutlinedButton(
-                            style: OutlinedButton.styleFrom(
-                              backgroundColor: const Color(0xffe51f43),
-                              side: const BorderSide(color: Color(0xffe51f43), width: 1),
-                              minimumSize: Size(919 * fem, 125 * fem),
-                              shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                          Container(
+                            // autogroupfwm9pPZ (4s1njwRgb8zPHmyepJfwM9)
+                            margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 35 * fem),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50 * fem),
                             ),
-                            onPressed: () {
-                              FirebaseAuth.instance.signOut().then((value){
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Login()));
-                                
-                              });
-                            },
-                            child: Text(
-                              'Sair da Conta',
-                              style: GoogleFonts.poppins(
-                                fontSize: 48 * ffem,
-                                fontWeight: FontWeight.w400,
-                                height: 1.5 * ffem / fem,
-                                color: const Color(0xffe51f43),
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: const Color(0xffe51f43),
+                                minimumSize: Size(919 * fem, 125 * fem),
+                                elevation: 0,
+                                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                              ),
+                              onPressed: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => ModelDisp()));
+                              },
+                              child: Text(
+                                'Armazenamento',
+                                style: GoogleFonts.poppins(
+                                  fontSize: 48 * ffem,
+                                  fontWeight: FontWeight.w400,
+                                  height: 1.5 * ffem / fem,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                          Container(
+                            margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
+                            child: OutlinedButton(
+                              style: OutlinedButton.styleFrom(
+                                backgroundColor: const Color(0xffe51f43),
+                                side: const BorderSide(color: Color(0xffe51f43), width: 1),
+                                minimumSize: Size(919 * fem, 125 * fem),
+                                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                              ),
+                              onPressed: () {
+                                FirebaseAuth.instance.signOut().then((value){
+                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Login()));
+                                  
+                                });
+                              },
+                              child: Text(
+                                'Sair da Conta',
+                                style: GoogleFonts.poppins(
+                                  fontSize: 48 * ffem,
+                                  fontWeight: FontWeight.w400,
+                                  height: 1.5 * ffem / fem,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           );
