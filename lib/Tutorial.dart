@@ -17,7 +17,20 @@ void main() {
   );
 }
 
-class Tutorial extends StatelessWidget {
+class Tutorial extends StatefulWidget {
+  @override
+  State<Tutorial> createState() => _TutorialState();
+}
+
+class _TutorialState extends State<Tutorial> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,8 +1,24 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Question {
   final String questionText;
   final List<Answer> answersList;
 
   Question(this.questionText, this.answersList);
+
+  Map<String, dynamic> toMap(){
+    return {
+      'questionText': questionText,
+      'answersList': answersList.map((e) => e.toMap()).toList(),
+    };
+  }
+
+  factory Question.fromMap(Map<String, dynamic> map){
+    return Question(
+      map['questionText'],
+      List<Answer>.from(map['answersList'].map((a) => Answer.fromMap(a))
+    ));
+  }
 }
 
 class Answer {
@@ -10,6 +26,57 @@ class Answer {
   final bool isCorrect;
 
   Answer(this.answerText, this.isCorrect);
+
+  Map<String, dynamic> toMap(){
+    return {
+      'answerText': answerText,
+      'isCorrect': isCorrect,
+    };
+  }
+
+  factory Answer.fromMap(Map<String, dynamic> map){
+    return Answer(
+      map['answerText'],
+      map['isCorrect'],
+    );
+  }
+}
+
+class Questions{
+  final FirebaseFirestore _db = FirebaseFirestore.instance;
+
+  Stream<List<Question>> getQuestions(){
+    return _db.collection('questions').snapshots().map((snapshot) => snapshot.docs.map((doc) => Question.fromMap(doc.data())).toList());
+  } 
+
+  Future<void> addQuestion(Question question) async {
+    await _db.collection('questions').add(question.toMap());
+  }
+
+  Future<void> removeQuestion(Question question) async {
+    final snapshot = await _db
+        .collection('questions')
+        .where('questionText', isEqualTo: question.questionText)
+        .get();
+    snapshot.docs.first.reference.delete();
+  }
+
+  Future<void> updateQuestion(Question oldQuestion, Question newQuestion) async {
+    final snapshot = await _db
+        .collection('questions')
+        .where('questionText', isEqualTo: oldQuestion.questionText)
+        .get();
+    snapshot.docs.first.reference.update(newQuestion.toMap());
+  }
+
+  Future<void> clearQuestions() async {
+    final snapshot = await _db.collection('questions').get();
+    for (DocumentSnapshot doc in snapshot.docs) {
+      doc.reference.delete();
+    }
+  }
+  
+
 }
 
 List<Question> getQuestions() {
