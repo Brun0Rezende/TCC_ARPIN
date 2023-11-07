@@ -392,7 +392,7 @@ class UserProfile extends StatelessWidget {
                                 shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
                               ),
                               onPressed: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => ModelDisp()));
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => const ModelDisp()));
                               },
                               child: Text(
                                 'Conta',
@@ -419,7 +419,7 @@ class UserProfile extends StatelessWidget {
                                 shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
                               ),
                               onPressed: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => ModelDisp()));
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => const ModelDisp()));
                               },
                               child: Text(
                                 'Armazenamento',

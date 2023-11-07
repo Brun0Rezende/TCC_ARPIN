@@ -1,8 +1,8 @@
-import 'package:ar_pin/cadastro_view.dart';
+import 'cadastro_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'home_page.dart';
+import '../home_page.dart';
 class Login extends StatefulWidget {
   const Login({super.key});
 

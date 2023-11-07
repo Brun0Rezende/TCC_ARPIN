@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'home_page.dart';
 import 'login.dart';
 
 class Cadastro extends StatefulWidget {

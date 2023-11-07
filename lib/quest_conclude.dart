@@ -1,9 +1,9 @@
-import 'package:ar_pin/tutorial.dart';
+import 'package:ar_pin/tutoriais/led/tutorial_led.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'home_page.dart';
 import 'user_profile.dart';
-import 'quest.dart';
+import 'tutoriais/led/quest_led.dart';
 
 class QuestConcluido extends StatelessWidget {
   final int score;

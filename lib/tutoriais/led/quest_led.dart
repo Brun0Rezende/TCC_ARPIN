@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'home_page.dart';
-import 'user_profile.dart';
-import 'quest_conclude.dart';
-import 'question_model.dart';
+import '../../home_page.dart';
+import '../../user_profile.dart';
+import '../../quest_conclude.dart';
+import 'question_model_led.dart';
 
 class Quest extends StatefulWidget {
   const Quest({super.key});
@@ -88,7 +88,7 @@ class _QuestState extends State<Quest> {
                 fontWeight: FontWeight.w700,
                 height: 1.5 * ffem / fem,
                 fontStyle: FontStyle.italic,
-                color: Color(0xff000000),
+                color: const Color(0xff000000),
               ),
             ),
           ),
@@ -99,7 +99,7 @@ class _QuestState extends State<Quest> {
             fontSize: 48 * ffem,
             fontWeight: FontWeight.w400,
             height: 1.5 * ffem / fem,
-            color: Color(0xff000000),
+            color: const Color(0xff000000),
           ),
         ),
         const SizedBox(height: 20),
@@ -117,7 +117,7 @@ class _QuestState extends State<Quest> {
                 fontSize: 54 * ffem,
                 fontWeight: FontWeight.w400,
                 height: 1.5 * ffem / fem,
-                color: Color(0xff000000),
+                color: const Color(0xff000000),
               ),
             ),
           ),
@@ -145,11 +145,9 @@ class _QuestState extends State<Quest> {
         margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 75 * fem),
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            minimumSize: Size(920 * fem, 125 * fem),
+            foregroundColor: isSelected ? Colors.white : Colors.black, backgroundColor: isSelected ? const Color(0xffe51f43) : const Color(0xffDAD1E4), minimumSize: Size(920 * fem, 125 * fem),
             elevation: 3,
             shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
-            primary: isSelected ? Color(0xffe51f43) : Color(0xffDAD1E4),
-            onPrimary: isSelected ? Colors.white : Colors.black,
           ),
           onPressed: () {
             if (answer.isCorrect) {
@@ -192,8 +190,7 @@ class _QuestState extends State<Quest> {
           height: 150 * fem,
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-              primary: Color(0xffe51f43),
-              onPrimary: Colors.white,
+              foregroundColor: Colors.white, backgroundColor: const Color(0xffe51f43),
             ),
             onPressed: () {
               print('_nextButton: correct=  $correct');

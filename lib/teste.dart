@@ -17,7 +17,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Alterando o estado da variável'),
+          title: const Text('Alterando o estado da variável'),
         ),
         body: Center(
           child: Column(
@@ -28,7 +28,7 @@ class _MyAppState extends State<MyApp> {
                   // Chamando a função para alterar o estado da variável
                   alterarEstadoVariavel();
                 },
-                child: Text('Alterar Estado da Variável'),
+                child: const Text('Alterar Estado da Variável'),
               ),
               Text('Valor da variável: $minhaVariavelBool'),
             ],

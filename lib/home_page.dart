@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'tutorial.dart';
+import 'tutoriais/led/tutorial_led.dart';
 import 'modelos_disponiveis.dart';
 import 'user_profile.dart';
-import 'tutorial_alter.dart';
+import 'admin/tutorial/tutorial_alter.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

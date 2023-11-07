@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'home_page.dart';
-import 'user_profile.dart';
-import 'material_didatico.dart';
-import 'quest.dart';
-import 'baixar_modelo.dart';
+import '../../home_page.dart';
+import '../../user_profile.dart';
+import 'material_didatico_led.dart';
+import 'quest_led.dart';
+import '../../baixar_modelo.dart';
 
 void main() {
   runApp(
@@ -87,10 +87,10 @@ class _TutorialState extends State<Tutorial> {
                               child: Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(50 * fem),
-                                  color: Color(0xffffffff),
+                                  color: const Color(0xffffffff),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Color(0x82615b69),
+                                      color: const Color(0x82615b69),
                                       offset: Offset(0 * fem, 7 * fem),
                                       blurRadius: 8 * fem,
                                     ),
@@ -120,7 +120,7 @@ class _TutorialState extends State<Tutorial> {
                           fontWeight: FontWeight.w600,
                           height: 1.5 * ffem / fem,
                           fontStyle: FontStyle.italic,
-                          color: Color(0xff000000),
+                          color: const Color(0xff000000),
                         ),
                       ),
                     ),
@@ -136,7 +136,7 @@ class _TutorialState extends State<Tutorial> {
                                 fontSize: 45 * ffem,
                                 fontWeight: FontWeight.w600,
                                 height: 1.5 * ffem / fem,
-                                color: Color(0xff000000),
+                                color: const Color(0xff000000),
                               ),
                             ),
                           ),
@@ -154,7 +154,7 @@ class _TutorialState extends State<Tutorial> {
                                   fontSize: 44 * ffem,
                                   fontWeight: FontWeight.w300,
                                   height: 1.5 * ffem / fem,
-                                  color: Color(0xff000000),
+                                  color: const Color(0xff000000),
                                 ),
                               ),
                             ),
@@ -172,13 +172,13 @@ class _TutorialState extends State<Tutorial> {
                               margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 100 * fem),
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  primary: Color(0xffe51f43),
+                                  primary: const Color(0xffe51f43),
                                   minimumSize: Size(919 * fem, 125 * fem),
                                   elevation: 0,
                                   shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
                                 ),
                                 onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => MaterialDidatico()));
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => const MaterialDidatico()));
                                 },
                                 child: Text(
                                   'Iniciar',
@@ -215,7 +215,7 @@ class _TutorialState extends State<Tutorial> {
                                   fontWeight: FontWeight.w700,
                                   height: 1.5 * ffem / fem,
                                   fontStyle: FontStyle.italic,
-                                  color: Color(0xff000000),
+                                  color: const Color(0xff000000),
                                 ),
                               ),
                             ),
@@ -224,13 +224,13 @@ class _TutorialState extends State<Tutorial> {
                               margin: EdgeInsets.fromLTRB(0 * fem, 35 * fem, 0 * fem, 0 * fem),
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  primary: Color(0xffe51f43),
+                                  backgroundColor: const Color(0xffe51f43),
                                   minimumSize: Size(919 * fem, 125 * fem),
                                   elevation: 0,
                                   shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
                                 ),
                                 onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => MaterialDidatico()));
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => const MaterialDidatico()));
                                 },
                                 child: Text(
                                   'Material Didático',
@@ -248,7 +248,7 @@ class _TutorialState extends State<Tutorial> {
                               margin: EdgeInsets.fromLTRB(0 * fem, 35 * fem, 0 * fem, 0 * fem),
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  primary: Color(0xffe51f43),
+                                  primary: const Color(0xffe51f43),
                                   minimumSize: Size(919 * fem, 125 * fem),
                                   elevation: 0,
                                   shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
@@ -272,13 +272,13 @@ class _TutorialState extends State<Tutorial> {
                               margin: EdgeInsets.fromLTRB(0 * fem, 35 * fem, 0 * fem, 0 * fem),
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  primary: Color(0xffe51f43),
+                                  primary: const Color(0xffe51f43),
                                   minimumSize: Size(919 * fem, 125 * fem),
                                   elevation: 0,
                                   shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
                                 ),
                                 onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => BXModelo()));
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => const BXModelo()));
                                 },
                                 child: Text(
                                   'Visualizar Projeto',

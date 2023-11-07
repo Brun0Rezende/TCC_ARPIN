@@ -2,9 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sticky_headers/sticky_headers.dart';
-import 'home_page.dart';
-import 'quest.dart';
-import 'user_profile.dart';
+import '../../home_page.dart';
+import 'quest_led.dart';
+import '../../user_profile.dart';
 
 class MaterialDidatico extends StatefulWidget {
   const MaterialDidatico({super.key});

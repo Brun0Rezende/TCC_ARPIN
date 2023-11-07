@@ -1,8 +1,8 @@
-import 'package:ar_pin/quest_alter.dart';
+import 'package:ar_pin/admin/quests/quest_alter.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'home_page.dart';
-import 'user_profile.dart';
+import '../../home_page.dart';
+import '../../user_profile.dart';
 
 class QuestAdd extends StatefulWidget {
   const QuestAdd({super.key});
