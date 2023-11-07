@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'Tutorial.dart';
-import 'ModelosDIsp.dart';
-import 'UserProfile.dart';
-import 'TutorialAlter.dart';
+import 'tutoriais/led/tutorial_led.dart';
+import 'modelos_disponiveis.dart';
+import 'user_profile.dart';
+import 'admin/tutorial/tutorial_alter.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -22,13 +22,18 @@ class _HomePageState extends State<HomePage> {
         actions: <Widget>[
           IconButton(
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => UserProfile()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => UserProfile()));
               },
               icon: Image.asset('assets/images/user.png')),
         ],
-        title: IconButton(iconSize: 40, onPressed: null, icon: Image.asset('assets/images/led.png')),
+        title: IconButton(
+            iconSize: 40,
+            onPressed: null,
+            icon: Image.asset('assets/images/led.png')),
         centerTitle: true,
-        leading: IconButton(onPressed: null, icon: Image.asset('assets/images/White.png')),
+        leading: IconButton(
+            onPressed: null, icon: Image.asset('assets/images/White.png')),
       ),
       backgroundColor: Colors.white,
       body: LayoutBuilder(
@@ -37,13 +42,13 @@ class _HomePageState extends State<HomePage> {
           double fem = constraints.maxWidth / baseWidth;
           double ffem = fem * 0.97;
 
-          return Column(
-            children: [
+          return SingleChildScrollView(
+            child: Column(children: [
               _basicos(fem, ffem),
               _componentes(fem, ffem),
               _codigo(fem, ffem),
               _button(fem, ffem),
-            ],
+            ]),
           );
         },
       ),
@@ -96,7 +101,8 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                       child: Container(
-                        margin: EdgeInsets.fromLTRB(100 * fem, 100 * fem, 100 * fem, 100 * fem),
+                        margin: EdgeInsets.fromLTRB(
+                            100 * fem, 100 * fem, 100 * fem, 100 * fem),
                         child: Image.asset(
                           'assets/images/cube.png',
                           fit: BoxFit.cover,
@@ -125,7 +131,8 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                       child: Container(
-                        margin: EdgeInsets.fromLTRB(100 * fem, 100 * fem, 100 * fem, 100 * fem),
+                        margin: EdgeInsets.fromLTRB(
+                            100 * fem, 100 * fem, 100 * fem, 100 * fem),
                         child: Image.asset(
                           'assets/images/thunder.png',
                           fit: BoxFit.cover,
@@ -154,7 +161,8 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                       child: Container(
-                        margin: EdgeInsets.fromLTRB(100 * fem, 100 * fem, 100 * fem, 100 * fem),
+                        margin: EdgeInsets.fromLTRB(
+                            100 * fem, 100 * fem, 100 * fem, 100 * fem),
                         child: Image.asset(
                           'assets/images/resistor.png',
                           fit: BoxFit.cover,
@@ -216,7 +224,8 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                       child: Container(
-                        margin: EdgeInsets.fromLTRB(100 * fem, 100 * fem, 100 * fem, 100 * fem),
+                        margin: EdgeInsets.fromLTRB(
+                            100 * fem, 100 * fem, 100 * fem, 100 * fem),
                         child: Image.asset(
                           'assets/images/resistor.png',
                           fit: BoxFit.cover,
@@ -232,7 +241,8 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.all(8.0),
                   child: InkWell(
                     onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => Tutorial()));
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => Tutorial()));
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -247,7 +257,8 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                       child: Container(
-                        margin: EdgeInsets.fromLTRB(100 * fem, 100 * fem, 100 * fem, 100 * fem),
+                        margin: EdgeInsets.fromLTRB(
+                            100 * fem, 100 * fem, 100 * fem, 100 * fem),
                         child: Image.asset(
                           'assets/images/led.png',
                           fit: BoxFit.cover,
@@ -276,7 +287,8 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                       child: Container(
-                        margin: EdgeInsets.fromLTRB(100 * fem, 100 * fem, 100 * fem, 100 * fem),
+                        margin: EdgeInsets.fromLTRB(
+                            100 * fem, 100 * fem, 100 * fem, 100 * fem),
                         child: Image.asset(
                           'assets/images/buzzer.png',
                           fit: BoxFit.cover,
@@ -338,7 +350,8 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                       child: Container(
-                        margin: EdgeInsets.fromLTRB(100 * fem, 100 * fem, 100 * fem, 100 * fem),
+                        margin: EdgeInsets.fromLTRB(
+                            100 * fem, 100 * fem, 100 * fem, 100 * fem),
                         child: Image.asset(
                           'assets/images/text.png',
                           fit: BoxFit.cover,
@@ -367,7 +380,8 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                       child: Container(
-                        margin: EdgeInsets.fromLTRB(100 * fem, 100 * fem, 100 * fem, 100 * fem),
+                        margin: EdgeInsets.fromLTRB(
+                            100 * fem, 100 * fem, 100 * fem, 100 * fem),
                         child: Image.asset(
                           'assets/images/text.png',
                           fit: BoxFit.cover,
@@ -396,7 +410,8 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                       child: Container(
-                        margin: EdgeInsets.fromLTRB(100 * fem, 100 * fem, 100 * fem, 100 * fem),
+                        margin: EdgeInsets.fromLTRB(
+                            100 * fem, 100 * fem, 100 * fem, 100 * fem),
                         child: Image.asset(
                           'assets/images/text.png',
                           fit: BoxFit.cover,
@@ -415,6 +430,7 @@ class _HomePageState extends State<HomePage> {
 
   _button(double fem, double ffem) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Container(
           margin: EdgeInsets.fromLTRB(0 * fem, 100 * fem, 0 * fem, 0 * fem),
@@ -423,12 +439,15 @@ class _HomePageState extends State<HomePage> {
             height: 200 * fem,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: const Color(0xffe51f43),
+                //testar se dá certo ou primary color
+                backgroundColor: const Color(0xffe51f43),
                 elevation: 5,
-                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(50))),
               ),
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => ModelDisp()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const ModelDisp()));
               },
               child: Container(
                 decoration: const BoxDecoration(
@@ -449,13 +468,16 @@ class _HomePageState extends State<HomePage> {
             height: 200 * fem,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: const Color(0xffe51f43),
+                //primary ou background color?
+                backgroundColor: const Color(0xffe51f43),
                 minimumSize: Size(919 * fem, 125 * fem),
                 elevation: 5,
-                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(50))),
               ),
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => TutoAlter()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const TutoAlter()));
               },
               child: Text(
                 '+',

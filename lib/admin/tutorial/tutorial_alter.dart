@@ -1,9 +1,9 @@
-import 'package:ar_pin/QuestAdd.dart';
+import 'package:ar_pin/admin/quests/quest_add.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'HomePage.dart';
-import 'UserProfile.dart';
-import 'MDAlter.dart';
+import '../../home_page.dart';
+import '../../user_profile.dart';
+import '../md/md_alter.dart';
 
 class TutoAlter extends StatefulWidget {
   const TutoAlter({super.key});
@@ -227,7 +227,7 @@ class _TutoAlterState extends State<TutoAlter> {
               shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
             ),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => MDAlter()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const MDAlter()));
             },
             child: Row(
               children: [
@@ -265,7 +265,7 @@ class _TutoAlterState extends State<TutoAlter> {
               shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
             ),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => QuestAdd()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const QuestAdd()));
             },
             child: Row(
               children: [
@@ -316,7 +316,7 @@ class _TutoAlterState extends State<TutoAlter> {
           margin: EdgeInsets.fromLTRB(0 * fem, 50 * fem, 0 * fem, 35 * fem),
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-              primary: Color(0xffe51f43),
+              primary: const Color(0xffe51f43),
               minimumSize: Size(919 * fem, 125 * fem),
               elevation: 0,
               shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
@@ -339,8 +339,8 @@ class _TutoAlterState extends State<TutoAlter> {
           margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
           child: OutlinedButton(
             style: OutlinedButton.styleFrom(
-              primary: Color(0xffe51f43),
-              side: BorderSide(color: Color(0xffe51f43), width: 1),
+              primary: const Color(0xffe51f43),
+              side: const BorderSide(color: Color(0xffe51f43), width: 1),
               minimumSize: Size(919 * fem, 125 * fem),
               shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
             ),
@@ -351,7 +351,7 @@ class _TutoAlterState extends State<TutoAlter> {
                 fontSize: 48 * ffem,
                 fontWeight: FontWeight.w300,
                 height: 1.5 * ffem / fem,
-                color: Color(0xffe51f43),
+                color: const Color(0xffe51f43),
               ),
             ),
           ),

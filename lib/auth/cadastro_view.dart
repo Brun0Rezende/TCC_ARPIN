@@ -1,13 +1,36 @@
-import 'package:ar_pin/validators/formValidators.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'HomePage.dart';
-import 'Login.dart';
+import 'login.dart';
 
-class Cadastro extends StatelessWidget {
+class Cadastro extends StatefulWidget {
   const Cadastro({super.key});
 
+  @override
+  State<Cadastro> createState() => _CadastroState();
+}
+
+class _CadastroState extends State<Cadastro> {
+  final TextEditingController _usernameTextController = TextEditingController();
+  final TextEditingController _emailTextController = TextEditingController();
+  final TextEditingController _passwordTextController = TextEditingController();
+  final textFieldFocusNode = FocusNode();
+  bool _obscureText = false;
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+  
+
+  void _toggleObscured() {
+    setState(() {
+      _obscureText = !_obscureText;
+      //por enquanto não utilizado
+      if (textFieldFocusNode.hasPrimaryFocus) return; // If focus is on text field, dont unfocus
+      textFieldFocusNode.canRequestFocus = false;     // Prevents focus if tap on eye
+    });
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +46,8 @@ class Cadastro extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
-                  margin: EdgeInsets.fromLTRB(0 * fem, 125 * fem, 0 * fem, 0 * fem),
+                  margin:
+                      EdgeInsets.fromLTRB(0 * fem, 125 * fem, 0 * fem, 0 * fem),
                   width: 250 * fem,
                   height: 250 * fem,
                   child: Image.asset(
@@ -31,11 +55,12 @@ class Cadastro extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
-                Container(
+                SizedBox(
                   child: Column(
                     children: [
                       Container(
-                        margin: EdgeInsets.fromLTRB(0 * fem, 20 * fem, 0 * fem, 0 * fem),
+                        margin: EdgeInsets.fromLTRB(
+                            0 * fem, 20 * fem, 0 * fem, 0 * fem),
                         child: RichText(
                           textAlign: TextAlign.center,
                           text: TextSpan(
@@ -43,7 +68,7 @@ class Cadastro extends StatelessWidget {
                               fontSize: 40,
                               fontWeight: FontWeight.w300,
                               fontStyle: FontStyle.italic,
-                              color: Color(0xff000000),
+                              color: const Color(0xff000000),
                             ),
                             children: [
                               const TextSpan(
@@ -55,7 +80,7 @@ class Cadastro extends StatelessWidget {
                                   fontSize: 40,
                                   fontWeight: FontWeight.w600,
                                   fontStyle: FontStyle.italic,
-                                  color: Color(0xff000000),
+                                  color: const Color(0xff000000),
                                 ),
                               ),
                             ],
@@ -64,7 +89,8 @@ class Cadastro extends StatelessWidget {
                       ),
                       Container(
                         width: 600 * fem,
-                        margin: EdgeInsets.fromLTRB(0 * fem, 25 * fem, 0 * fem, 0 * fem),
+                        margin: EdgeInsets.fromLTRB(
+                            0 * fem, 25 * fem, 0 * fem, 0 * fem),
                         child: Text(
                           '"Porque ensinar não é apenas transmitir conhecimento!"',
                           textAlign: TextAlign.center,
@@ -81,7 +107,8 @@ class Cadastro extends StatelessWidget {
                 Column(
                   children: [
                     Container(
-                      margin: EdgeInsets.fromLTRB(0 * fem, 75 * fem, 0 * fem, 35 * fem),
+                      margin: EdgeInsets.fromLTRB(
+                          0 * fem, 75 * fem, 0 * fem, 35 * fem),
                       child: Text(
                         'Crie sua Conta',
                         textAlign: TextAlign.center,
@@ -95,27 +122,30 @@ class Cadastro extends StatelessWidget {
                     ),
                     Container(
                       // autogroupuewqg9V (4s1pqsvW2wfmvBsJLtUEwq)
-                      margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 35 * fem),
+                      margin: EdgeInsets.fromLTRB(
+                          0 * fem, 0 * fem, 0 * fem, 35 * fem),
                       width: 919 * fem,
                       height: 125 * fem,
                       decoration: BoxDecoration(
-                        color: Color(0x7fd9d1e4),
+                        color: const Color(0x7fd9d1e4),
                         borderRadius: BorderRadius.circular(50 * fem),
                       ),
                       child: TextField(
-                        maxLines: null,
+                        controller: _usernameTextController,
+                        maxLines: 1,
                         decoration: InputDecoration(
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
-                          contentPadding: EdgeInsets.fromLTRB(25 * fem, 0 * fem, 0 * fem, 0 * fem),
+                          contentPadding: EdgeInsets.fromLTRB(
+                              25 * fem, 0 * fem, 0 * fem, 0 * fem),
                           hintText: 'Nome de Usuario',
-                          hintStyle: TextStyle(color: Color(0xff000000)),
+                          hintStyle: const TextStyle(color: Color(0xff000000)),
                         ),
                         style: GoogleFonts.poppins(
                           fontSize: 48 * ffem,
                           fontWeight: FontWeight.w400,
                           height: 1.5 * ffem / fem,
-                          color: Color(0xff000000),
+                          color: const Color(0xff000000),
                         ),
                         inputFormatters: [
                           LengthLimitingTextInputFormatter(30),
@@ -124,101 +154,136 @@ class Cadastro extends StatelessWidget {
                     ),
                     Container(
                       // autogroupuewqg9V (4s1pqsvW2wfmvBsJLtUEwq)
-                      margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 35 * fem),
+                      margin: EdgeInsets.fromLTRB(
+                          0 * fem, 0 * fem, 0 * fem, 35 * fem),
                       width: 919 * fem,
                       height: 125 * fem,
                       decoration: BoxDecoration(
-                        color: Color(0x7fd9d1e4),
+                        color: const Color(0x7fd9d1e4),
                         borderRadius: BorderRadius.circular(50 * fem),
                       ),
                       child: TextField(
-                        maxLines: null,
+                        controller: _emailTextController,
+                        maxLines: 1,
                         decoration: InputDecoration(
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
-                          contentPadding: EdgeInsets.fromLTRB(25 * fem, 0 * fem, 0 * fem, 0 * fem),
+                          contentPadding: EdgeInsets.fromLTRB(
+                              25 * fem, 0 * fem, 0 * fem, 0 * fem),
                           hintText: 'Email',
-                          hintStyle: TextStyle(color: Color(0xff000000)),
+                          hintStyle: const TextStyle(color: Color(0xff000000)),
                         ),
-                        inputFormatters:[
+                        inputFormatters: [
                           LengthLimitingTextInputFormatter(50),
-                          EmailTextInputFormatter()
                         ],
                         style: GoogleFonts.poppins(
                           fontSize: 48 * ffem,
                           fontWeight: FontWeight.w400,
                           height: 1.5 * ffem / fem,
-                          color: Color(0xff000000),
+                          color: const Color(0xff000000),
                         ),
                       ),
                     ),
                     Container(
                       // autogroupuewqg9V (4s1pqsvW2wfmvBsJLtUEwq)
-                      margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 35 * fem),
+                      margin: EdgeInsets.fromLTRB(
+                          0 * fem, 0 * fem, 0 * fem, 35 * fem),
                       width: 919 * fem,
                       height: 125 * fem,
                       decoration: BoxDecoration(
-                        color: Color(0x7fd9d1e4),
+                        color: const Color(0x7fd9d1e4),
                         borderRadius: BorderRadius.circular(50 * fem),
                       ),
                       child: TextField(
-                        maxLines: null,
+                        controller: _passwordTextController,
+                        maxLines: 1,
+                        obscureText: _obscureText,
                         decoration: InputDecoration(
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
-                          contentPadding: EdgeInsets.fromLTRB(25 * fem, 0 * fem, 0 * fem, 0 * fem),
+                          contentPadding: EdgeInsets.fromLTRB(
+                              25 * fem, 0 * fem, 0 * fem, 0 * fem),
                           hintText: 'Senha',
-                          hintStyle: TextStyle(color: Color(0xff000000)),
+                          hintStyle: const TextStyle(color: Color(0xff000000)),
+                          suffixIcon: Padding(padding: const EdgeInsets.fromLTRB(0,0,4,0),
+                          child: GestureDetector(
+                            onTap: _toggleObscured,
+                            child: Icon(
+                              _obscureText                               
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                              size: 24,
+                            ),
+                          ),
+                          
+                          )
                         ),
                         inputFormatters: [
                           LengthLimitingTextInputFormatter(30),
-                          PasswordTextInputFormatter()
                         ],
                         style: GoogleFonts.poppins(
                           fontSize: 48 * ffem,
                           fontWeight: FontWeight.w400,
                           height: 1.5 * ffem / fem,
-                          color: Color(0xff000000),
+                          color: const Color(0xff000000),
                         ),
+                        
                       ),
                     ),
-                    Container(
-                      // autogroupuewqg9V (4s1pqsvW2wfmvBsJLtUEwq)
-                      margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 35 * fem),
-                      width: 919 * fem,
-                      height: 125 * fem,
-                      decoration: BoxDecoration(
-                        color: Color(0x7fd9d1e4),
-                        borderRadius: BorderRadius.circular(50 * fem),
-                      ),
-                      child: TextField(
-                        maxLines: null,
-                        decoration: InputDecoration(
-                          focusedBorder: InputBorder.none,
-                          enabledBorder: InputBorder.none,
-                          contentPadding: EdgeInsets.fromLTRB(25 * fem, 0 * fem, 0 * fem, 0 * fem),
-                          hintText: 'Confirmar Senha',
-                          hintStyle: TextStyle(color: Color(0xff000000)),
-                        ),
-                        style: GoogleFonts.poppins(
-                          fontSize: 48 * ffem,
-                          fontWeight: FontWeight.w400,
-                          height: 1.5 * ffem / fem,
-                          color: Color(0xff000000),
-                        ),
-                      ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    FlutterPwValidator(
+                      controller: _passwordTextController,
+                      minLength: 8,
+                      uppercaseCharCount: 1,
+                      numericCharCount: 1,
+                      specialCharCount: 1,
+                      width: 900 * fem,
+                      height: 150,
+                      onSuccess: () {
+                        // print("matched");
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text("Password is matched")));
+                      },
+                      onFail: () {
+                        // print("not matching");
+                      },
+                    ),
+                    const SizedBox(
+                      height: 5,
                     ),
                     Container(
-                      margin: EdgeInsets.fromLTRB(0 * fem, 45 * fem, 0 * fem, 50 * fem),
+                      margin: EdgeInsets.fromLTRB(
+                          0 * fem, 45 * fem, 0 * fem, 50 * fem),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          primary: Color(0xffe51f43),
+                          //se nao der certo, migre para primary de novo
+                          backgroundColor: const Color(0xffe51f43),
                           minimumSize: Size(919 * fem, 125 * fem),
                           elevation: 0,
-                          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                          shape: const RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(50))),
                         ),
                         onPressed: () {
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage()));
+                          FirebaseAuth.instance
+                              .createUserWithEmailAndPassword(
+                                  email: _emailTextController.text,
+                                  password: _passwordTextController.text)
+                              .then((value) {
+                            firestore
+                                .collection('users')
+                                .doc(value.user!.uid)
+                                .set({
+                              'username': _usernameTextController.text,
+                                });
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Login()));
+                          });
                         },
                         child: Text(
                           'Cadastrar-se',
@@ -235,10 +300,12 @@ class Cadastro extends StatelessWidget {
                 ),
                 Center(
                   child: Container(
-                    margin: EdgeInsets.fromLTRB(0 * fem, 100 * fem, 0 * fem, 0 * fem),
+                    margin: EdgeInsets.fromLTRB(
+                        0 * fem, 100 * fem, 0 * fem, 0 * fem),
                     child: TextButton(
                       onPressed: () {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Login()));
+                        Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(builder: (context) => const Login()));
                       },
                       style: TextButton.styleFrom(
                         padding: EdgeInsets.zero,
@@ -249,7 +316,7 @@ class Cadastro extends StatelessWidget {
                           fontSize: 45 * ffem,
                           fontWeight: FontWeight.w600,
                           height: 1.5 * ffem / fem,
-                          color: Color(0xff2473ea),
+                          color: const Color(0xff2473ea),
                           decorationColor: const Color(0xff2473ea),
                         ),
                       ),
