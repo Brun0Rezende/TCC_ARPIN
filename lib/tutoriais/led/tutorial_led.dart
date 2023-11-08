@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../home_page.dart';
 import '../../user_profile.dart';
-import 'material_didatico_led.dart';
-import 'quest_led.dart';
+import 'material_didatico.dart';
+import 'quest.dart';
 import '../../baixar_modelo.dart';
 
 void main() {
@@ -178,7 +178,7 @@ class _TutorialState extends State<Tutorial> {
                                   shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
                                 ),
                                 onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => const MaterialDidatico()));
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) =>  const MaterialDidatico(idQuest: "led", idMaterialDidatico: "arduino",)));
                                 },
                                 child: Text(
                                   'Iniciar',
@@ -230,7 +230,7 @@ class _TutorialState extends State<Tutorial> {
                                   shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
                                 ),
                                 onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => const MaterialDidatico()));
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => const MaterialDidatico(idQuest: "led", idMaterialDidatico: "arduino",)));
                                 },
                                 child: Text(
                                   'Material Didático',
@@ -254,7 +254,7 @@ class _TutorialState extends State<Tutorial> {
                                   shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
                                 ),
                                 onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => const Quest()));
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => const Quest(idQuest: "led",)));
                                 },
                                 child: Text(
                                   'Questionário',

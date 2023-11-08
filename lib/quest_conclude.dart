@@ -3,14 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'home_page.dart';
 import 'user_profile.dart';
-import 'tutoriais/led/quest_led.dart';
+import 'tutoriais/led/quest.dart';
 
-class QuestConcluido extends StatelessWidget {
+class QuestConcluido extends StatefulWidget {
+  final String idQuest;
   final int score;
   final int question;
   @override
-  const QuestConcluido({super.key, required this.score, required this.question});
+  const QuestConcluido({super.key, required this.score, required this.question, required this.idQuest});
 
+  @override
+  State<QuestConcluido> createState() => _QuestConcluidoState();
+}
+
+class _QuestConcluidoState extends State<QuestConcluido> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +49,7 @@ class QuestConcluido extends StatelessWidget {
           double baseWidth = 1040;
           double fem = constraints.maxWidth / baseWidth;
           double ffem = fem * 0.97;
-          double result = (score * 100) / question;
+          double result = (widget.score * 100) / widget.question;
           bool pass;
           if (result < 70) {
             pass = false;
@@ -73,7 +79,7 @@ class QuestConcluido extends StatelessWidget {
                               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Tutorial()));
                             }
                           : () {
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Quest()));
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Quest(idQuest: widget.idQuest,)));
                             },
                       child: Text(
                         pass ? 'Concluido' : 'Tentar Novamente',
@@ -183,7 +189,7 @@ class QuestConcluido extends StatelessWidget {
       Container(
         margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
         child: Text(
-          '$score/${question + 1}',
+          '${widget.score}/${widget.question + 1}',
           textAlign: TextAlign.center,
           style: GoogleFonts.poppins(
             fontSize: 150 * ffem,

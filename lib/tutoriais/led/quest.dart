@@ -1,23 +1,31 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../home_page.dart';
 import '../../user_profile.dart';
 import '../../quest_conclude.dart';
-import 'question_model_led.dart';
+import 'question_model.dart';
 
 class Quest extends StatefulWidget {
-  const Quest({super.key});
+  final String idQuest;
+  const Quest({super.key, required this.idQuest});
 
   @override
   State<Quest> createState() => _QuestState();
 }
 
 class _QuestState extends State<Quest> {
-  List<Question> questionList = getQuestions();
   int currentQuestionIndex = 0;
   int score = 0;
   bool correct = false;
   Answer? selectedAnswer;
+
+  // @override
+  // void initState() {
+  // List<Question> questionList = getQuestions();  
+  //   // TODO: implement initState
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -51,29 +59,45 @@ class _QuestState extends State<Quest> {
           double baseWidth = 1040;
           double fem = constraints.maxWidth / baseWidth;
           double ffem = fem * 0.97;
-
-          return SizedBox(
-            width: double.infinity,
-            child: Container(
-              // questionarioWqM (296:102)
-              padding: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
+    
+     // List<Question> questionList = getQuestionList(snapshot);
+          return FutureBuilder(
+            future: getQuestions(idQuest: widget.idQuest),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                  return const Center(
+                    child: CircularProgressIndicator(
+                        backgroundColor: Colors.lightBlueAccent),
+                  );
+              }
+              
+              List<Question> questionList = snapshot.data as List<Question>;
+                
+              return SizedBox(
               width: double.infinity,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  _questionWidget(fem, ffem),
-                  _answerList(fem, ffem),
-                  _nextButton(fem, ffem),
-                ],
+              child: Container(
+                // questionarioWqM (296:102)
+                padding: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
+                width: double.infinity,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    _questionWidget(fem, ffem, questionList),
+                    _answerList(fem, ffem, questionList),
+                    _nextButton(fem, ffem, questionList),
+                  ],
+                ),
               ),
-            ),
+            );
+            }
+            
           );
         },
       ),
     );
   }
 
-  _questionWidget(double fem, double ffem) {
+  _questionWidget(double fem, double ffem, List<Question> questionList) {
     return Column(
       children: [
         Center(
@@ -126,18 +150,18 @@ class _QuestState extends State<Quest> {
     );
   }
 
-  _answerList(double fem, double ffem) {
+  _answerList(double fem, double ffem, List<Question> questionList) {
     return Column(
       children: questionList[currentQuestionIndex]
           .answersList
           .map(
-            (e) => _answerButton(e, fem, ffem, correct),
+            (e) => _answerButton(e, fem, ffem, correct, questionList),
           )
           .toList(),
     );
   }
 
-  Widget _answerButton(Answer answer, double fem, double ffem, bool correct) {
+  Widget _answerButton(Answer answer, double fem, double ffem, bool correct, List<Question> questionList) {
     bool isSelected = answer == selectedAnswer;
 
     return Center(
@@ -177,7 +201,7 @@ class _QuestState extends State<Quest> {
     });
   }
 
-  _nextButton(double fem, double ffem) {
+  _nextButton(double fem, double ffem, List<Question> questionList) {
     bool isLastQuestion = false;
     if (currentQuestionIndex == questionList.length - 1) {
       isLastQuestion = true;
@@ -205,6 +229,7 @@ class _QuestState extends State<Quest> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => QuestConcluido(
+                              idQuest: widget.idQuest,
                               score: score,
                               question: currentQuestionIndex,
                             )));
