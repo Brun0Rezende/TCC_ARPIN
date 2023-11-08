@@ -76,7 +76,7 @@ class _QuestConcluidoState extends State<QuestConcluido> {
                       ),
                       onPressed: pass
                           ? () {
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Tutorial()));
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Tutorial(idTutorial: "led",)));
                             }
                           : () {
                               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Quest(idQuest: widget.idQuest,)));

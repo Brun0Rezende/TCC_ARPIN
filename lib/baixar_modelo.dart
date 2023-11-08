@@ -4,8 +4,9 @@ import 'home_page.dart';
 import 'user_profile.dart';
 
 class BXModelo extends StatelessWidget {
+  final String arModelFolder;
   //testar se influencia ou não a aplicação
-  const BXModelo({super.key});
+  const BXModelo({super.key, required this.arModelFolder});
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +72,7 @@ class BXModelo extends StatelessWidget {
                   SizedBox(
                     child: Center(
                       child: Text(
-                        'Exemplo de CIrcuito',
+                        'Exemplo de Circuito',
                         style: GoogleFonts.poppins(
                           fontSize: 52 * ffem,
                           fontWeight: FontWeight.w400,
@@ -102,43 +103,46 @@ class BXModelo extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Container(
-                          // frame10P99 (255:72)
-                          margin: EdgeInsets.fromLTRB(28 * fem, 0 * fem, 23 * fem, 0 * fem),
-                          padding: EdgeInsets.fromLTRB(34.5 * fem, 27 * fem, 46 * fem, 27 * fem),
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: const Color(0xffe51f43),
-                            borderRadius: BorderRadius.circular(50 * fem),
-                          ),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Container(
-                                // baixarmodeloraeas (255:71)
-                                margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 200 * fem, 0 * fem),
-                                child: Text(
-                                  'Baixar Modelo RA',
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.poppins(
-                                    fontSize: 40 * ffem,
-                                    fontWeight: FontWeight.w600,
-                                    height: 1.5 * ffem / fem,
-                                    color: const Color(0xffffffff),
+                        GestureDetector(
+                          onTap: (){},
+                          child: Container(
+                            // frame10P99 (255:72)
+                            margin: EdgeInsets.fromLTRB(28 * fem, 0 * fem, 23 * fem, 0 * fem),
+                            padding: EdgeInsets.fromLTRB(34.5 * fem, 27 * fem, 46 * fem, 27 * fem),
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: const Color(0xffe51f43),
+                              borderRadius: BorderRadius.circular(50 * fem),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Baixar Modelo RA',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.poppins(
+                                      fontSize: 40 * ffem,
+                                      fontWeight: FontWeight.w600,
+                                      height: 1.5 * ffem / fem,
+                                      color: const Color(0xffffffff),
+                                    ),
                                   ),
-                                ),
+                                  const Spacer(),
+                                  //container ou sizedbox?
+                                  SizedBox(
+                                    // download11MkB (440:3)
+                                    width: 60 * fem,
+                                    height: 60 * fem,
+                                    child: Image.asset(
+                                      'assets/images/download-1-1.png', 
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ],
                               ),
-                              //container ou sizedbox?
-                              SizedBox(
-                                // download11MkB (440:3)
-                                width: 60 * fem,
-                                height: 60 * fem,
-                                child: Image.asset(
-                                  'assets/images/download-1-1.png',
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ],
+                            ),
                           ),
                         ),
                       ],

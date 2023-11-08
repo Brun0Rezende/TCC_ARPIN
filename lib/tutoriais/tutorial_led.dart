@@ -6,30 +6,18 @@ import '../home_page.dart';
 import '../user_profile.dart';
 import '../baixar_modelo.dart';
 
-void main() {
-  runApp(
-    MaterialApp(
-      home: Directionality(
-        textDirection: TextDirection.ltr,
-        child: Tutorial(),
-      ),
-    ),
-  );
-}
 
 class Tutorial extends StatefulWidget {
+  final String idTutorial;
+  
+
+  const Tutorial({super.key, required this.idTutorial});
+
   @override
   State<Tutorial> createState() => _TutorialState();
 }
 
 class _TutorialState extends State<Tutorial> {
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +87,7 @@ class _TutorialState extends State<Tutorial> {
                                 child: Container(
                                   margin: EdgeInsets.fromLTRB(100 * fem, 100 * fem, 100 * fem, 100 * fem),
                                   child: Image.asset(
-                                    'assets/images/led.png',
+                                    'assets/images/${widget.idTutorial}.png',
                                     fit: BoxFit.cover,
                                   ),
                                 ),
@@ -113,7 +101,7 @@ class _TutorialState extends State<Tutorial> {
                       //TUTORIAL NAME
                       margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 25 * fem),
                       child: Text(
-                        'LED',
+                        widget.idTutorial.toUpperCase(),
                         textAlign: TextAlign.center,
                         style: GoogleFonts.poppins(
                           fontSize: 60 * ffem,
@@ -148,7 +136,7 @@ class _TutorialState extends State<Tutorial> {
                                 maxWidth: 837 * fem,
                               ),
                               child: Text(
-                                'Aprenda a controlar LEDs com facilidade neste tutorial Arduino. Desde o básico até conceitos avançados, você vai dominar o uso de LEDs como componentes de saída. Ilumine seu caminho para o sucesso com Arduino!',
+                                "Aprenda a controlar ${widget.idTutorial} com facilidade neste tutorial. Desde da parte mais conceitual até algumas aplicações práticas, você vai dominar o uso de ${widget.idTutorial} habilmente. Ilumine seu caminho para o sucesso com Arduíno!",
                                 textAlign: TextAlign.justify,
                                 style: GoogleFonts.poppins(
                                   fontSize: 44 * ffem,
@@ -172,13 +160,13 @@ class _TutorialState extends State<Tutorial> {
                               margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 100 * fem),
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  primary: const Color(0xffe51f43),
+                                  backgroundColor: const Color(0xffe51f43),
                                   minimumSize: Size(919 * fem, 125 * fem),
                                   elevation: 0,
                                   shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
                                 ),
                                 onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) =>  const MaterialDidatico(idQuest: "led", idMaterialDidatico: "arduino",)));
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) =>   MaterialDidatico(idQuest: widget.idTutorial, idMaterialDidatico: widget.idTutorial,)));
                                 },
                                 child: Text(
                                   'Iniciar',
@@ -230,7 +218,7 @@ class _TutorialState extends State<Tutorial> {
                                   shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
                                 ),
                                 onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => const MaterialDidatico(idQuest: "led", idMaterialDidatico: "arduino",)));
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => MaterialDidatico(idQuest: widget.idTutorial, idMaterialDidatico: widget.idTutorial,)));
                                 },
                                 child: Text(
                                   'Material Didático',
@@ -254,7 +242,7 @@ class _TutorialState extends State<Tutorial> {
                                   shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
                                 ),
                                 onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => const Quest(idQuest: "led",)));
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Quest(idQuest: widget.idTutorial,)));
                                 },
                                 child: Text(
                                   'Questionário',
@@ -278,7 +266,7 @@ class _TutorialState extends State<Tutorial> {
                                   shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
                                 ),
                                 onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => const BXModelo()));
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) =>  BXModelo(arModelFolder: widget.idTutorial,)));
                                 },
                                 child: Text(
                                   'Visualizar Projeto',

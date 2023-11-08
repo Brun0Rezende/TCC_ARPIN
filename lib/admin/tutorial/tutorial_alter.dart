@@ -40,38 +40,39 @@ class _TutoAlterState extends State<TutoAlter> {
             },
             icon: Image.asset('assets/images/arrow.png')),
       ),
+
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
           double baseWidth = 1040;
           double fem = constraints.maxWidth / baseWidth;
           double ffem = fem * 0.97;
 
-          return Column(
-            children: [
-              Container(
-                margin: EdgeInsets.fromLTRB(0 * fem, 50 * fem, 0 * fem, 25 * fem),
-                child: Text(
-                  'Alterar Tutorial',
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.poppins(
-                    fontSize: 70 * ffem,
-                    fontWeight: FontWeight.w700,
-                    height: 1.5 * ffem / fem,
-                    fontStyle: FontStyle.italic,
-                    color: const Color(0xff000000),
+          return ListView(
+            children:[
+                Container(
+                  margin: EdgeInsets.fromLTRB(0 * fem, 50 * fem, 0 * fem, 25 * fem),
+                  child: Text(
+                    'Alterar Tutorial',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.poppins(
+                      fontSize: 70 * ffem,
+                      fontWeight: FontWeight.w700,
+                      height: 1.5 * ffem / fem,
+                      fontStyle: FontStyle.italic,
+                      color: const Color(0xff000000),
+                    ),
                   ),
                 ),
-              ),
-              _icon(fem, ffem),
-              _text(fem, ffem),
-              _button_edit(fem, ffem),
-              Expanded(
-                  child: Align(
-                alignment: Alignment.bottomCenter,
-                child: _button(fem, ffem),
-              )),
-            ],
-          );
+                _icon(fem, ffem),
+                _text(fem, ffem),
+                _button_edit(fem, ffem),
+                Expanded(
+                    child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: _button(fem, ffem),
+                )),
+              ],
+            );
         },
       ),
     );

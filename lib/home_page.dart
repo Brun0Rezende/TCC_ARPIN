@@ -223,12 +223,18 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ],
                       ),
-                      child: Container(
-                        margin: EdgeInsets.fromLTRB(
-                            100 * fem, 100 * fem, 100 * fem, 100 * fem),
-                        child: Image.asset(
-                          'assets/images/resistor.png',
-                          fit: BoxFit.cover,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context) => const Tutorial(idTutorial: "resistor",)));
+                        },
+                        child: Container(
+                          margin: EdgeInsets.fromLTRB(
+                              100 * fem, 100 * fem, 100 * fem, 100 * fem),
+                          child: Image.asset(
+                            'assets/images/resistor.png',
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
@@ -242,7 +248,7 @@ class _HomePageState extends State<HomePage> {
                   child: InkWell(
                     onTap: () {
                       Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => Tutorial()));
+                          MaterialPageRoute(builder: (context) => const Tutorial(idTutorial: "led",)));
                     },
                     child: Container(
                       decoration: BoxDecoration(
