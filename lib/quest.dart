@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../home_page.dart';
 import '../../user_profile.dart';
 import '../../quest_conclude.dart';
-import 'question_model.dart';
+import 'models/question_model.dart';
 
 class Quest extends StatefulWidget {
   final String idQuest;

@@ -1,10 +1,10 @@
+import 'package:ar_pin/material_didatico.dart';
+import 'package:ar_pin/quest.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../home_page.dart';
-import '../../user_profile.dart';
-import 'material_didatico.dart';
-import 'quest.dart';
-import '../../baixar_modelo.dart';
+import '../home_page.dart';
+import '../user_profile.dart';
+import '../baixar_modelo.dart';
 
 void main() {
   runApp(

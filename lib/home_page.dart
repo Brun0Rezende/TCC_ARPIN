@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'tutoriais/led/tutorial_led.dart';
+import 'tutoriais/tutorial_led.dart';
 import 'modelos_disponiveis.dart';
 import 'user_profile.dart';
 import 'admin/tutorial/tutorial_alter.dart';
