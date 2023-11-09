@@ -197,6 +197,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  
   _componentes(double fem, double ffem) {
     return Column(
       children: [

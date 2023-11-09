@@ -10,7 +10,7 @@ Future<bool>  checkUserPermissions() async {
         await firestore.collection('users').get();
     final userData = snapshot.docs
         .where(
-            (element) => element.id == FirebaseAuth.instance.currentUser!.uid)
+            (element) => element.id == FirebaseAuth.instance.currentUser?.uid)
         .toList();
     if (userData[0].data()['permission'] == 'admin') {
       return true;
