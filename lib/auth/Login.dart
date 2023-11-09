@@ -1,8 +1,11 @@
+import 'package:flutter/cupertino.dart';
+
 import 'cadastro_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../home_page.dart';
+
 class Login extends StatefulWidget {
   const Login({super.key});
 
@@ -16,13 +19,12 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-backgroundColor: Colors.white,
+      backgroundColor: Colors.white,
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
           double baseWidth = 1040;
           double fem = constraints.maxWidth / baseWidth;
           double ffem = fem * 0.97;
-          
 
           //container ou sized box?
           return SizedBox(
@@ -34,7 +36,8 @@ backgroundColor: Colors.white,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                      margin: EdgeInsets.fromLTRB(0 * fem, 250 * fem, 0 * fem, 25 * fem),
+                      margin: EdgeInsets.fromLTRB(
+                          0 * fem, 250 * fem, 0 * fem, 25 * fem),
                       width: double.infinity,
                       child: Center(
                         // led3ji7 (440:10)
@@ -50,7 +53,8 @@ backgroundColor: Colors.white,
                     ),
                     Container(
                       // arpin4kP (107:37)
-                      margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 25 * fem),
+                      margin: EdgeInsets.fromLTRB(
+                          0 * fem, 0 * fem, 0 * fem, 25 * fem),
                       child: RichText(
                         textAlign: TextAlign.center,
                         text: TextSpan(
@@ -80,7 +84,8 @@ backgroundColor: Colors.white,
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 35 * fem),
+                      margin: EdgeInsets.fromLTRB(
+                          0 * fem, 0 * fem, 0 * fem, 35 * fem),
                       width: 919 * fem,
                       height: 125 * fem,
                       decoration: BoxDecoration(
@@ -93,7 +98,8 @@ backgroundColor: Colors.white,
                         decoration: InputDecoration(
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
-                          contentPadding: EdgeInsets.fromLTRB(25 * fem, 0 * fem, 0 * fem, 0 * fem),
+                          contentPadding: EdgeInsets.fromLTRB(
+                              25 * fem, 0 * fem, 0 * fem, 0 * fem),
                           hintText: 'Email',
                           hintStyle: const TextStyle(color: Color(0xff000000)),
                         ),
@@ -106,7 +112,8 @@ backgroundColor: Colors.white,
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 35 * fem),
+                      margin: EdgeInsets.fromLTRB(
+                          0 * fem, 0 * fem, 0 * fem, 35 * fem),
                       width: 919 * fem,
                       height: 125 * fem,
                       decoration: BoxDecoration(
@@ -119,7 +126,8 @@ backgroundColor: Colors.white,
                         decoration: InputDecoration(
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
-                          contentPadding: EdgeInsets.fromLTRB(25 * fem, 0 * fem, 0 * fem, 0 * fem),
+                          contentPadding: EdgeInsets.fromLTRB(
+                              25 * fem, 0 * fem, 0 * fem, 0 * fem),
                           hintText: 'Senha',
                           hintStyle: const TextStyle(color: Color(0xff000000)),
                         ),
@@ -132,20 +140,54 @@ backgroundColor: Colors.white,
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.fromLTRB(0 * fem, 45 * fem, 0 * fem, 25 * fem),
+                      margin: EdgeInsets.fromLTRB(
+                          0 * fem, 45 * fem, 0 * fem, 25 * fem),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           //primary ou background color?
                           backgroundColor: const Color(0xffe51f43),
                           minimumSize: Size(919 * fem, 125 * fem),
                           elevation: 0,
-                          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                          shape: const RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(50))),
                         ),
                         onPressed: () {
-                          FirebaseAuth.instance.signInWithEmailAndPassword(email: _emailTextController.text, password: _passwordTextController.text).then((value){
-                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage())).onError((error, stackTrace) {
+                          FirebaseAuth.instance
+                              .signInWithEmailAndPassword(
+                                  email: _emailTextController.text,
+                                  password: _passwordTextController.text)
+                              .then((value) {
+                            Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const HomePage()))
+                                .onError((error, stackTrace) {
                               // print(error);
                             });
+                          }).onError((error, stackTrace) {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: const Text('Erro no Login'),
+                                  content: const Text('Email ou senha incorretos...'),
+                                  actions: <Widget>[
+                                    CupertinoButton(
+                                      color: Colors.red,
+                                      onPressed: () {
+                                        Navigator.push(context, MaterialPageRoute(builder: (context) => const Login()));
+                                      },
+                                      child: const Text('Preencha novamente!'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Login()));
                           });
                         },
                         child: Text(
@@ -160,16 +202,24 @@ backgroundColor: Colors.white,
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 50 * fem),
+                      margin: EdgeInsets.fromLTRB(
+                          0 * fem, 0 * fem, 0 * fem, 50 * fem),
                       child: OutlinedButton(
                         style: OutlinedButton.styleFrom(
                           //foreground ou primary?
-                          foregroundColor: const Color(0xffe51f43), side: const BorderSide(color: Color(0xffe51f43), width: 1),
+                          foregroundColor: const Color(0xffe51f43),
+                          side: const BorderSide(
+                              color: Color(0xffe51f43), width: 1),
                           minimumSize: Size(919 * fem, 125 * fem),
-                          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                          shape: const RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(50))),
                         ),
                         onPressed: () {
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage()));
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const HomePage()));
                         },
                         child: Text(
                           'Esqueceu sua senha?',
@@ -183,10 +233,13 @@ backgroundColor: Colors.white,
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.fromLTRB(0 * fem, 200 * fem, 0 * fem, 0 * fem),
+                      margin: EdgeInsets.fromLTRB(
+                          0 * fem, 200 * fem, 0 * fem, 0 * fem),
                       child: TextButton(
                         onPressed: () {
-                          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const Cadastro()));
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (context) => const Cadastro()));
                         },
                         style: TextButton.styleFrom(
                           padding: EdgeInsets.zero,
@@ -213,4 +266,3 @@ backgroundColor: Colors.white,
     );
   }
 }
-

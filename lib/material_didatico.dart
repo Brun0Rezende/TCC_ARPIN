@@ -192,9 +192,10 @@ class _MaterialDidaticoState extends State<MaterialDidatico> {
     return StickyHeader(
       header: Container(
         //SUBTITULO
+        padding: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 130 * fem, 0 * fem),
         color: const Color(0xffffffff),
-        height: 150 * fem,
-        width: 860 * fem,
+        height: 220 * fem,
+        width: MediaQuery.of(context).size.width,
         margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 25 * fem),
         child: Center(
           child: Text(

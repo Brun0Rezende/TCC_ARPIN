@@ -117,7 +117,12 @@ class _HomePageState extends State<HomePage> {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const Tutorial(
+                                idTutorial: "eletricidade",
+                              )));
+                    },
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50 * fem),
@@ -134,7 +139,7 @@ class _HomePageState extends State<HomePage> {
                         margin: EdgeInsets.fromLTRB(
                             100 * fem, 100 * fem, 100 * fem, 100 * fem),
                         child: Image.asset(
-                          'assets/images/thunder.png',
+                          'assets/images/eletricidade.png',
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -225,8 +230,10 @@ class _HomePageState extends State<HomePage> {
                       ),
                       child: GestureDetector(
                         onTap: () {
-                          Navigator.of(context).push(
-                              MaterialPageRoute(builder: (context) => const Tutorial(idTutorial: "resistor",)));
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const Tutorial(
+                                    idTutorial: "resistor",
+                                  )));
                         },
                         child: Container(
                           margin: EdgeInsets.fromLTRB(
@@ -247,8 +254,10 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.all(8.0),
                   child: InkWell(
                     onTap: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => const Tutorial(idTutorial: "led",)));
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const Tutorial(
+                                idTutorial: "led",
+                              )));
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -279,7 +288,12 @@ class _HomePageState extends State<HomePage> {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const Tutorial(
+                                idTutorial: "buzzer",
+                              )));
+                    },
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50 * fem),
