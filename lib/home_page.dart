@@ -1,3 +1,4 @@
+import 'package:ar_pin/utils/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'tutoriais/tutorial_led.dart';
@@ -13,9 +14,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final AdminPermissions admin = AdminPermissions();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FutureBuilder(
+          future: admin.checkUserPermissions(),
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) {
+              return const ScaffoldMessenger(child: Text("Carregando..."));
+            }
+            if (snapshot.data == true) {
+              return admin.adminFloatingActionButton();
+            }
+            return const SizedBox();
+          }),
       appBar: AppBar(
         elevation: 1,
         backgroundColor: Colors.white,
@@ -449,69 +462,119 @@ class _HomePageState extends State<HomePage> {
   }
 
   _button(double fem, double ffem) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Container(
-          margin: EdgeInsets.fromLTRB(0 * fem, 100 * fem, 0 * fem, 0 * fem),
-          child: SizedBox(
-            width: 200 * fem,
-            height: 200 * fem,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                //testar se dá certo ou primary color
-                backgroundColor: const Color(0xffe51f43),
-                elevation: 5,
-                shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(50))),
-              ),
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const ModelDisp()));
-              },
-              child: Container(
-                decoration: const BoxDecoration(
-                  color: Color(0xffe51f43),
+    return FutureBuilder(
+      future: admin.checkUserPermissions(),
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) {
+          return const ScaffoldMessenger(child: Text("Carregando..."));
+        }
+
+        if (snapshot.data == true) {
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(
+                margin:
+                    EdgeInsets.fromLTRB(0 * fem, 100 * fem, 0 * fem, 0 * fem),
+                child: SizedBox(
+                  width: 200 * fem,
+                  height: 200 * fem,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      //testar se dá certo ou primary color
+                      backgroundColor: const Color(0xffe51f43),
+                      elevation: 5,
+                      shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(50))),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ModelDisp()));
+                    },
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        color: Color(0xffe51f43),
+                      ),
+                      child: Image.asset(
+                        'assets/images/camera.png',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
                 ),
-                child: Image.asset(
-                  'assets/images/camera.png',
-                  fit: BoxFit.cover,
+              ),
+              Container(
+                margin:
+                    EdgeInsets.fromLTRB(50 * fem, 100 * fem, 0 * fem, 0 * fem),
+                child: SizedBox(
+                  width: 200 * fem,
+                  height: 200 * fem,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      //primary ou background color?
+                      backgroundColor: const Color(0xffe51f43),
+                      minimumSize: Size(919 * fem, 125 * fem),
+                      elevation: 5,
+                      shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(50))),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const TutoAlter()));
+                    },
+                    child: Text(
+                      '+',
+                      style: GoogleFonts.poppins(
+                        fontSize: 125 * ffem,
+                        fontWeight: FontWeight.w400,
+                        height: 1.5 * ffem / fem,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              )
+            ],
+          );
+        }
+        return Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+          Container(
+            margin: EdgeInsets.fromLTRB(0 * fem, 100 * fem, 0 * fem, 0 * fem),
+            child: SizedBox(
+              width: 200 * fem,
+              height: 200 * fem,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  //testar se dá certo ou primary color
+                  backgroundColor: const Color(0xffe51f43),
+                  elevation: 5,
+                  shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(50))),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ModelDisp()));
+                },
+                child: Container(
+                  decoration: const BoxDecoration(
+                    color: Color(0xffe51f43),
+                  ),
+                  child: Image.asset(
+                    'assets/images/camera.png',
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
           ),
-        ),
-        Container(
-          margin: EdgeInsets.fromLTRB(50 * fem, 100 * fem, 0 * fem, 0 * fem),
-          child: SizedBox(
-            width: 200 * fem,
-            height: 200 * fem,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                //primary ou background color?
-                backgroundColor: const Color(0xffe51f43),
-                minimumSize: Size(919 * fem, 125 * fem),
-                elevation: 5,
-                shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(50))),
-              ),
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const TutoAlter()));
-              },
-              child: Text(
-                '+',
-                style: GoogleFonts.poppins(
-                  fontSize: 125 * ffem,
-                  fontWeight: FontWeight.w400,
-                  height: 1.5 * ffem / fem,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ],
+        ]);
+      },
     );
   }
 }
