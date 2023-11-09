@@ -174,7 +174,7 @@ class _LoginState extends State<Login> {
                                   content: const Text('Email ou senha incorretos...'),
                                   actions: <Widget>[
                                     CupertinoButton(
-                                      color: Colors.red,
+                                      color: const Color(0xffe51f43),
                                       onPressed: () {
                                         Navigator.push(context, MaterialPageRoute(builder: (context) => const Login()));
                                       },
