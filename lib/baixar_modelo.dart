@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'home_page.dart';
 import 'user_profile.dart';
 
@@ -11,20 +12,22 @@ class BXModelo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-            appBar: AppBar(
+      appBar: AppBar(
         elevation: 1,
         backgroundColor: Colors.white,
         actions: <Widget>[
           IconButton(
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => UserProfile()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => UserProfile()));
               },
               icon: Image.asset('assets/images/user.png')),
         ],
         title: IconButton(
             iconSize: 40,
             onPressed: () {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const HomePage()));
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const HomePage()));
             },
             icon: Image.asset('assets/images/led.png')),
         centerTitle: true,
@@ -84,14 +87,16 @@ class BXModelo extends StatelessWidget {
                   ),
                   Container(
                     // autogroupphqkkrs (4s1geN5pyBPZdEGAwYPhQK)
-                    padding: EdgeInsets.fromLTRB(198 * fem, 151 * fem, 173 * fem, 152 * fem),
+                    padding: EdgeInsets.fromLTRB(
+                        198 * fem, 151 * fem, 173 * fem, 152 * fem),
                     width: double.infinity,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
                           // image1fyq (255:58)
-                          margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 25 * fem, 250 * fem),
+                          margin: EdgeInsets.fromLTRB(
+                              0 * fem, 0 * fem, 25 * fem, 250 * fem),
                           width: 644 * fem,
                           height: 596 * fem,
                           decoration: const BoxDecoration(
@@ -104,11 +109,18 @@ class BXModelo extends StatelessWidget {
                           ),
                         ),
                         GestureDetector(
-                          onTap: (){},
+                          onTap: () {
+                            launchUrl(
+                                Uri.parse(
+                                    "https://arpin-apk.vercel.app/apk/ARPIN.apk"),
+                                mode: LaunchMode.inAppBrowserView);
+                          },
                           child: Container(
                             // frame10P99 (255:72)
-                            margin: EdgeInsets.fromLTRB(28 * fem, 0 * fem, 23 * fem, 0 * fem),
-                            padding: EdgeInsets.fromLTRB(34.5 * fem, 27 * fem, 46 * fem, 27 * fem),
+                            margin: EdgeInsets.fromLTRB(
+                                28 * fem, 0 * fem, 23 * fem, 0 * fem),
+                            padding: EdgeInsets.fromLTRB(
+                                34.5 * fem, 27 * fem, 46 * fem, 27 * fem),
                             width: double.infinity,
                             decoration: BoxDecoration(
                               color: const Color(0xffe51f43),
@@ -136,7 +148,7 @@ class BXModelo extends StatelessWidget {
                                     width: 60 * fem,
                                     height: 60 * fem,
                                     child: Image.asset(
-                                      'assets/images/download-1-1.png', 
+                                      'assets/images/download-1-1.png',
                                       fit: BoxFit.cover,
                                     ),
                                   ),

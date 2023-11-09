@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
               return const ScaffoldMessenger(child: Text("Carregando..."));
             }
             if (snapshot.data == true) {
-              return admin.adminFloatingActionButton(context);
+              return admin.adminFloatingActionButton(context, );
             }
             return const SizedBox();
           }),

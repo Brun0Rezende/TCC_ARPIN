@@ -94,7 +94,7 @@ class _LoginState extends State<Login> {
                       ),
                       child: TextField(
                         controller: _emailTextController,
-                        maxLines: null,
+                        maxLines: 1,
                         decoration: InputDecoration(
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
@@ -122,7 +122,7 @@ class _LoginState extends State<Login> {
                       ),
                       child: TextField(
                         controller: _passwordTextController,
-                        maxLines: null,
+                        maxLines: 1,
                         decoration: InputDecoration(
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
@@ -170,8 +170,8 @@ class _LoginState extends State<Login> {
                               context: context,
                               builder: (BuildContext context) {
                                 return AlertDialog(
-                                  title: const Text('Erro no Login'),
-                                  content: const Text('Email ou senha incorretos...'),
+                                  title: const Text('Erro no Login', textAlign: TextAlign.center,),
+                                  content: const Text('Email ou senha incorretos...', textAlign: TextAlign.center),
                                   actions: <Widget>[
                                     CupertinoButton(
                                       color: const Color(0xffe51f43),
