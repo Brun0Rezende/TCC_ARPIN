@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
             child: Column(children: [
               _basicos(fem, ffem),
               _componentes(fem, ffem),
-              _codigo(fem, ffem),
+              //_codigo(fem, ffem),
               _button(fem, ffem),
             ]),
           );
@@ -340,41 +340,41 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              SizedBox(
-                width: 400 * fem,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const Tutorial(
-                                idTutorial: "arduino",
-                              )));
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50 * fem),
-                        color: const Color(0xffffffff),
-                        boxShadow: [
-                          BoxShadow(
-                            color: const Color(0x82615b69),
-                            offset: Offset(0 * fem, 7 * fem),
-                            blurRadius: 8 * fem,
-                          ),
-                        ],
-                      ),
-                      child: Container(
-                        margin: EdgeInsets.fromLTRB(
-                            100 * fem, 100 * fem, 100 * fem, 100 * fem),
-                        child: Image.asset(
-                          'assets/images/arduino.png',
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              // SizedBox(
+              //   width: 400 * fem,
+              //   child: Padding(
+              //     padding: const EdgeInsets.all(8.0),
+              //     child: InkWell(
+              //       onTap: () {
+              //         Navigator.of(context).push(MaterialPageRoute(
+              //             builder: (context) => const Tutorial(
+              //                   idTutorial: "arduino",
+              //                 )));
+              //       },
+              //       child: Container(
+              //         decoration: BoxDecoration(
+              //           borderRadius: BorderRadius.circular(50 * fem),
+              //           color: const Color(0xffffffff),
+              //           boxShadow: [
+              //             BoxShadow(
+              //               color: const Color(0x82615b69),
+              //               offset: Offset(0 * fem, 7 * fem),
+              //               blurRadius: 8 * fem,
+              //             ),
+              //           ],
+              //         ),
+              //         child: Container(
+              //           margin: EdgeInsets.fromLTRB(
+              //               100 * fem, 100 * fem, 100 * fem, 100 * fem),
+              //           child: Image.asset(
+              //             'assets/images/arduino.png',
+              //             fit: BoxFit.cover,
+              //           ),
+              //         ),
+              //       ),
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),
