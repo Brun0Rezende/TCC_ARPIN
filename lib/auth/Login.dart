@@ -201,34 +201,34 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                     ),
-                    Container(
-                      margin: EdgeInsets.fromLTRB(
-                          0 * fem, 0 * fem, 0 * fem, 50 * fem),
-                      child: OutlinedButton(
-                        style: OutlinedButton.styleFrom(
-                          //foreground ou primary?
-                          foregroundColor: const Color(0xffe51f43),
-                          side: const BorderSide(
-                              color: Color(0xffe51f43), width: 1),
-                          minimumSize: Size(919 * fem, 125 * fem),
-                          shape: const RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(50))),
-                        ),
-                        onPressed: () {
+                    // Container(
+                    //   margin: EdgeInsets.fromLTRB(
+                    //       0 * fem, 0 * fem, 0 * fem, 50 * fem),
+                    //   child: OutlinedButton(
+                    //     style: OutlinedButton.styleFrom(
+                    //       //foreground ou primary?
+                    //       foregroundColor: const Color(0xffe51f43),
+                    //       side: const BorderSide(
+                    //           color: Color(0xffe51f43), width: 1),
+                    //       minimumSize: Size(919 * fem, 125 * fem),
+                    //       shape: const RoundedRectangleBorder(
+                    //           borderRadius:
+                    //               BorderRadius.all(Radius.circular(50))),
+                    //     ),
+                    //     onPressed: () {
                           
-                        },
-                        child: Text(
-                          'Esqueceu sua senha?',
-                          style: GoogleFonts.poppins(
-                            fontSize: 48 * ffem,
-                            fontWeight: FontWeight.w400,
-                            height: 1.5 * ffem / fem,
-                            color: const Color(0xffe51f43),
-                          ),
-                        ),
-                      ),
-                    ),
+                    //     },
+                    //     child: Text(
+                    //       'Esqueceu sua senha?',
+                    //       style: GoogleFonts.poppins(
+                    //         fontSize: 48 * ffem,
+                    //         fontWeight: FontWeight.w400,
+                    //         height: 1.5 * ffem / fem,
+                    //         color: const Color(0xffe51f43),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                     Container(
                       margin: EdgeInsets.fromLTRB(
                           0 * fem, 200 * fem, 0 * fem, 0 * fem),
