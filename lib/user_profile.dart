@@ -532,40 +532,6 @@ class UserProfile extends StatelessWidget {
                                         BorderRadius.all(Radius.circular(50))),
                               ),
                               onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const ModelDisp()));
-                              },
-                              child: Text(
-                                'Conta',
-                                style: GoogleFonts.poppins(
-                                  fontSize: 48 * ffem,
-                                  fontWeight: FontWeight.w400,
-                                  height: 1.5 * ffem / fem,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            // autogroupfwm9pPZ (4s1njwRgb8zPHmyepJfwM9)
-                            margin: EdgeInsets.fromLTRB(
-                                0 * fem, 0 * fem, 0 * fem, 35 * fem),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50 * fem),
-                            ),
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xffe51f43),
-                                minimumSize: Size(919 * fem, 125 * fem),
-                                elevation: 0,
-                                shape: const RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(50))),
-                              ),
-                              onPressed: () {
                                 FirebaseAuth.instance.signOut().then((value) {
                                   Navigator.pushReplacement(
                                       context,

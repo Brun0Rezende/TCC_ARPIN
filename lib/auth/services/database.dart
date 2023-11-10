@@ -47,113 +47,121 @@ class _EditableQuestTileState extends State<EditableQuestTile> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    textPergunta.text = widget.questList[widget.index]["pergunta"];
-    opcao1.text = widget.questList[widget.index]["opcao1"];
-    opcao1b.text = widget.questList[widget.index]["opcao1b"].toString();
-    opcao2.text = widget.questList[widget.index]["opcao2"];
-    opcao2b.text = widget.questList[widget.index]["opcao2b"].toString();
-    opcao3.text = widget.questList[widget.index]["opcao3"];
-    opcao3b.text = widget.questList[widget.index]["opcao3b"].toString();
-    opcao4.text = widget.questList[widget.index]["opcao4"];
-    opcao4b.text = widget.questList[widget.index]["opcao4b"].toString();
+    textPergunta.text = widget.questList[widget.index]["textPergunta"];
+    opcao1.text = widget.questList[widget.index]["opcao1"][0];
+    opcao1b.text = widget.questList[widget.index]["opcao1"][1].toString();
+    opcao2.text = widget.questList[widget.index]["opcao2"][0];
+    opcao2b.text = widget.questList[widget.index]["opcao2"][1].toString();
+    opcao3.text = widget.questList[widget.index]["opcao3"][0];
+    opcao3b.text = widget.questList[widget.index]["opcao3"][1].toString();
+    opcao4.text = widget.questList[widget.index]["opcao4"][0];
+    opcao4b.text = widget.questList[widget.index]["opcao4"][1].toString();
   }
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        Row(
-          children: [
-            TextField(
-            controller: textPergunta,
-            decoration: const InputDecoration(
-              labelText: "Pergunta",
-            ),   
-      ),
-          ],
-        ),
-        Row(
-          children: [
-            Row(
-          children: [
-            TextField(
-              controller: opcao1,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Container(
+          width: constraints.maxWidth * 0.9,
+          height: MediaQuery.of(context).size.height * 0.8,
+          child: Column(children: [
+              Row(
+              
+            children: [
+              TextField(
+              controller: textPergunta,
               decoration: const InputDecoration(
-                labelText: "1ª Opção",
+                labelText: "Pergunta",
+              ),   
               ),
-            ),
-            TextField(
-              controller: opcao1b,
-              decoration: const InputDecoration(
-                labelText: "Valor booleano",
+            ],
+          ),
+          Row(
+            children: [
+              Row(
+            children: [
+              TextField(
+                controller: opcao1,
+                decoration: const InputDecoration(
+                  labelText: "1a Opção",
+                ),
               ),
-            ),
-          ],
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Row(
-          children: [
-            TextField(
-              controller: opcao2,
-              decoration: const InputDecoration(
-                labelText: "2ª Opção",
+              TextField(
+                controller: opcao1b,
+                decoration: const InputDecoration(
+                  labelText: "Valor booleano",
+                ),
               ),
-            ),
-            TextField(
-              controller: opcao2b,
-              decoration: const InputDecoration(
-                labelText: "Valor booleano",
+            ],
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Row(
+            children: [
+              TextField(
+                controller: opcao2,
+                decoration: const InputDecoration(
+                  labelText: "2a Opção",
+                ),
               ),
-            ),
-          ],
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Row(
-          children: [
-            TextField(
-              controller: opcao3,
-              decoration: const InputDecoration(
-                labelText: "3ª Opção",
+              TextField(
+                controller: opcao2b,
+                decoration: const InputDecoration(
+                  labelText: "Valor booleano",
+                ),
               ),
-            ),
-            TextField(
-              controller: opcao3b,
-              decoration: const InputDecoration(
-                labelText: "Valor booleano",
+            ],
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Row(
+            children: [
+              TextField(
+                controller: opcao3,
+                decoration: const InputDecoration(
+                  labelText: "3a Opção",
+                ),
               ),
-            ),
-          ],
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Row(
-          children: [
-            TextField(
-              controller: opcao4,
-              decoration: const InputDecoration(
-                labelText: "4ª Opção",
+              TextField(
+                controller: opcao3b,
+                decoration: const InputDecoration(
+                  labelText: "Valor booleano",
+                ),
               ),
-            ),
-            TextField(
-              controller: opcao4b,
-              decoration: const InputDecoration(
-                labelText: "Valor booleano",
+            ],
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Row(
+            children: [
+              TextField(
+                controller: opcao4,
+                decoration: const InputDecoration(
+                  labelText: "4a Opção",
+                ),
               ),
-            ),
-          ],
-        )
-          ],
-        ),
-        Row(
-          children: [
-            _saveQuestInQuestionario(),
-          ],
-        )
-      ],
+              TextField(
+                controller: opcao4b,
+                decoration: const InputDecoration(
+                  labelText: "Valor booleano",
+                ),
+              ),
+            ],
+          )
+            ],
+          ),
+          Row(
+            children: [
+              _saveQuestInQuestionario(),
+            ],
+          )
+          ],),
+        );
+        
+      },
     );
 
 

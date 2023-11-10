@@ -202,7 +202,7 @@ class _CadastroState extends State<Cadastro> {
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
                           contentPadding: EdgeInsets.fromLTRB(
-                              25 * fem, 0 * fem, 0 * fem, 0 * fem),
+                              25 * fem, 25 * fem, 0 * fem, 0 * fem),
                           hintText: 'Senha',
                           hintStyle: const TextStyle(color: Color(0xff000000)),
                           suffixIcon: Padding(padding: const EdgeInsets.fromLTRB(0,0,4,0),

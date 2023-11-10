@@ -33,69 +33,62 @@ class _AdminQuestionarioPageState extends State<AdminQuestionarioPage> {
               if (!snapshot.hasData) {
                 return const Center(child: CircularProgressIndicator());
               }
+
               List questionarios = snapshot.data!.docs.toList();
 
-              
-                  return Column(
-                    children: [
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      const Text(
-                        "Questionário",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      ScrollablePositionedList.builder(
-                        itemCount: questionarios.length,
-                        initialScrollIndex: 1,
-                        itemBuilder: (context, index) {
-                          return Container(
-                            margin: const EdgeInsets.only(top: 4),
-                            height: 24,
-                            width: MediaQuery.of(context).size.width * 0.8,
-                            child: Row(
-                              children: [
-                                Column(
-                                  children: [
-                                    Text(
-                                      questionarios[index]["id"].toString(),
-                                      style: GoogleFonts.poppins(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ],
+              return ScrollablePositionedList.builder(
+                itemCount: questionarios.length,
+                initialScrollIndex: 0,
+                itemBuilder: (context, index) {
+                  return Container(
+                    margin: const EdgeInsets.only(top: 4),
+                    height: MediaQuery.of(context).size.height * 0.1,
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.05),
+                              child: Text(
+                                questionarios[index]["id"].toString().toUpperCase(),
+                                style: GoogleFonts.poppins(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w600,
+                                  color: const Color(0xffe51f43)
                                 ),
-                                Column(
-                                  children: <IconButton>[
-                                    IconButton(
-                                        onPressed: () {
-                                          EditQuest(
+                                textAlign: TextAlign.start,
+                              ),
+                            ),
+                          ],
+                        ),
+                        
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: <IconButton>[
+                            IconButton(
+                                onPressed: () {
+                                  Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => EditQuest(
                                               isStart: true,
                                               idQuest: questionarios[index]
                                                       ["id"]
-                                                  .toString());
-                                        },
-                                        icon: const Icon(Icons.edit)),
-                                    IconButton(
-                                        onPressed: () {},
-                                        icon: const Icon(Icons.delete)),
-                                  ],
-                                )
-                              ],
-                            ),
-                          );
-                        },
-                      )
-                    ],
+                                                  .toString())));
+                                },
+                                icon: const Icon(Icons.edit)),
+                            IconButton(
+                                onPressed: () {},
+                                icon: const Icon(Icons.delete)),
+                          ],
+                        )
+                      ],
+                    ),
                   );
-                
-              return Container();
+                },
+              );
             }));
   }
 }

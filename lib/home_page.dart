@@ -26,7 +26,9 @@ class _HomePageState extends State<HomePage> {
               return const ScaffoldMessenger(child: Text("Carregando..."));
             }
             if (snapshot.data == true) {
-              return admin.adminFloatingActionButton(context, );
+              return admin.adminFloatingActionButton(
+                context,
+              );
             }
             return const SizedBox();
           }),
@@ -166,7 +168,12 @@ class _HomePageState extends State<HomePage> {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const Tutorial(
+                                idTutorial: "cabos",
+                              )));
+                    },
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50 * fem),
@@ -183,7 +190,7 @@ class _HomePageState extends State<HomePage> {
                         margin: EdgeInsets.fromLTRB(
                             100 * fem, 100 * fem, 100 * fem, 100 * fem),
                         child: Image.asset(
-                          'assets/images/resistor.png',
+                          'assets/images/cabos.png',
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -198,7 +205,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  
   _componentes(double fem, double ffem) {
     return Column(
       children: [
@@ -326,6 +332,41 @@ class _HomePageState extends State<HomePage> {
                             100 * fem, 100 * fem, 100 * fem, 100 * fem),
                         child: Image.asset(
                           'assets/images/buzzer.png',
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 400 * fem,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const Tutorial(
+                                idTutorial: "arduino",
+                              )));
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50 * fem),
+                        color: const Color(0xffffffff),
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color(0x82615b69),
+                            offset: Offset(0 * fem, 7 * fem),
+                            blurRadius: 8 * fem,
+                          ),
+                        ],
+                      ),
+                      child: Container(
+                        margin: EdgeInsets.fromLTRB(
+                            100 * fem, 100 * fem, 100 * fem, 100 * fem),
+                        child: Image.asset(
+                          'assets/images/arduino.png',
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -474,41 +515,38 @@ class _HomePageState extends State<HomePage> {
         }
 
         //if (snapshot.data == true) {
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                margin:
-                    EdgeInsets.fromLTRB(0 * fem, 100 * fem, 0 * fem, 0 * fem),
-                child: SizedBox(
-                  width: 200 * fem,
-                  height: 200 * fem,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      //testar se dá certo ou primary color
-                      backgroundColor: const Color(0xffe51f43),
-                      elevation: 5,
-                      shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(50))),
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const BXModelo()));
-                    },
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        color: Color(0xffe51f43),
-                      ),
-                      child: Image.asset(
-                        'assets/images/camera.png',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+        return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Container(
+            margin: EdgeInsets.fromLTRB(0 * fem, 100 * fem, 0 * fem, 0 * fem),
+            child: SizedBox(
+              width: 200 * fem,
+              height: 200 * fem,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  //testar se dá certo ou primary color
+                  backgroundColor: const Color(0xffe51f43),
+                  elevation: 5,
+                  shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(50))),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const BXModelo()));
+                },
+                child: Container(
+                  decoration: const BoxDecoration(
+                    color: Color(0xffe51f43),
+                  ),
+                  child: Image.asset(
+                    'assets/images/camera.png',
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
+            ),
+          ),
         ]);
       },
     );

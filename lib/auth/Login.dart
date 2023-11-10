@@ -216,10 +216,7 @@ class _LoginState extends State<Login> {
                                   BorderRadius.all(Radius.circular(50))),
                         ),
                         onPressed: () {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const HomePage()));
+                          
                         },
                         child: Text(
                           'Esqueceu sua senha?',
