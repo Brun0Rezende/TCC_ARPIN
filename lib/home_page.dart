@@ -99,36 +99,36 @@ class _HomePageState extends State<HomePage> {
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: [
-              SizedBox(
-                width: 400 * fem,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: InkWell(
-                    onTap: () {},
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50 * fem),
-                        color: const Color(0xffffffff),
-                        boxShadow: [
-                          BoxShadow(
-                            color: const Color(0x82615b69),
-                            offset: Offset(0 * fem, 7 * fem),
-                            blurRadius: 8 * fem,
-                          ),
-                        ],
-                      ),
-                      child: Container(
-                        margin: EdgeInsets.fromLTRB(
-                            100 * fem, 100 * fem, 100 * fem, 100 * fem),
-                        child: Image.asset(
-                          'assets/images/cube.png',
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              // SizedBox(
+              //   width: 400 * fem,
+              //   child: Padding(
+              //     padding: const EdgeInsets.all(8.0),
+              //     child: InkWell(
+              //       onTap: () {},
+              //       child: Container(
+              //         decoration: BoxDecoration(
+              //           borderRadius: BorderRadius.circular(50 * fem),
+              //           color: const Color(0xffffffff),
+              //           boxShadow: [
+              //             BoxShadow(
+              //               color: const Color(0x82615b69),
+              //               offset: Offset(0 * fem, 7 * fem),
+              //               blurRadius: 8 * fem,
+              //             ),
+              //           ],
+              //         ),
+              //         child: Container(
+              //           margin: EdgeInsets.fromLTRB(
+              //               100 * fem, 100 * fem, 100 * fem, 100 * fem),
+              //           child: Image.asset(
+              //             'assets/images/cube.png',
+              //             fit: BoxFit.cover,
+              //           ),
+              //         ),
+              //       ),
+              //     ),
+              //   ),
+              // ),
               SizedBox(
                 width: 400 * fem,
                 child: Padding(
