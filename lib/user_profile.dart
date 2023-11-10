@@ -1,4 +1,6 @@
 import 'package:ar_pin/auth/Login.dart';
+import 'package:ar_pin/auth/services/auth_service.dart';
+import 'package:ar_pin/utils/appbar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -7,18 +9,19 @@ import 'home_page.dart';
 import 'modelos_disponiveis.dart';
 
 class UserProfile extends StatelessWidget {
-  getUsername() async{
-  FirebaseFirestore db = FirebaseFirestore.instance;
-  if(FirebaseAuth.instance.currentUser != null){
-    final snapshot = await db.collection('users').doc(FirebaseAuth.instance.currentUser!.uid).get();
-    Map data =  snapshot.data() as Map;
-    String username = data['username'].toString();
-    return username;
+  getUsername() async {
+    FirebaseFirestore db = FirebaseFirestore.instance;
+    if (FirebaseAuth.instance.currentUser != null) {
+      final snapshot = await db
+          .collection('users')
+          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .get();
+      Map data = snapshot.data() as Map;
+      String username = data['username'].toString();
+      return username;
+    }
+    return "Usuário não cadastrado";
   }
-  return "Usuário não cadastrado";
-  }
-
-  
 
   UserProfile({Key? key}) : super(key: key);
 
@@ -37,7 +40,8 @@ class UserProfile extends StatelessWidget {
         title: IconButton(
             iconSize: 40,
             onPressed: () {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const HomePage()));
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const HomePage()));
             },
             icon: Image.asset('assets/images/led.png')),
         centerTitle: true,
@@ -70,7 +74,8 @@ class UserProfile extends StatelessWidget {
                         children: [
                           Container(
                             // user1hyq (207:59)
-                            margin: EdgeInsets.fromLTRB(0 * fem, 50 * fem, 0 * fem, 40 * fem),
+                            margin: EdgeInsets.fromLTRB(
+                                0 * fem, 50 * fem, 0 * fem, 40 * fem),
                             width: 350 * fem,
                             height: 350 * fem,
                             child: Image.asset(
@@ -79,35 +84,44 @@ class UserProfile extends StatelessWidget {
                             ),
                           ),
                           StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-                            stream: firestore.collection('users').snapshots(),
-                            builder: (BuildContext context, AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
-                              if(!snapshot.hasData){
-                                return const Center(
-                                  child: CircularProgressIndicator(backgroundColor: Colors.lightBlueAccent),
-                                );
-                              }
-                              final userData = snapshot.data!.docs.where((element) => element.id == FirebaseAuth.instance.currentUser!.uid).toList();
-                              return SizedBox(
-                                // autogrouphdg3Ruq (4s1ncGynUvPaho1dtFHDg3)
-                                width: double.infinity,
-                                child: Center(
-                                  child: Text(
-                                    userData[0]['username'],
-                                    textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
-                                      fontSize: 54 * ffem,
-                                      fontWeight: FontWeight.w600,
-                                      height: 1.5 * ffem / fem,
-                                      fontStyle: FontStyle.italic,
-                                      color: const Color(0xff000000),
+                              stream: firestore.collection('users').snapshots(),
+                              builder: (BuildContext context,
+                                  AsyncSnapshot<
+                                          QuerySnapshot<Map<String, dynamic>>>
+                                      snapshot) {
+                                if (!snapshot.hasData) {
+                                  return const Center(
+                                    child: CircularProgressIndicator(
+                                        backgroundColor:
+                                            Colors.lightBlueAccent),
+                                  );
+                                }
+                                final userData = snapshot.data!.docs
+                                    .where((element) =>
+                                        element.id ==
+                                        FirebaseAuth.instance.currentUser!.uid)
+                                    .toList();
+                                return SizedBox(
+                                  // autogrouphdg3Ruq (4s1ncGynUvPaho1dtFHDg3)
+                                  width: double.infinity,
+                                  child: Center(
+                                    child: Text(
+                                      userData[0]['username'],
+                                      textAlign: TextAlign.center,
+                                      style: GoogleFonts.poppins(
+                                        fontSize: 54 * ffem,
+                                        fontWeight: FontWeight.w600,
+                                        height: 1.5 * ffem / fem,
+                                        fontStyle: FontStyle.italic,
+                                        color: const Color(0xff000000),
+                                      ),
                                     ),
                                   ),
-                                ),
-                              );
-                            }
-                          ),
+                                );
+                              }),
                           Container(
-                            margin: EdgeInsets.fromLTRB(50 * fem, 100 * fem, 0 * fem, 0 * fem),
+                            margin: EdgeInsets.fromLTRB(
+                                50 * fem, 100 * fem, 0 * fem, 0 * fem),
                             child: Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
@@ -124,7 +138,8 @@ class UserProfile extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.fromLTRB(25 * fem, 0 * fem, 0 * fem, 50 * fem),
+                            margin: EdgeInsets.fromLTRB(
+                                25 * fem, 0 * fem, 0 * fem, 50 * fem),
                             height: 400 * fem,
                             child: ListView(
                               scrollDirection: Axis.horizontal,
@@ -139,52 +154,96 @@ class UserProfile extends StatelessWidget {
                                             context: context,
                                             builder: (BuildContext context) {
                                               return Dialog(
-                                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)), //this right here
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20.0)), //this right here
                                                   child: SizedBox(
                                                     height: 800 * fem,
                                                     width: 800 * fem,
                                                     child: ListView(children: [
                                                       Container(
-                                                        margin: EdgeInsets.fromLTRB(0 * fem, 50 * fem, 0 * fem, 0 * fem),
+                                                        margin:
+                                                            EdgeInsets.fromLTRB(
+                                                                0 * fem,
+                                                                50 * fem,
+                                                                0 * fem,
+                                                                0 * fem),
                                                         child: Text(
                                                           'Somente o Necessario',
-                                                          textAlign: TextAlign.center,
-                                                          style: GoogleFonts.poppins(
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: GoogleFonts
+                                                              .poppins(
                                                             fontSize: 64 * ffem,
-                                                            fontWeight: FontWeight.w600,
-                                                            height: 1.5 * ffem / fem,
-                                                            fontStyle: FontStyle.italic,
-                                                            color: const Color(0xff000000),
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            height: 1.5 *
+                                                                ffem /
+                                                                fem,
+                                                            fontStyle: FontStyle
+                                                                .italic,
+                                                            color: const Color(
+                                                                0xff000000),
                                                           ),
                                                         ),
                                                       ),
                                                       Container(
-                                                        margin: EdgeInsets.fromLTRB(200 * fem, 50 * fem, 0 * fem, 25 * fem),
+                                                        margin:
+                                                            EdgeInsets.fromLTRB(
+                                                                200 * fem,
+                                                                50 * fem,
+                                                                0 * fem,
+                                                                25 * fem),
                                                         height: 400 * fem,
                                                         child: ListView(
-                                                          scrollDirection: Axis.horizontal,
+                                                          scrollDirection:
+                                                              Axis.horizontal,
                                                           children: [
                                                             SizedBox(
                                                               width: 400 * fem,
                                                               child: Padding(
-                                                                padding: const EdgeInsets.all(8.0),
-                                                                child: Container(
-                                                                  decoration: BoxDecoration(
-                                                                    borderRadius: BorderRadius.circular(50 * fem),
-                                                                    color: const Color(0xffffffff),
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                        .all(
+                                                                        8.0),
+                                                                child:
+                                                                    Container(
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(50 *
+                                                                            fem),
+                                                                    color: const Color(
+                                                                        0xffffffff),
                                                                     boxShadow: [
                                                                       BoxShadow(
-                                                                        color: const Color(0x82615b69),
-                                                                        offset: Offset(0 * fem, 7 * fem),
-                                                                        blurRadius: 8 * fem,
+                                                                        color: const Color(
+                                                                            0x82615b69),
+                                                                        offset: Offset(
+                                                                            0 * fem,
+                                                                            7 * fem),
+                                                                        blurRadius:
+                                                                            8 * fem,
                                                                       ),
                                                                     ],
                                                                   ),
-                                                                  child: Container(
-                                                                    margin: EdgeInsets.fromLTRB(100 * fem, 100 * fem, 100 * fem, 100 * fem),
-                                                                    child: Image.asset(
+                                                                  child:
+                                                                      Container(
+                                                                    margin: EdgeInsets.fromLTRB(
+                                                                        100 *
+                                                                            fem,
+                                                                        100 *
+                                                                            fem,
+                                                                        100 *
+                                                                            fem,
+                                                                        100 *
+                                                                            fem),
+                                                                    child: Image
+                                                                        .asset(
                                                                       'assets/images/layers.png',
-                                                                      fit: BoxFit.cover,
+                                                                      fit: BoxFit
+                                                                          .cover,
                                                                     ),
                                                                   ),
                                                                 ),
@@ -196,18 +255,32 @@ class UserProfile extends StatelessWidget {
                                                       Center(
                                                         // aprendaacontrolarledscomfacili (255:12)
                                                         child: Container(
-                                                          margin: EdgeInsets.fromLTRB(13 * fem, 0 * fem, 0 * fem, 100 * fem),
-                                                          constraints: BoxConstraints(
+                                                          margin: EdgeInsets
+                                                              .fromLTRB(
+                                                                  13 * fem,
+                                                                  0 * fem,
+                                                                  0 * fem,
+                                                                  100 * fem),
+                                                          constraints:
+                                                              BoxConstraints(
                                                             maxWidth: 400 * fem,
                                                           ),
                                                           child: Text(
                                                             'Conclua todos os tutoriais de Conceitos Basicos',
-                                                            textAlign: TextAlign.center,
-                                                            style: GoogleFonts.poppins(
-                                                              fontSize: 45 * ffem,
-                                                              fontWeight: FontWeight.w300,
-                                                              height: 1.5 * ffem / fem,
-                                                              color: const Color(0xff000000),
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                            style: GoogleFonts
+                                                                .poppins(
+                                                              fontSize:
+                                                                  45 * ffem,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w300,
+                                                              height: 1.5 *
+                                                                  ffem /
+                                                                  fem,
+                                                              color: const Color(
+                                                                  0xff000000),
                                                             ),
                                                           ),
                                                         ),
@@ -218,7 +291,8 @@ class UserProfile extends StatelessWidget {
                                       },
                                       child: Container(
                                         decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(50 * fem),
+                                          borderRadius:
+                                              BorderRadius.circular(50 * fem),
                                           color: const Color(0xffffffff),
                                           boxShadow: [
                                             BoxShadow(
@@ -229,7 +303,8 @@ class UserProfile extends StatelessWidget {
                                           ],
                                         ),
                                         child: Container(
-                                          margin: EdgeInsets.fromLTRB(100 * fem, 100 * fem, 100 * fem, 100 * fem),
+                                          margin: EdgeInsets.fromLTRB(100 * fem,
+                                              100 * fem, 100 * fem, 100 * fem),
                                           child: Image.asset(
                                             'assets/images/layers.png',
                                             fit: BoxFit.cover,
@@ -249,52 +324,96 @@ class UserProfile extends StatelessWidget {
                                             context: context,
                                             builder: (BuildContext context) {
                                               return Dialog(
-                                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)), //this right here
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20.0)), //this right here
                                                   child: SizedBox(
                                                     height: 800 * fem,
                                                     width: 800 * fem,
                                                     child: ListView(children: [
                                                       Container(
-                                                        margin: EdgeInsets.fromLTRB(0 * fem, 50 * fem, 0 * fem, 0 * fem),
+                                                        margin:
+                                                            EdgeInsets.fromLTRB(
+                                                                0 * fem,
+                                                                50 * fem,
+                                                                0 * fem,
+                                                                0 * fem),
                                                         child: Text(
                                                           'Que Haja Luz',
-                                                          textAlign: TextAlign.center,
-                                                          style: GoogleFonts.poppins(
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: GoogleFonts
+                                                              .poppins(
                                                             fontSize: 64 * ffem,
-                                                            fontWeight: FontWeight.w600,
-                                                            height: 1.5 * ffem / fem,
-                                                            fontStyle: FontStyle.italic,
-                                                            color: const Color(0xff000000),
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            height: 1.5 *
+                                                                ffem /
+                                                                fem,
+                                                            fontStyle: FontStyle
+                                                                .italic,
+                                                            color: const Color(
+                                                                0xff000000),
                                                           ),
                                                         ),
                                                       ),
                                                       Container(
-                                                        margin: EdgeInsets.fromLTRB(200 * fem, 50 * fem, 0 * fem, 25 * fem),
+                                                        margin:
+                                                            EdgeInsets.fromLTRB(
+                                                                200 * fem,
+                                                                50 * fem,
+                                                                0 * fem,
+                                                                25 * fem),
                                                         height: 400 * fem,
                                                         child: ListView(
-                                                          scrollDirection: Axis.horizontal,
+                                                          scrollDirection:
+                                                              Axis.horizontal,
                                                           children: [
                                                             SizedBox(
                                                               width: 400 * fem,
                                                               child: Padding(
-                                                                padding: const EdgeInsets.all(8.0),
-                                                                child: Container(
-                                                                  decoration: BoxDecoration(
-                                                                    borderRadius: BorderRadius.circular(50 * fem),
-                                                                    color: const Color(0xffffffff),
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                        .all(
+                                                                        8.0),
+                                                                child:
+                                                                    Container(
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(50 *
+                                                                            fem),
+                                                                    color: const Color(
+                                                                        0xffffffff),
                                                                     boxShadow: [
                                                                       BoxShadow(
-                                                                        color: const Color(0x82615b69),
-                                                                        offset: Offset(0 * fem, 7 * fem),
-                                                                        blurRadius: 8 * fem,
+                                                                        color: const Color(
+                                                                            0x82615b69),
+                                                                        offset: Offset(
+                                                                            0 * fem,
+                                                                            7 * fem),
+                                                                        blurRadius:
+                                                                            8 * fem,
                                                                       ),
                                                                     ],
                                                                   ),
-                                                                  child: Container(
-                                                                    margin: EdgeInsets.fromLTRB(100 * fem, 100 * fem, 100 * fem, 100 * fem),
-                                                                    child: Image.asset(
+                                                                  child:
+                                                                      Container(
+                                                                    margin: EdgeInsets.fromLTRB(
+                                                                        100 *
+                                                                            fem,
+                                                                        100 *
+                                                                            fem,
+                                                                        100 *
+                                                                            fem,
+                                                                        100 *
+                                                                            fem),
+                                                                    child: Image
+                                                                        .asset(
                                                                       'assets/images/led.png',
-                                                                      fit: BoxFit.cover,
+                                                                      fit: BoxFit
+                                                                          .cover,
                                                                     ),
                                                                   ),
                                                                 ),
@@ -306,18 +425,32 @@ class UserProfile extends StatelessWidget {
                                                       Center(
                                                         // aprendaacontrolarledscomfacili (255:12)
                                                         child: Container(
-                                                          margin: EdgeInsets.fromLTRB(13 * fem, 0 * fem, 0 * fem, 100 * fem),
-                                                          constraints: BoxConstraints(
+                                                          margin: EdgeInsets
+                                                              .fromLTRB(
+                                                                  13 * fem,
+                                                                  0 * fem,
+                                                                  0 * fem,
+                                                                  100 * fem),
+                                                          constraints:
+                                                              BoxConstraints(
                                                             maxWidth: 400 * fem,
                                                           ),
                                                           child: Text(
                                                             'Conclua o tutorial do LED',
-                                                            textAlign: TextAlign.center,
-                                                            style: GoogleFonts.poppins(
-                                                              fontSize: 45 * ffem,
-                                                              fontWeight: FontWeight.w300,
-                                                              height: 1.5 * ffem / fem,
-                                                              color: const Color(0xff000000),
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                            style: GoogleFonts
+                                                                .poppins(
+                                                              fontSize:
+                                                                  45 * ffem,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w300,
+                                                              height: 1.5 *
+                                                                  ffem /
+                                                                  fem,
+                                                              color: const Color(
+                                                                  0xff000000),
                                                             ),
                                                           ),
                                                         ),
@@ -328,7 +461,8 @@ class UserProfile extends StatelessWidget {
                                       },
                                       child: Container(
                                         decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(50 * fem),
+                                          borderRadius:
+                                              BorderRadius.circular(50 * fem),
                                           color: const Color(0xffffffff),
                                           boxShadow: [
                                             BoxShadow(
@@ -339,7 +473,8 @@ class UserProfile extends StatelessWidget {
                                           ],
                                         ),
                                         child: Container(
-                                          margin: EdgeInsets.fromLTRB(100 * fem, 100 * fem, 100 * fem, 100 * fem),
+                                          margin: EdgeInsets.fromLTRB(100 * fem,
+                                              100 * fem, 100 * fem, 100 * fem),
                                           child: Image.asset(
                                             'assets/images/led.png',
                                             fit: BoxFit.cover,
@@ -354,7 +489,8 @@ class UserProfile extends StatelessWidget {
                           ),
                           Container(
                             // line3nxf (264:59)
-                            margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 30 * fem),
+                            margin: EdgeInsets.fromLTRB(
+                                0 * fem, 0 * fem, 0 * fem, 30 * fem),
                             width: 1040 * fem,
                             height: 1 * fem,
                             decoration: const BoxDecoration(
@@ -363,7 +499,8 @@ class UserProfile extends StatelessWidget {
                           ),
                           Container(
                             // configuraes7zw (264:57)
-                            margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 35 * fem),
+                            margin: EdgeInsets.fromLTRB(
+                                0 * fem, 0 * fem, 0 * fem, 35 * fem),
                             child: Center(
                               child: Text(
                                 'Configurações',
@@ -380,7 +517,8 @@ class UserProfile extends StatelessWidget {
                           ),
                           Container(
                             // autogroupfwm9pPZ (4s1njwRgb8zPHmyepJfwM9)
-                            margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 35 * fem),
+                            margin: EdgeInsets.fromLTRB(
+                                0 * fem, 0 * fem, 0 * fem, 35 * fem),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(50 * fem),
                             ),
@@ -389,10 +527,16 @@ class UserProfile extends StatelessWidget {
                                 backgroundColor: const Color(0xffe51f43),
                                 minimumSize: Size(919 * fem, 125 * fem),
                                 elevation: 0,
-                                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                                shape: const RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(50))),
                               ),
                               onPressed: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => const ModelDisp()));
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const ModelDisp()));
                               },
                               child: Text(
                                 'Conta',
@@ -407,7 +551,8 @@ class UserProfile extends StatelessWidget {
                           ),
                           Container(
                             // autogroupfwm9pPZ (4s1njwRgb8zPHmyepJfwM9)
-                            margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 35 * fem),
+                            margin: EdgeInsets.fromLTRB(
+                                0 * fem, 0 * fem, 0 * fem, 35 * fem),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(50 * fem),
                             ),
@@ -416,13 +561,20 @@ class UserProfile extends StatelessWidget {
                                 backgroundColor: const Color(0xffe51f43),
                                 minimumSize: Size(919 * fem, 125 * fem),
                                 elevation: 0,
-                                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                                shape: const RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(50))),
                               ),
                               onPressed: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => const ModelDisp()));
+                                FirebaseAuth.instance.signOut().then((value) {
+                                  Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => const Login()));
+                                });
                               },
                               child: Text(
-                                'Armazenamento',
+                                'Sair da Conta',
                                 style: GoogleFonts.poppins(
                                   fontSize: 48 * ffem,
                                   fontWeight: FontWeight.w400,
@@ -433,22 +585,27 @@ class UserProfile extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
+                            margin: EdgeInsets.fromLTRB(
+                                0 * fem, 0 * fem, 0 * fem, 0 * fem),
                             child: OutlinedButton(
                               style: OutlinedButton.styleFrom(
                                 backgroundColor: const Color(0xffe51f43),
-                                side: const BorderSide(color: Color(0xffe51f43), width: 1),
+                                side: const BorderSide(
+                                    color: Color(0xffe51f43), width: 1),
                                 minimumSize: Size(919 * fem, 125 * fem),
-                                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                                shape: const RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(50))),
                               ),
                               onPressed: () {
-                                FirebaseAuth.instance.signOut().then((value){
-                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Login()));
-                                  
-                                });
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const DeleteUser()));
                               },
                               child: Text(
-                                'Sair da Conta',
+                                'Deletar Conta',
                                 style: GoogleFonts.poppins(
                                   fontSize: 48 * ffem,
                                   fontWeight: FontWeight.w400,
@@ -469,5 +626,82 @@ class UserProfile extends StatelessWidget {
         },
       ),
     );
+  }
+}
+
+class DeleteUser extends StatefulWidget {
+  const DeleteUser({super.key});
+
+  @override
+  State<DeleteUser> createState() => _DeleteUserState();
+}
+
+class _DeleteUserState extends State<DeleteUser> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+            title: ArpinAppBar().title(context),
+            actions: ArpinAppBar().actions(context),
+            centerTitle: ArpinAppBar().centerTitle,
+            leading: ArpinAppBar().leading(context),
+            backgroundColor: ArpinAppBar().backgroundColor,
+            elevation: ArpinAppBar().elevation),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              "Tem certeza que deseja deletar sua conta?",
+              style: TextStyle(
+                fontSize: 36,
+                fontWeight: FontWeight.w600,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.155,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    AuthService().deleteUser();
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => const Login()));
+                  },
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                        const Color(0xffe51f43)),
+                    minimumSize: MaterialStateProperty.all<Size>(
+                        Size((MediaQuery.of(context).size.width / 2) - 48, 55)),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                  ),
+                  child: const Text("Sim"),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => UserProfile()));
+                  },
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                        const Color(0xffe51f43)),
+                    minimumSize: MaterialStateProperty.all<Size>(
+                        Size((MediaQuery.of(context).size.width / 2) - 48, 55)),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                  ),
+                  child: const Text("Voltar para o perfil"),
+                ),
+              ],
+            ),
+          ],
+        ));
   }
 }

@@ -22,7 +22,7 @@ class _QuestState extends State<Quest> {
 
   // @override
   // void initState() {
-  // List<Question> questionList = getQuestions();  
+  // List<Question> questionList = getQuestions();
   //   // TODO: implement initState
   //   super.initState();
   // }
@@ -31,20 +31,22 @@ class _QuestState extends State<Quest> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-            appBar: AppBar(
+      appBar: AppBar(
         elevation: 1,
         backgroundColor: Colors.white,
         actions: <Widget>[
           IconButton(
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => UserProfile()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => UserProfile()));
               },
               icon: Image.asset('assets/images/user.png')),
         ],
         title: IconButton(
             iconSize: 40,
             onPressed: () {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const HomePage()));
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const HomePage()));
             },
             icon: Image.asset('assets/images/led.png')),
         centerTitle: true,
@@ -59,39 +61,37 @@ class _QuestState extends State<Quest> {
           double baseWidth = 1040;
           double fem = constraints.maxWidth / baseWidth;
           double ffem = fem * 0.97;
-    
-     // List<Question> questionList = getQuestionList(snapshot);
+
+          // List<Question> questionList = getQuestionList(snapshot);
           return FutureBuilder(
-            future: getQuestions(idQuest: widget.idQuest),
-            builder: (context, snapshot) {
-              if (!snapshot.hasData) {
+              future: getQuestions(idQuest: widget.idQuest),
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) {
                   return const Center(
                     child: CircularProgressIndicator(
                         backgroundColor: Colors.lightBlueAccent),
                   );
-              }
-              
-              List<Question> questionList = snapshot.data as List<Question>;
-                
-              return SizedBox(
-              width: double.infinity,
-              child: Container(
-                // questionarioWqM (296:102)
-                padding: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
-                width: double.infinity,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    _questionWidget(fem, ffem, questionList),
-                    _answerList(fem, ffem, questionList),
-                    _nextButton(fem, ffem, questionList),
-                  ],
-                ),
-              ),
-            );
-            }
-            
-          );
+                }
+
+                List<Question> questionList = snapshot.data as List<Question>;
+
+                return SizedBox(
+                  width: double.infinity,
+                  child: Container(
+                    // questionarioWqM (296:102)
+                    padding:
+                        EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
+                    width: double.infinity,
+                    child: Column(
+                      children: [
+                        _questionWidget(fem, ffem, questionList),
+                        _answerList(fem, ffem, questionList),
+                        _nextButton(fem, ffem, questionList),
+                      ],
+                    ),
+                  ),
+                );
+              });
         },
       ),
     );
@@ -130,18 +130,22 @@ class _QuestState extends State<Quest> {
         Container(
           margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 150 * fem),
           width: double.infinity,
-          height: 200 * fem,
+          height: MediaQuery.of(context).size.height * 0.1,
           decoration: const BoxDecoration(
             color: Color(0xffDAD1E4),
           ),
           child: Center(
-            child: Text(
-              questionList[currentQuestionIndex].questionText,
-              style: GoogleFonts.poppins(
-                fontSize: 54 * ffem,
-                fontWeight: FontWeight.w400,
-                height: 1.5 * ffem / fem,
-                color: const Color(0xff000000),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+              child: Text(
+                questionList[currentQuestionIndex].questionText,
+                style: GoogleFonts.poppins(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  height: 1.5 * ffem / fem,
+                  color: const Color(0xff000000),
+                ),
+                textAlign: TextAlign.center,
               ),
             ),
           ),
@@ -161,7 +165,8 @@ class _QuestState extends State<Quest> {
     );
   }
 
-  Widget _answerButton(Answer answer, double fem, double ffem, bool correct, List<Question> questionList) {
+  Widget _answerButton(Answer answer, double fem, double ffem, bool correct,
+      List<Question> questionList) {
     bool isSelected = answer == selectedAnswer;
 
     return Center(
@@ -169,9 +174,14 @@ class _QuestState extends State<Quest> {
         margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 75 * fem),
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            foregroundColor: isSelected ? Colors.white : Colors.black, backgroundColor: isSelected ? const Color(0xffe51f43) : const Color(0xffDAD1E4), minimumSize: Size(920 * fem, 125 * fem),
+            foregroundColor: isSelected ? Colors.white : Colors.black,
+            backgroundColor:
+                isSelected ? const Color(0xffe51f43) : const Color(0xffDAD1E4),
+            minimumSize: Size(920 * fem, 125 * fem),
+            maximumSize: Size(920 * fem, 125 * fem),
             elevation: 3,
-            shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(50))),
           ),
           onPressed: () {
             if (answer.isCorrect) {
@@ -181,12 +191,14 @@ class _QuestState extends State<Quest> {
               selectedAnswer = answer;
             });
           },
-          child: Text(
-            answer.answerText,
-            style: GoogleFonts.poppins(
-              fontSize: 48 * ffem,
-              fontWeight: FontWeight.w400,
-              height: 1.5 * ffem / fem,
+          child: Center(
+            child: Text(
+              answer.answerText,
+              style: GoogleFonts.poppins(
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+              ),
+              textAlign: TextAlign.center,
             ),
           ),
         ),
@@ -214,7 +226,8 @@ class _QuestState extends State<Quest> {
           height: 150 * fem,
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-              foregroundColor: Colors.white, backgroundColor: const Color(0xffe51f43),
+              foregroundColor: Colors.white,
+              backgroundColor: const Color(0xffe51f43),
             ),
             onPressed: () {
               print('_nextButton: correct=  $correct');

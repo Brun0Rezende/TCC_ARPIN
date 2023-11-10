@@ -18,4 +18,8 @@ class User {
       username: data?['username'],
     );
   }
+
+  deleteUser(){
+    firestore.collection('users').doc(uid).delete();
+  }
 }

@@ -1,5 +1,5 @@
 import 'package:ar_pin/quest.dart';
-import 'package:ar_pin/tutoriais/tutorial_led.dart';
+import 'package:ar_pin/tutoriais/tutorial.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'home_page.dart';

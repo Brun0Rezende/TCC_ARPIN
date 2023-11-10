@@ -5,9 +5,9 @@ import 'home_page.dart';
 import 'user_profile.dart';
 
 class BXModelo extends StatelessWidget {
-  final String arModelFolder;
+  
   //testar se influencia ou não a aplicação
-  const BXModelo({super.key, required this.arModelFolder});
+  const BXModelo({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +60,7 @@ class BXModelo extends StatelessWidget {
                   SizedBox(
                     child: Center(
                       child: Text(
-                        'Circuito',
+                        'Circuitos e muito mais!',
                         textAlign: TextAlign.center,
                         style: GoogleFonts.poppins(
                           fontSize: 64 * ffem,
@@ -75,13 +75,14 @@ class BXModelo extends StatelessWidget {
                   SizedBox(
                     child: Center(
                       child: Text(
-                        'Exemplo de Circuito',
+                        'Baixe nosso aplicativo de realidade aumentada e veja os circuitos em 3D!',
                         style: GoogleFonts.poppins(
                           fontSize: 52 * ffem,
                           fontWeight: FontWeight.w400,
                           height: 1.5 * ffem / fem,
                           color: const Color(0xff000000),
                         ),
+                        textAlign: TextAlign.center,
                       ),
                     ),
                   ),

@@ -6,10 +6,8 @@ import '../home_page.dart';
 import '../user_profile.dart';
 import '../baixar_modelo.dart';
 
-
 class Tutorial extends StatefulWidget {
   final String idTutorial;
-  
 
   const Tutorial({super.key, required this.idTutorial});
 
@@ -18,26 +16,27 @@ class Tutorial extends StatefulWidget {
 }
 
 class _TutorialState extends State<Tutorial> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       //HEADER
-            appBar: AppBar(
+      appBar: AppBar(
         elevation: 1,
         backgroundColor: Colors.white,
         actions: <Widget>[
           IconButton(
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => UserProfile()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => UserProfile()));
               },
               icon: Image.asset('assets/images/user.png')),
         ],
         title: IconButton(
             iconSize: 40,
             onPressed: () {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const HomePage()));
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const HomePage()));
             },
             icon: Image.asset('assets/images/led.png')),
         centerTitle: true,
@@ -64,7 +63,8 @@ class _TutorialState extends State<Tutorial> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                      margin: EdgeInsets.fromLTRB(0 * fem, 50 * fem, 0 * fem, 0 * fem),
+                      margin: EdgeInsets.fromLTRB(
+                          0 * fem, 50 * fem, 0 * fem, 0 * fem),
                       height: 400 * fem,
                       child: Column(
                         children: [
@@ -85,7 +85,8 @@ class _TutorialState extends State<Tutorial> {
                                   ],
                                 ),
                                 child: Container(
-                                  margin: EdgeInsets.fromLTRB(100 * fem, 100 * fem, 100 * fem, 100 * fem),
+                                  margin: EdgeInsets.fromLTRB(100 * fem,
+                                      100 * fem, 100 * fem, 100 * fem),
                                   child: Image.asset(
                                     'assets/images/${widget.idTutorial}.png',
                                     fit: BoxFit.cover,
@@ -99,7 +100,8 @@ class _TutorialState extends State<Tutorial> {
                     ),
                     Container(
                       //TUTORIAL NAME
-                      margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 25 * fem),
+                      margin: EdgeInsets.fromLTRB(
+                          0 * fem, 0 * fem, 0 * fem, 25 * fem),
                       child: Text(
                         widget.idTutorial.toUpperCase(),
                         textAlign: TextAlign.center,
@@ -116,7 +118,8 @@ class _TutorialState extends State<Tutorial> {
                       child: Column(
                         children: [
                           Container(
-                            margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 15 * fem),
+                            margin: EdgeInsets.fromLTRB(
+                                0 * fem, 0 * fem, 0 * fem, 15 * fem),
                             child: Text(
                               'Descrição:',
                               textAlign: TextAlign.center,
@@ -131,7 +134,8 @@ class _TutorialState extends State<Tutorial> {
                           Center(
                             //TUTORIAL DESC
                             child: Container(
-                              margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 100 * fem),
+                              margin: EdgeInsets.fromLTRB(
+                                  0 * fem, 0 * fem, 0 * fem, 100 * fem),
                               constraints: BoxConstraints(
                                 maxWidth: 837 * fem,
                               ),
@@ -157,16 +161,27 @@ class _TutorialState extends State<Tutorial> {
                           children: [
                             Container(
                               //START BUTTON
-                              margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 100 * fem),
+                              margin: EdgeInsets.fromLTRB(
+                                  0 * fem, 0 * fem, 0 * fem, 100 * fem),
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: const Color(0xffe51f43),
                                   minimumSize: Size(919 * fem, 125 * fem),
                                   elevation: 0,
-                                  shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                                  shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(50))),
                                 ),
                                 onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) =>   MaterialDidatico(idQuest: widget.idTutorial, idMaterialDidatico: widget.idTutorial,)));
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              MaterialDidatico(
+                                                idQuest: widget.idTutorial,
+                                                idMaterialDidatico:
+                                                    widget.idTutorial,
+                                              )));
                                 },
                                 child: Text(
                                   'Iniciar',
@@ -180,7 +195,8 @@ class _TutorialState extends State<Tutorial> {
                               ),
                             ),
                             Container(
-                              margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 20 * fem),
+                              margin: EdgeInsets.fromLTRB(
+                                  0 * fem, 0 * fem, 0 * fem, 20 * fem),
                               child: Align(
                                 child: SizedBox(
                                   width: 1040 * fem,
@@ -194,7 +210,8 @@ class _TutorialState extends State<Tutorial> {
                               ),
                             ),
                             Container(
-                              margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 30 * fem),
+                              margin: EdgeInsets.fromLTRB(
+                                  0 * fem, 0 * fem, 0 * fem, 30 * fem),
                               child: Text(
                                 'Selecione a Etapa Desejada:',
                                 textAlign: TextAlign.center,
@@ -209,16 +226,27 @@ class _TutorialState extends State<Tutorial> {
                             ),
                             Container(
                               //MATERIAL BUTTON
-                              margin: EdgeInsets.fromLTRB(0 * fem, 35 * fem, 0 * fem, 0 * fem),
+                              margin: EdgeInsets.fromLTRB(
+                                  0 * fem, 35 * fem, 0 * fem, 0 * fem),
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: const Color(0xffe51f43),
                                   minimumSize: Size(919 * fem, 125 * fem),
                                   elevation: 0,
-                                  shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                                  shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(50))),
                                 ),
                                 onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => MaterialDidatico(idQuest: widget.idTutorial, idMaterialDidatico: widget.idTutorial,)));
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              MaterialDidatico(
+                                                idQuest: widget.idTutorial,
+                                                idMaterialDidatico:
+                                                    widget.idTutorial,
+                                              )));
                                 },
                                 child: Text(
                                   'Material Didático',
@@ -233,43 +261,27 @@ class _TutorialState extends State<Tutorial> {
                             ),
                             Container(
                               //QUEST BUTTON
-                              margin: EdgeInsets.fromLTRB(0 * fem, 35 * fem, 0 * fem, 0 * fem),
+                              margin: EdgeInsets.fromLTRB(
+                                  0 * fem, 35 * fem, 0 * fem, 0 * fem),
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   primary: const Color(0xffe51f43),
                                   minimumSize: Size(919 * fem, 125 * fem),
                                   elevation: 0,
-                                  shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                                  shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(50))),
                                 ),
                                 onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Quest(idQuest: widget.idTutorial,)));
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Quest(
+                                                idQuest: widget.idTutorial,
+                                              )));
                                 },
                                 child: Text(
                                   'Questionário',
-                                  style: GoogleFonts.poppins(
-                                    fontSize: 48 * ffem,
-                                    fontWeight: FontWeight.w400,
-                                    height: 1.5 * ffem / fem,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Container(
-                              //RA BUTTON
-                              margin: EdgeInsets.fromLTRB(0 * fem, 35 * fem, 0 * fem, 0 * fem),
-                              child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  primary: const Color(0xffe51f43),
-                                  minimumSize: Size(919 * fem, 125 * fem),
-                                  elevation: 0,
-                                  shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
-                                ),
-                                onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) =>  BXModelo(arModelFolder: widget.idTutorial,)));
-                                },
-                                child: Text(
-                                  'Visualizar Projeto',
                                   style: GoogleFonts.poppins(
                                     fontSize: 48 * ffem,
                                     fontWeight: FontWeight.w400,

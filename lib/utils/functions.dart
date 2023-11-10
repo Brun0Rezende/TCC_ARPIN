@@ -1,4 +1,4 @@
-import 'package:ar_pin/admin/quests/edit_quests.dart';
+import 'package:ar_pin/admin/quests/keep_quests.dart';
 import 'package:ar_pin/admin/tutorial/tutorial_alter.dart';
 import 'package:ar_pin/home_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -22,9 +22,9 @@ class AdminPermissions {
       return false;
     }
   }
+
   final TextEditingController _questIdTextController = TextEditingController();
-  Widget adminFloatingActionButton(
-      BuildContext context) {
+  Widget adminFloatingActionButton(BuildContext context) {
     return SpeedDial(
         animatedIcon: AnimatedIcons.menu_close,
         animatedIconTheme: const IconThemeData(size: 22.0),
@@ -73,6 +73,7 @@ class AdminPermissions {
             label: 'Manter Material Didático',
             labelStyle: const TextStyle(fontSize: 18.0),
             onTap: () {
+              
               // Navigator.pushReplacement(
               //     context,
               //     MaterialPageRoute(
@@ -86,53 +87,9 @@ class AdminPermissions {
             label: 'Manter Questionário',
             labelStyle: const TextStyle(fontSize: 18.0),
             onTap: () {
-              showDialog(
-                  context: context,
-                  builder: (context) {
-                    return SimpleDialog(
-                      title: const Text(
-                        'Qual questionário deseja alterar?',
-                        textAlign: TextAlign.center,
-                      ),
-                      children: [
-                        TextField(
-                          decoration: const InputDecoration(
-                            labelText: 'Digite o nome do questionário',
-                            border: OutlineInputBorder(),
-                          ),
-                          controller: _questIdTextController,
-                        ),
-                        ElevatedButton(
-                          onPressed: () {
-                            Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        AdminQuestionarioPage(idQuest: _questIdTextController.text.trim(),))).onError((error, stackTrace) {
-                                              showDialog(context: context, builder: (context){
-                                                  return AlertDialog(
-                                                    title: const Text("Erro ao carregar questionário, tente novamente mais tarde"),
-                                                    content: Text(error.toString()),
-                                                    actions: [
-                                                      TextButton(onPressed: (){
-                                                        Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
-                                                      }, child: const Text("Ok"))
-                                                    ],
-                                                  );
-                                              });
-                                            });
-                          },
-                          child: const Text('Confirmar'),
-                        )
-                      ],
-                    );
-                  });
-
-              // Navigator.pushReplacement(
-              //     context,
-              //     MaterialPageRoute(
-              //         builder: (context) => const AdminQuestionarioPage()));
-              //Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const AdminQuestionarioPage()));
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
+                return const AdminQuestionarioPage();
+              }));
             },
           )
         ]);

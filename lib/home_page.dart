@@ -1,7 +1,8 @@
+import 'package:ar_pin/baixar_modelo.dart';
 import 'package:ar_pin/utils/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'tutoriais/tutorial_led.dart';
+import 'tutoriais/tutorial.dart';
 import 'modelos_disponiveis.dart';
 import 'user_profile.dart';
 import 'admin/tutorial/tutorial_alter.dart';
@@ -467,7 +468,9 @@ class _HomePageState extends State<HomePage> {
       future: admin.checkUserPermissions(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
-          return const ScaffoldMessenger(child: Text("Carregando..."));
+          return const CircularProgressIndicator(
+            color: Color(0xffe51f43),
+          );
         }
 
         //if (snapshot.data == true) {
@@ -492,7 +495,7 @@ class _HomePageState extends State<HomePage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const ModelDisp()));
+                              builder: (context) => const BXModelo()));
                     },
                     child: Container(
                       decoration: const BoxDecoration(
@@ -506,74 +509,6 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-          //     Container(
-          //       margin:
-          //           EdgeInsets.fromLTRB(50 * fem, 100 * fem, 0 * fem, 0 * fem),
-          //       child: SizedBox(
-          //         width: 200 * fem,
-          //         height: 200 * fem,
-          //         child: ElevatedButton(
-          //           style: ElevatedButton.styleFrom(
-          //             //primary ou background color?
-          //             backgroundColor: const Color(0xffe51f43),
-          //             minimumSize: Size(919 * fem, 125 * fem),
-          //             elevation: 5,
-          //             shape: const RoundedRectangleBorder(
-          //                 borderRadius: BorderRadius.all(Radius.circular(50))),
-          //           ),
-          //           onPressed: () {
-          //             Navigator.push(
-          //                 context,
-          //                 MaterialPageRoute(
-          //                     builder: (context) => const TutoAlter()));
-          //           },
-          //           child: Text(
-          //             '+',
-          //             style: GoogleFonts.poppins(
-          //               fontSize: 125 * ffem,
-          //               fontWeight: FontWeight.w400,
-          //               height: 1.5 * ffem / fem,
-          //               color: Colors.white,
-          //             ),
-          //           ),
-          //         ),
-          //       ),
-          //     )
-          //   ],
-          // );
-        //}
-        // return Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-        //   Container(
-        //     margin: EdgeInsets.fromLTRB(0 * fem, 100 * fem, 0 * fem, 0 * fem),
-        //     child: SizedBox(
-        //       width: 200 * fem,
-        //       height: 200 * fem,
-        //       child: ElevatedButton(
-        //         style: ElevatedButton.styleFrom(
-        //           //testar se dá certo ou primary color
-        //           backgroundColor: const Color(0xffe51f43),
-        //           elevation: 5,
-        //           shape: const RoundedRectangleBorder(
-        //               borderRadius: BorderRadius.all(Radius.circular(50))),
-        //         ),
-        //         onPressed: () {
-        //           Navigator.push(
-        //               context,
-        //               MaterialPageRoute(
-        //                   builder: (context) => const ModelDisp()));
-        //         },
-        //         child: Container(
-        //           decoration: const BoxDecoration(
-        //             color: Color(0xffe51f43),
-        //           ),
-        //           child: Image.asset(
-        //             'assets/images/camera.png',
-        //             fit: BoxFit.cover,
-        //           ),
-        //         ),
-        //       ),
-        //     ),
-        //   ),
         ]);
       },
     );
