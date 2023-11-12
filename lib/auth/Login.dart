@@ -16,6 +16,18 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final TextEditingController _emailTextController = TextEditingController();
   final TextEditingController _passwordTextController = TextEditingController();
+  bool _obscureText = false;
+  final textFieldFocusNode = FocusNode();
+
+  void _toggleObscured() {
+    setState(() {
+      _obscureText = !_obscureText;
+      //por enquanto não utilizado
+      if (textFieldFocusNode.hasPrimaryFocus) return; // If focus is on text field, dont unfocus
+      textFieldFocusNode.canRequestFocus = false;     // Prevents focus if tap on eye
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -123,13 +135,26 @@ class _LoginState extends State<Login> {
                       child: TextField(
                         controller: _passwordTextController,
                         maxLines: 1,
+                        obscureText: _obscureText,
                         decoration: InputDecoration(
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
                           contentPadding: EdgeInsets.fromLTRB(
-                              25 * fem, 0 * fem, 0 * fem, 0 * fem),
+                              25 * fem, 25 * fem, 0 * fem, 0 * fem),
                           hintText: 'Senha',
                           hintStyle: const TextStyle(color: Color(0xff000000)),
+                          suffixIcon:  Padding(padding: EdgeInsets.fromLTRB(0,0,4,0),
+                          child: GestureDetector(
+                            onTap: _toggleObscured,
+                            child: Icon(
+                              _obscureText
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                                size: 24,
+                            ),
+                          ),
+                          ),
+
                         ),
                         style: GoogleFonts.poppins(
                           fontSize: 48 * ffem,
