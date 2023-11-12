@@ -1,4 +1,5 @@
 import 'package:ar_pin/baixar_modelo.dart';
+import 'package:ar_pin/codigo-strings/codigo1.dart';
 import 'package:ar_pin/codigo.dart';
 import 'package:ar_pin/utils/functions.dart';
 import 'package:flutter/material.dart';
@@ -63,7 +64,7 @@ class _HomePageState extends State<HomePage> {
             child: Column(children: [
               _basicos(fem, ffem),
               _componentes(fem, ffem),
-              //_codigo(fem, ffem),
+              _codigo(fem, ffem),
               _button(fem, ffem),
             ]),
           );
@@ -136,8 +137,8 @@ class _HomePageState extends State<HomePage> {
                   child: InkWell(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const Tutorial(
-                                idTutorial: "eletricidade",
+                          builder: (context) =>  const Tutorial(
+                                idTutorial: "eletricidade", codigoText: null,
                               )));
                     },
                     child: Container(
@@ -172,7 +173,7 @@ class _HomePageState extends State<HomePage> {
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => const Tutorial(
-                                idTutorial: "cabos",
+                                idTutorial: "cabos", codigoText: null,
                               )));
                     },
                     child: Container(
@@ -254,7 +255,7 @@ class _HomePageState extends State<HomePage> {
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => const Tutorial(
-                                    idTutorial: "resistor",
+                                    idTutorial: "resistor", codigoText: null,
                                   )));
                         },
                         child: Container(
@@ -278,7 +279,7 @@ class _HomePageState extends State<HomePage> {
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => const Tutorial(
-                                idTutorial: "led",
+                                idTutorial: "led", codigoText: null,
                               )));
                     },
                     child: Container(
@@ -312,8 +313,8 @@ class _HomePageState extends State<HomePage> {
                   child: InkWell(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const Tutorial(
-                                idTutorial: "buzzer",
+                          builder: (context) => Tutorial(
+                                idTutorial: "buzzer", codigoText: Codigos().text1,
                               )));
                     },
                     child: Container(
@@ -414,61 +415,8 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.all(8.0),
                   child: InkWell(
                     onTap: () {
-                      CodigoPage(text: """
-  Exemplo de código para fazer um buzzer funcionar com Arduino: 
- 
- 
-int pinoBuzzer = 9; 
- 
-
-Este comando define o pino do buzzer. 
-
- 
-void setup() { 
- 
-  pinMode(pinoBuzzer, OUTPUT); 
-} 
-
- 
-
-Nesta linha, o pino do buzzer é inicializado como saída. 
- 
-void loop() { 
-  // Gera um som de buzina curto 
-  tone(pinoBuzzer, 1000); // Frequência de 1000Hz 
-  delay(500);  // Aguarda meio segundo 
-  noTone(pinoBuzzer); // Desliga o buzzer 
-  delay(500);  // Aguarda meio segundo 
-} 
-
- 
-
-Neste bloco de comandos, faremos o buzzer emitir um som em uma determinada frequência de Hz (Hertz) e definiremos o intervalo da emissão do som. 
-
- 
-
-Agora, vamos explicar o código linha por linha: 
-
-int pinoBuzzer = 9;: Esta linha declara uma variável pinoBuzzer e atribui o valor 9 a ela, que é o pino que estamos usando para conectar o buzzer. Você pode escolher outro pino se desejar. 
-
-void setup() {: A função setup() é executada uma vez no início do programa e é usada para inicializar as configurações iniciais. 
-
-pinMode(pinoBuzzer, OUTPUT);: Configura o pino definido para o buzzer como saída, indicando que ele será usado para gerar um som. 
-
-void loop() {: A função loop() é executada continuamente após o setup() e é onde a lógica principal para controlar o buzzer é implementada. 
-
-tone(pinoBuzzer, 1000);: Usa a função tone() para gerar um som no buzzer conectado ao pinoBuzzer com uma frequência de 1000Hz (1kHz). Isso produzirá um som contínuo no buzzer. 
-
-delay(500);: Aguarda meio segundo (500 milissegundos). 
-
-noTone(pinoBuzzer);: Usa a função noTone() para desligar o som no buzzer. O buzzer ficará em silêncio após essa chamada. 
-
-delay(500);: Aguarda meio segundo (500 milissegundos) antes de repetir o ciclo para gerar um som curto novamente. 
-
-Neste código, estamos gerando um som contínuo no buzzer com uma frequência de 1kHz por meio da função tone(). Em seguida, paramos o som com a função noTone() e aguardamos um curto período de tempo antes de repetir o ciclo. Você pode personalizar a frequência e a duração do som alterando os valores na função tone() e nos comandos delay() para criar diferentes padrões sonoros. 
-
- 
-""",);
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) =>  CodigoPage(text: Codigos().text1)));
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -500,7 +448,7 @@ Neste código, estamos gerando um som contínuo no buzzer com uma frequência de
                   padding: const EdgeInsets.all(8.0),
                   child: InkWell(
                     onTap: () {
-                      CodigoPage(text: """
+                      const CodigoPage(text: """
 Exemplo de código para simular um semáforo com Arduino: 
  
  

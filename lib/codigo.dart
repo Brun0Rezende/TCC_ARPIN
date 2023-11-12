@@ -22,11 +22,26 @@ class _CodigoPageState extends State<CodigoPage> {
         leading: ArpinAppBar().leading(context),
         centerTitle: ArpinAppBar().centerTitle,
       ),
-      body:  LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) => SingleChildScrollView(
-          child: Markdown(data: widget.text),
-        )
-      ),
+      body: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) =>
+              SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: MarkdownBody(
+                    selectable: true,
+                    data: widget.text,
+                    styleSheet: MarkdownStyleSheet(
+                        p: const TextStyle(
+                          fontSize: 16,
+                          color: Colors.black,
+                        ),
+                        code: const TextStyle(
+                          fontSize: 14,
+                          color: Colors.black,
+                        )),
+                  ),
+                ),
+              )),
     );
   }
 }

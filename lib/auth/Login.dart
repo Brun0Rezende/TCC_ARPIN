@@ -16,7 +16,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final TextEditingController _emailTextController = TextEditingController();
   final TextEditingController _passwordTextController = TextEditingController();
-  bool _obscureText = false;
+  bool _obscureText = true;
   final textFieldFocusNode = FocusNode();
 
   void _toggleObscured() {

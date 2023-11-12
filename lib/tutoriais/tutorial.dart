@@ -1,3 +1,4 @@
+import 'package:ar_pin/codigo.dart';
 import 'package:ar_pin/material_didatico.dart';
 import 'package:ar_pin/quest.dart';
 import 'package:flutter/material.dart';
@@ -8,14 +9,22 @@ import '../baixar_modelo.dart';
 
 class Tutorial extends StatefulWidget {
   final String idTutorial;
+  final dynamic codigoText;
 
-  const Tutorial({super.key, required this.idTutorial});
+  const Tutorial({super.key, required this.idTutorial, required this.codigoText});
 
   @override
   State<Tutorial> createState() => _TutorialState();
 }
 
 class _TutorialState extends State<Tutorial> {
+  bool verifyIsTextEmpty(){
+    if(widget.codigoText != null){
+      return true;
+    }
+    return false;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -291,6 +300,36 @@ class _TutorialState extends State<Tutorial> {
                                 ),
                               ),
                             ),
+                            verifyIsTextEmpty() ? Container(
+                              //QUEST BUTTON
+                              margin: EdgeInsets.fromLTRB(
+                                  0 * fem, 35 * fem, 0 * fem, 0 * fem),
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color(0xffe51f43),
+                                  minimumSize: Size(919 * fem, 125 * fem),
+                                  elevation: 0,
+                                  shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(50))),
+                                ),
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => CodigoPage(text: widget.codigoText!)));
+                                },
+                                child: Text(
+                                  'Código',
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 48 * ffem,
+                                    fontWeight: FontWeight.w400,
+                                    height: 1.5 * ffem / fem,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ) : const SizedBox(),
                           ],
                         ),
                       ],
