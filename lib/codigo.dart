@@ -32,13 +32,21 @@ class _CodigoPageState extends State<CodigoPage> {
                     data: widget.text,
                     styleSheet: MarkdownStyleSheet(
                         p: const TextStyle(
-                          fontSize: 16,
+                          fontSize: 18,
                           color: Colors.black,
                         ),
                         code: const TextStyle(
-                          fontSize: 14,
-                          color: Colors.black,
-                        )),
+                          fontSize: 18,
+                          color:  Color(0xffe51f43),
+                          backgroundColor: Colors.transparent,
+
+                        ),
+                        codeblockDecoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        ),
+                        
                   ),
                 ),
               )),

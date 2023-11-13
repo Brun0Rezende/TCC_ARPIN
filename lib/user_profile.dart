@@ -1,6 +1,7 @@
 import 'package:ar_pin/auth/Login.dart';
 import 'package:ar_pin/auth/services/auth_service.dart';
 import 'package:ar_pin/utils/appbar.dart';
+import 'package:ar_pin/utils/functions.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +29,8 @@ class UserProfile extends StatelessWidget {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   User? get currentUser => _firebaseAuth.currentUser;
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
+  final AdminPermissions admin = AdminPermissions();
+  
 
   @override
   Widget build(BuildContext context) {
@@ -95,6 +98,7 @@ class UserProfile extends StatelessWidget {
                                         backgroundColor:
                                             Colors.lightBlueAccent),
                                   );
+                                  
                                 }
                                 final userData = snapshot.data!.docs
                                     .where((element) =>
@@ -106,7 +110,7 @@ class UserProfile extends StatelessWidget {
                                   width: double.infinity,
                                   child: Center(
                                     child: Text(
-                                      userData[0]['username'],
+                                      "${userData[0]['username']}(${userData[0]['permission'] ?? 'user'})",
                                       textAlign: TextAlign.center,
                                       style: GoogleFonts.poppins(
                                         fontSize: 54 * ffem,

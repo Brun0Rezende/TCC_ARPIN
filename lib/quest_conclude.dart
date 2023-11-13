@@ -12,11 +12,15 @@ class QuestConcluido extends StatefulWidget {
   @override
   const QuestConcluido({super.key, required this.score, required this.question, required this.idQuest});
 
+  
+
   @override
   State<QuestConcluido> createState() => _QuestConcluidoState();
 }
 
 class _QuestConcluidoState extends State<QuestConcluido> {
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
