@@ -1,5 +1,8 @@
+import 'package:ar_pin/auth/services/auth_service.dart';
 import 'package:ar_pin/quest.dart';
 import 'package:ar_pin/tutoriais/tutorial.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'home_page.dart';
@@ -10,35 +13,37 @@ class QuestConcluido extends StatefulWidget {
   final int score;
   final int question;
   @override
-  const QuestConcluido({super.key, required this.score, required this.question, required this.idQuest});
-
-  
+  const QuestConcluido(
+      {super.key,
+      required this.score,
+      required this.question,
+      required this.idQuest});
 
   @override
   State<QuestConcluido> createState() => _QuestConcluidoState();
 }
 
 class _QuestConcluidoState extends State<QuestConcluido> {
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-            appBar: AppBar(
+      appBar: AppBar(
         elevation: 1,
         backgroundColor: Colors.white,
         actions: <Widget>[
           IconButton(
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => UserProfile()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => UserProfile()));
               },
               icon: Image.asset('assets/images/user.png')),
         ],
         title: IconButton(
             iconSize: 40,
             onPressed: () {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const HomePage()));
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const HomePage()));
             },
             icon: Image.asset('assets/images/led.png')),
         centerTitle: true,
@@ -68,7 +73,8 @@ class _QuestConcluidoState extends State<QuestConcluido> {
                 _result(fem, ffem, pass),
                 Expanded(
                     child: Container(
-                  margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 50 * fem),
+                  margin:
+                      EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 50 * fem),
                   child: Align(
                     alignment: Alignment.bottomCenter,
                     child: ElevatedButton(
@@ -76,14 +82,37 @@ class _QuestConcluidoState extends State<QuestConcluido> {
                         backgroundColor: const Color(0xffe51f43),
                         minimumSize: Size(919 * fem, 125 * fem),
                         elevation: 0,
-                        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                        shape: const RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(50))),
                       ),
                       onPressed: pass
                           ? () {
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>  const HomePage()));
+                              if (AuthService()
+                                      .isAchiviementDone(widget.idQuest) ==
+                                  "false") {
+                                AuthService()
+                                    .createAchiviement(widget.idQuest)
+                                    .then((value) {
+                                  Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const HomePage()));
+                                });
+                              }
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const HomePage()));
                             }
                           : () {
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Quest(idQuest: widget.idQuest,)));
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Quest(
+                                            idQuest: widget.idQuest,
+                                          )));
                             },
                       child: Text(
                         pass ? 'Concluido' : 'Tentar Novamente',
@@ -142,7 +171,8 @@ class _QuestConcluidoState extends State<QuestConcluido> {
                   ],
                 ),
                 child: Container(
-                  margin: EdgeInsets.fromLTRB(100 * fem, 100 * fem, 100 * fem, 100 * fem),
+                  margin: EdgeInsets.fromLTRB(
+                      100 * fem, 100 * fem, 100 * fem, 100 * fem),
                   child: Image.asset(
                     'assets/images/led.png',
                     fit: BoxFit.cover,
@@ -165,7 +195,9 @@ class _QuestConcluidoState extends State<QuestConcluido> {
             maxWidth: 500 * fem,
           ),
           child: Text(
-            pass ? 'Questionario concluido com sucesso!' : 'Foi quase lá!\nEstude mais um pouco ou tente novamente',
+            pass
+                ? 'Questionario concluido com sucesso!'
+                : 'Foi quase lá!\nEstude mais um pouco ou tente novamente',
             textAlign: TextAlign.center,
             style: GoogleFonts.poppins(
               fontSize: 52 * ffem,

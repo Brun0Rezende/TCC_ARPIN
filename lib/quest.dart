@@ -21,20 +21,6 @@ class _QuestState extends State<Quest> {
   int score = 0;
   bool correct = false;
   Answer? selectedAnswer;
-  bool achivementDone = false;
-
-  @override
-  void initState() {
-    achivementDone = isAchivementDonned();
-    super.initState();
-  }
-
-  bool isAchivementDonned(){
-    bool ach = false;
-    AuthService().isAchivementDone(idQuest: widget.idQuest).then((value) => ach = value);
-
-    return ach;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -223,8 +209,6 @@ class _QuestState extends State<Quest> {
   }
 
   _nextButton(double fem, double ffem, List<Question> questionList) {
-    
-
     bool isLastQuestion = false;
     if (currentQuestionIndex == questionList.length - 1) {
       isLastQuestion = true;
@@ -249,42 +233,14 @@ class _QuestState extends State<Quest> {
                 print('_nextButton IF: correct=  $correct');
               }
               if (isLastQuestion) {
-                achivementDone
-                    ? Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => QuestConcluido(
-                                  idQuest: widget.idQuest,
-                                  score: score,
-                                  question: currentQuestionIndex,
-                                )))
-                    : () {
-                        if (score == currentQuestionIndex) {
-                          FirebaseFirestore.instance
-                              .collection('users')
-                              .doc(FirebaseAuth.instance.currentUser!.uid)
-                              .set({widget.idQuest.toString(): true}).then(
-                                  (value) {
-                            Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => QuestConcluido(
-                                          idQuest: widget.idQuest,
-                                          score: score,
-                                          question: currentQuestionIndex,
-                                        )));
-                          });
-                        }
-
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => QuestConcluido(
-                                      idQuest: widget.idQuest,
-                                      score: score,
-                                      question: currentQuestionIndex,
-                                    )));
-                      };
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => QuestConcluido(
+                              idQuest: widget.idQuest,
+                              score: score,
+                              question: currentQuestionIndex,
+                            )));
               } else {
                 //next question
                 setState(() {

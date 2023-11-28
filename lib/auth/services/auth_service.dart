@@ -23,21 +23,16 @@ class AuthService {
     await _firebaseAuth.currentUser!.delete();
   }
 
-  Future isAchivementDone({required String idQuest}) async {
-    await Future.delayed(const Duration(seconds: 1));
-    DocumentSnapshot value = await FirebaseFirestore.instance
-        .collection('users')
-        .doc(_firebaseAuth.currentUser!.uid)
-        .get();
-    
-    bool isDone = false;
-    Map<String, dynamic> map = value.data() as Map<String, dynamic>;
+  dynamic isAchiviementDone(String idQuest)async{
+    Future.delayed(const Duration(seconds: 1));
+    var userSnapshot = await FirebaseFirestore.instance.collection('users').doc(_firebaseAuth.currentUser!.uid).get();
+    Map <String, dynamic> map = userSnapshot.data() as Map<String, dynamic>;
+    if (map.containsKey(idQuest)) return "true";
+    return "false";
+  }
 
-    for (var i = 0; i < map.length; i++) {
-      if (map[i] == idQuest) {
-        isDone = true;
-      }
-    }
-    return isDone;
+  Future createAchiviement(String idQuest)async{
+     await Future.delayed(const Duration(seconds:1));
+     await FirebaseFirestore.instance.collection('users').doc(_firebaseAuth.currentUser!.uid).update({"achiviements": FieldValue.arrayUnion([idQuest])});
   }
 }
