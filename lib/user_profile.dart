@@ -86,12 +86,12 @@ class UserProfile extends StatelessWidget {
                               fit: BoxFit.cover,
                             ),
                           ),
-                          StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-                              stream: firestore.collection('users').snapshots(),
+                          FutureBuilder(
+                              future: firestore.collection('users').doc(_firebaseAuth.currentUser!.uid).get(),
                               builder: (BuildContext context,
-                                  AsyncSnapshot<
-                                          QuerySnapshot<Map<String, dynamic>>>
                                       snapshot) {
+                                
+                                
                                 if (!snapshot.hasData) {
                                   return const Center(
                                     child: CircularProgressIndicator(
@@ -100,17 +100,12 @@ class UserProfile extends StatelessWidget {
                                   );
                                   
                                 }
-                                final userData = snapshot.data!.docs
-                                    .where((element) =>
-                                        element.id ==
-                                        FirebaseAuth.instance.currentUser!.uid)
-                                    .toList();
+                                final userData = snapshot.data!.data();
                                 return SizedBox(
-                                  // autogrouphdg3Ruq (4s1ncGynUvPaho1dtFHDg3)
-                                  width: double.infinity,
+                                width: double.infinity,
                                   child: Center(
                                     child: Text(
-                                      "${userData[0]['username']}(${userData[0]['permission'] ?? 'user'})",
+                                      userData!['username'].toString(),
                                       textAlign: TextAlign.center,
                                       style: GoogleFonts.poppins(
                                         fontSize: 54 * ffem,

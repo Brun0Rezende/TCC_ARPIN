@@ -17,23 +17,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final AdminPermissions admin = AdminPermissions();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FutureBuilder(
-          future: admin.checkUserPermissions(),
-          builder: (context, snapshot) {
-            if (!snapshot.hasData) {
-              return const ScaffoldMessenger(child: Text("Carregando..."));
-            }
-            if (snapshot.data == true) {
-              return admin.adminFloatingActionButton(
-                context,
-              );
-            }
-            return const SizedBox();
-          }),
       appBar: AppBar(
         elevation: 1,
         backgroundColor: Colors.white,
@@ -516,15 +502,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   _button(double fem, double ffem) {
-    return FutureBuilder(
-      future: admin.checkUserPermissions(),
-      builder: (context, snapshot) {
-        if (!snapshot.hasData) {
-          return const CircularProgressIndicator(
-            color: Color(0xffe51f43),
-          );
-        }
-
         //if (snapshot.data == true) {
         return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           Container(
@@ -559,7 +536,5 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ]);
-      },
-    );
   }
 }
