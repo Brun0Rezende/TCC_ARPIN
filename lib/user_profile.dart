@@ -9,7 +9,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'home_page.dart';
 import 'modelos_disponiveis.dart';
 
-class UserProfile extends StatelessWidget {
+class UserProfile extends StatefulWidget {
+  const UserProfile({Key? key}) : super(key: key);
+
+  @override
+  State<UserProfile> createState() => _UserProfileState();
+}
+
+class _UserProfileState extends State<UserProfile> {
   getUsername() async {
     FirebaseFirestore db = FirebaseFirestore.instance;
     if (FirebaseAuth.instance.currentUser != null) {
@@ -24,13 +31,13 @@ class UserProfile extends StatelessWidget {
     return "Usuário não cadastrado";
   }
 
-  UserProfile({Key? key}) : super(key: key);
-
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+
   User? get currentUser => _firebaseAuth.currentUser;
+
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
+
   final AdminPermissions admin = AdminPermissions();
-  
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +66,8 @@ class UserProfile extends StatelessWidget {
           double baseWidth = 1040;
           double fem = constraints.maxWidth / baseWidth;
           double ffem = fem * 0.97;
+          String picImg = "user";
+          List<String> randomImgs = ["1", "2", "3", "4", "5", "6", "7", "8"];
 
           return SizedBox(
             width: double.infinity,
@@ -75,23 +84,31 @@ class UserProfile extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Container(
-                            // user1hyq (207:59)
-                            margin: EdgeInsets.fromLTRB(
-                                0 * fem, 50 * fem, 0 * fem, 40 * fem),
-                            width: 350 * fem,
-                            height: 350 * fem,
-                            child: Image.asset(
-                              'assets/images/user.png',
-                              fit: BoxFit.cover,
+                          GestureDetector(
+                            child: Container(
+                              // user1hyq (207:59)
+                              margin: EdgeInsets.fromLTRB(
+                                  0 * fem, 50 * fem, 0 * fem, 40 * fem),
+                              width: 350 * fem,
+                              height: 350 * fem,
+                              child: Image.asset(
+                                'assets/images/$picImg.png',
+                                fit: BoxFit.cover,
+                              ),
                             ),
+                            onTap: () {
+                              setState(() {
+                                randomImgs.shuffle();
+                                picImg = randomImgs[0];
+                              });
+                            },
                           ),
-                          StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-                              stream: firestore.collection('users').snapshots(),
+                          FutureBuilder(
+                              future: firestore.collection('users').doc(_firebaseAuth.currentUser!.uid).get(),
                               builder: (BuildContext context,
-                                  AsyncSnapshot<
-                                          QuerySnapshot<Map<String, dynamic>>>
                                       snapshot) {
+                                
+                                
                                 if (!snapshot.hasData) {
                                   return const Center(
                                     child: CircularProgressIndicator(
@@ -100,17 +117,12 @@ class UserProfile extends StatelessWidget {
                                   );
                                   
                                 }
-                                final userData = snapshot.data!.docs
-                                    .where((element) =>
-                                        element.id ==
-                                        FirebaseAuth.instance.currentUser!.uid)
-                                    .toList();
+                                final userData = snapshot.data!.data();
                                 return SizedBox(
-                                  // autogrouphdg3Ruq (4s1ncGynUvPaho1dtFHDg3)
-                                  width: double.infinity,
+                                width: double.infinity,
                                   child: Center(
                                     child: Text(
-                                      "${userData[0]['username']}(${userData[0]['permission'] ?? 'user'})",
+                                      userData!['username'].toString(),
                                       textAlign: TextAlign.center,
                                       style: GoogleFonts.poppins(
                                         fontSize: 54 * ffem,

@@ -1,6 +1,7 @@
 import 'package:ar_pin/baixar_modelo.dart';
 import 'package:ar_pin/codigo-strings/codigo1.dart';
 import 'package:ar_pin/codigo.dart';
+import 'package:ar_pin/codigo_home.dart';
 import 'package:ar_pin/utils/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,23 +18,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final AdminPermissions admin = AdminPermissions();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FutureBuilder(
-          future: admin.checkUserPermissions(),
-          builder: (context, snapshot) {
-            if (!snapshot.hasData) {
-              return const ScaffoldMessenger(child: Text("Carregando..."));
-            }
-            if (snapshot.data == true) {
-              return admin.adminFloatingActionButton(
-                context,
-              );
-            }
-            return const SizedBox();
-          }),
       appBar: AppBar(
         elevation: 1,
         backgroundColor: Colors.white,
@@ -138,7 +125,7 @@ class _HomePageState extends State<HomePage> {
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) =>  const Tutorial(
-                                idTutorial: "eletricidade", codigoText: null,
+                                idTutorial: "eletricidade", codigoText: false,
                               )));
                     },
                     child: Container(
@@ -173,7 +160,7 @@ class _HomePageState extends State<HomePage> {
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => const Tutorial(
-                                idTutorial: "cabos", codigoText: null,
+                                idTutorial: "cabos", codigoText: false,
                               )));
                     },
                     child: Container(
@@ -233,6 +220,44 @@ class _HomePageState extends State<HomePage> {
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: [
+               SizedBox(
+                width: 400 * fem,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: InkWell(
+                    onTap: () {},
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50 * fem),
+                        color: const Color(0xffffffff),
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color(0x82615b69),
+                            offset: Offset(0 * fem, 7 * fem),
+                            blurRadius: 8 * fem,
+                          ),
+                        ],
+                      ),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const Tutorial(
+                                    idTutorial: "arduino", codigoText: true,
+                                  )));
+                        },
+                        child: Container(
+                          margin: EdgeInsets.fromLTRB(
+                              100 * fem, 100 * fem, 100 * fem, 100 * fem),
+                          child: Image.asset(
+                            'assets/images/arduino.png',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
               SizedBox(
                 width: 400 * fem,
                 child: Padding(
@@ -255,7 +280,7 @@ class _HomePageState extends State<HomePage> {
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => const Tutorial(
-                                    idTutorial: "resistor", codigoText: null,
+                                    idTutorial: "resistor", codigoText: false,
                                   )));
                         },
                         child: Container(
@@ -279,7 +304,7 @@ class _HomePageState extends State<HomePage> {
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => const Tutorial(
-                                idTutorial: "led", codigoText: null,
+                                idTutorial: "led", codigoText: true,
                               )));
                     },
                     child: Container(
@@ -314,7 +339,7 @@ class _HomePageState extends State<HomePage> {
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => Tutorial(
-                                idTutorial: "buzzer", codigoText: Codigos().text1,
+                                idTutorial: "buzzer", codigoText: true,
                               )));
                     },
                     child: Container(
@@ -416,7 +441,7 @@ class _HomePageState extends State<HomePage> {
                   child: InkWell(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) =>  CodigoPage(text: Codigos().text1)));
+                          builder: (context) =>  CodigoHome(text: Codigos().text1)));
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -449,7 +474,7 @@ class _HomePageState extends State<HomePage> {
                   child: InkWell(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) =>  CodigoPage(text: Codigos().text2)));
+                          builder: (context) =>  CodigoHome(text: Codigos().text2)));
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -482,7 +507,7 @@ class _HomePageState extends State<HomePage> {
                   child: InkWell(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) =>  CodigoPage(text: Codigos().text3)));
+                          builder: (context) =>  CodigoHome(text: Codigos().text3)));
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -516,15 +541,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   _button(double fem, double ffem) {
-    return FutureBuilder(
-      future: admin.checkUserPermissions(),
-      builder: (context, snapshot) {
-        if (!snapshot.hasData) {
-          return const CircularProgressIndicator(
-            color: Color(0xffe51f43),
-          );
-        }
-
         //if (snapshot.data == true) {
         return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           Container(
@@ -559,7 +575,5 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ]);
-      },
-    );
   }
 }

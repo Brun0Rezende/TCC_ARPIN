@@ -1,44 +1,29 @@
 import 'package:ar_pin/utils/appbar.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
-class CodigoPage extends StatefulWidget {
+class CodigoHome extends StatelessWidget {
   final String text;
-  const CodigoPage({super.key, required this.text});
+  const CodigoHome({super.key, required this.text});
 
-  @override
-  State<CodigoPage> createState() => _CodigoPageState();
-}
-
-class _CodigoPageState extends State<CodigoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: ArpinAppBar().title(context),
         actions: ArpinAppBar().actions(context),
-        backgroundColor: ArpinAppBar().backgroundColor,
-        elevation: ArpinAppBar().elevation,
-        leading: ArpinAppBar().leading(context),
         centerTitle: ArpinAppBar().centerTitle,
+        elevation: ArpinAppBar().elevation,
+        backgroundColor: ArpinAppBar().backgroundColor,
+        leading: ArpinAppBar().leading(context),
       ),
-      body: LayoutBuilder(
-          builder: (BuildContext context, BoxConstraints constraints) =>
-              FutureBuilder(
-                future: FirebaseFirestore.instance.collection('codigos').doc(widget.text).get(),
-                builder: (context, snapshot) {
-                  if (!snapshot.hasData) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }
-                  return SingleChildScrollView(
+      body: LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints){
+        return SingleChildScrollView(
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: MarkdownBody(
                         selectable: true,
-                        data: snapshot.data!['codigoText'].toString(),
+                        data: text,
                         styleSheet: MarkdownStyleSheet(
                             p: const TextStyle(
                               fontSize: 18,
@@ -59,8 +44,7 @@ class _CodigoPageState extends State<CodigoPage> {
                       ),
                     ),
                   );
-                }
-              )),
+      })
     );
   }
 }
