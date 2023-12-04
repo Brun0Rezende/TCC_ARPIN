@@ -84,24 +84,16 @@ class _UserProfileState extends State<UserProfile> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          GestureDetector(
-                            child: Container(
-                              // user1hyq (207:59)
-                              margin: EdgeInsets.fromLTRB(
-                                  0 * fem, 50 * fem, 0 * fem, 40 * fem),
-                              width: 350 * fem,
-                              height: 350 * fem,
-                              child: Image.asset(
-                                'assets/images/$picImg.png',
-                                fit: BoxFit.cover,
-                              ),
+                          Container(
+                            // user1hyq (207:59)
+                            margin: EdgeInsets.fromLTRB(
+                                0 * fem, 50 * fem, 0 * fem, 40 * fem),
+                            width: 350 * fem,
+                            height: 350 * fem,
+                            child: Image.asset(
+                              'assets/images/$picImg.png',
+                              fit: BoxFit.cover,
                             ),
-                            onTap: () {
-                              setState(() {
-                                randomImgs.shuffle();
-                                picImg = randomImgs[0];
-                              });
-                            },
                           ),
                           FutureBuilder(
                               future: firestore.collection('users').doc(_firebaseAuth.currentUser!.uid).get(),
