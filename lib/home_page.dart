@@ -1,6 +1,7 @@
 import 'package:ar_pin/baixar_modelo.dart';
 import 'package:ar_pin/codigo-strings/codigo1.dart';
 import 'package:ar_pin/codigo.dart';
+import 'package:ar_pin/codigo_home.dart';
 import 'package:ar_pin/utils/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -219,6 +220,44 @@ class _HomePageState extends State<HomePage> {
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: [
+               SizedBox(
+                width: 400 * fem,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: InkWell(
+                    onTap: () {},
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50 * fem),
+                        color: const Color(0xffffffff),
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color(0x82615b69),
+                            offset: Offset(0 * fem, 7 * fem),
+                            blurRadius: 8 * fem,
+                          ),
+                        ],
+                      ),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const Tutorial(
+                                    idTutorial: "arduino", codigoText: true,
+                                  )));
+                        },
+                        child: Container(
+                          margin: EdgeInsets.fromLTRB(
+                              100 * fem, 100 * fem, 100 * fem, 100 * fem),
+                          child: Image.asset(
+                            'assets/images/arduino.png',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
               SizedBox(
                 width: 400 * fem,
                 child: Padding(
@@ -402,7 +441,7 @@ class _HomePageState extends State<HomePage> {
                   child: InkWell(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) =>  CodigoPage(text: "arduino")));
+                          builder: (context) =>  CodigoHome(text: Codigos().text1)));
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -435,7 +474,7 @@ class _HomePageState extends State<HomePage> {
                   child: InkWell(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) =>  CodigoPage(text: "led")));
+                          builder: (context) =>  CodigoHome(text: Codigos().text2)));
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -468,7 +507,7 @@ class _HomePageState extends State<HomePage> {
                   child: InkWell(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) =>  CodigoPage(text: "buzzer")));
+                          builder: (context) =>  CodigoHome(text: Codigos().text3)));
                     },
                     child: Container(
                       decoration: BoxDecoration(
