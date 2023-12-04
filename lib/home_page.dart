@@ -124,7 +124,7 @@ class _HomePageState extends State<HomePage> {
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) =>  const Tutorial(
-                                idTutorial: "eletricidade", codigoText: null,
+                                idTutorial: "eletricidade", codigoText: false,
                               )));
                     },
                     child: Container(
@@ -159,7 +159,7 @@ class _HomePageState extends State<HomePage> {
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => const Tutorial(
-                                idTutorial: "cabos", codigoText: null,
+                                idTutorial: "cabos", codigoText: false,
                               )));
                     },
                     child: Container(
@@ -241,7 +241,7 @@ class _HomePageState extends State<HomePage> {
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => const Tutorial(
-                                    idTutorial: "resistor", codigoText: null,
+                                    idTutorial: "resistor", codigoText: false,
                                   )));
                         },
                         child: Container(
@@ -265,7 +265,7 @@ class _HomePageState extends State<HomePage> {
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => const Tutorial(
-                                idTutorial: "led", codigoText: null,
+                                idTutorial: "led", codigoText: true,
                               )));
                     },
                     child: Container(
@@ -300,7 +300,7 @@ class _HomePageState extends State<HomePage> {
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => Tutorial(
-                                idTutorial: "buzzer", codigoText: Codigos().text1,
+                                idTutorial: "buzzer", codigoText: true,
                               )));
                     },
                     child: Container(
@@ -402,7 +402,7 @@ class _HomePageState extends State<HomePage> {
                   child: InkWell(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) =>  CodigoPage(text: Codigos().text1)));
+                          builder: (context) =>  CodigoPage(text: "arduino")));
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -435,7 +435,7 @@ class _HomePageState extends State<HomePage> {
                   child: InkWell(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) =>  CodigoPage(text: Codigos().text2)));
+                          builder: (context) =>  CodigoPage(text: "led")));
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -468,7 +468,7 @@ class _HomePageState extends State<HomePage> {
                   child: InkWell(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) =>  CodigoPage(text: Codigos().text3)));
+                          builder: (context) =>  CodigoPage(text: "buzzer")));
                     },
                     child: Container(
                       decoration: BoxDecoration(

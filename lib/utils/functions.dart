@@ -94,4 +94,14 @@ class AdminPermissions {
           )
         ]);
   }
+
+  Future resetPassword(String email)async{
+    try {
+      Future.delayed(const Duration (seconds: 1));
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (e) {
+      return e.code;
+    }
+    return null;
+  }
 }

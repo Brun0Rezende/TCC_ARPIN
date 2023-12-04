@@ -9,7 +9,7 @@ import '../baixar_modelo.dart';
 
 class Tutorial extends StatefulWidget {
   final String idTutorial;
-  final dynamic codigoText;
+  final bool codigoText;
 
   const Tutorial({super.key, required this.idTutorial, required this.codigoText});
 
@@ -18,12 +18,7 @@ class Tutorial extends StatefulWidget {
 }
 
 class _TutorialState extends State<Tutorial> {
-  bool verifyIsTextEmpty(){
-    if(widget.codigoText != null){
-      return true;
-    }
-    return false;
-  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -300,7 +295,7 @@ class _TutorialState extends State<Tutorial> {
                                 ),
                               ),
                             ),
-                            verifyIsTextEmpty() ? Container(
+                            widget.codigoText ? Container(
                               //QUEST BUTTON
                               margin: EdgeInsets.fromLTRB(
                                   0 * fem, 35 * fem, 0 * fem, 0 * fem),
@@ -317,7 +312,7 @@ class _TutorialState extends State<Tutorial> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => CodigoPage(text: widget.codigoText!)));
+                                          builder: (context) => CodigoPage(text: widget.idTutorial,)));
                                 },
                                 child: Text(
                                   'Código',
