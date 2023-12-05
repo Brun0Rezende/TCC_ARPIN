@@ -14,6 +14,7 @@ class UserProfile extends StatefulWidget {
 
   @override
   State<UserProfile> createState() => _UserProfileState();
+
 }
 
 class _UserProfileState extends State<UserProfile> {
@@ -29,6 +30,15 @@ class _UserProfileState extends State<UserProfile> {
       return username;
     }
     return "Usuário não cadastrado";
+  }
+
+  late String picImg;
+  List<String> randomImgs = ["1", "2", "3", "4", "5", "6", "7", "8"];
+
+  @override
+  void initState() {
+    super.initState();
+    picImg = "user";
   }
 
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -66,8 +76,6 @@ class _UserProfileState extends State<UserProfile> {
           double baseWidth = 1040;
           double fem = constraints.maxWidth / baseWidth;
           double ffem = fem * 0.97;
-          String picImg = "user";
-          List<String> randomImgs = ["1", "2", "3", "4", "5", "6", "7", "8"];
 
           return SizedBox(
             width: double.infinity,
@@ -96,22 +104,21 @@ class _UserProfileState extends State<UserProfile> {
                             ),
                           ),
                           FutureBuilder(
-                              future: firestore.collection('users').doc(_firebaseAuth.currentUser!.uid).get(),
-                              builder: (BuildContext context,
-                                      snapshot) {
-                                
-                                
+                              future: firestore
+                                  .collection('users')
+                                  .doc(_firebaseAuth.currentUser!.uid)
+                                  .get(),
+                              builder: (BuildContext context, snapshot) {
                                 if (!snapshot.hasData) {
                                   return const Center(
                                     child: CircularProgressIndicator(
                                         backgroundColor:
                                             Colors.lightBlueAccent),
                                   );
-                                  
                                 }
                                 final userData = snapshot.data!.data();
                                 return SizedBox(
-                                width: double.infinity,
+                                  width: double.infinity,
                                   child: Center(
                                     child: Text(
                                       userData!['username'].toString(),
@@ -127,7 +134,9 @@ class _UserProfileState extends State<UserProfile> {
                                   ),
                                 );
                               }),
-                              SizedBox(height: 20 * fem,),
+                          SizedBox(
+                            height: 20 * fem,
+                          ),
                           Container(
                             // line3nxf (264:59)
                             margin: EdgeInsets.fromLTRB(
@@ -265,7 +274,9 @@ class _DeleteUserState extends State<DeleteUser> {
               ),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.155,),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.155,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
